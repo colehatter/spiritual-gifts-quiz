@@ -52,6 +52,7 @@ export interface UserInfo {
 }
 
 export type QuizPhase =
+  | 'start'
   | 'email-capture'
   | 'screening'
   | 'free-results'
