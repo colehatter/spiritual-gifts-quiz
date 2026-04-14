@@ -78,7 +78,7 @@ function QuizApp() {
     } finally {
       setIsLoadingPaidQuestions(false);
     }
-    setPhase('payment');
+    setPhase('paid-questions');
   };
 
   const handlePaymentSuccess = () => {

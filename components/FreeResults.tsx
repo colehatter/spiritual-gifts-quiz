@@ -58,8 +58,9 @@ export default function FreeResults({ scores, firstName, onUnlock }: Props) {
           onClick={onUnlock}
           className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 animate-pulse-glow"
         >
-          Unlock My Full Results, $9.99
+          Continue the Test →
         </button>
+        <p className="text-center text-white/30 text-xs">Preview mode, payment disabled</p>
 
         <div className="grid grid-cols-3 gap-3 pt-2">
           {[
