@@ -1,0 +1,2902 @@
+{
+  "meta": {
+    "version": "1.0",
+    "created": "2026-04-13",
+    "author": "Scribe, 3Nails.ai content agent",
+    "total_screening": 40,
+    "total_deep_bank": 165,
+    "gifts_assessed": [
+      "Administration",
+      "Teaching",
+      "Encouragement",
+      "Giving",
+      "Leadership",
+      "Mercy",
+      "Service",
+      "Evangelism",
+      "Shepherding",
+      "Faith",
+      "Hospitality"
+    ]
+  },
+  "screening_questions": [
+    {
+      "id": "S1",
+      "format": "A",
+      "question": "When a big project at work or church falls behind schedule and things feel chaotic, I naturally...",
+      "options": [
+        {
+          "text": "Start mapping out a clear plan and assigning responsibilities",
+          "gift": "Administration"
+        },
+        {
+          "text": "Rally the team, remind them why it matters, and get everyone moving again",
+          "gift": "Leadership"
+        },
+        {
+          "text": "Roll up my sleeves and do whatever needs to be done, no task is beneath me",
+          "gift": "Service"
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "format": "A",
+      "question": "When someone in my friend group is going through something really hard, I naturally...",
+      "options": [
+        {
+          "text": "Show up and sit with them, even when there is nothing to fix",
+          "gift": "Mercy"
+        },
+        {
+          "text": "Start thinking about who else can support them and how to coordinate that over the long haul",
+          "gift": "Shepherding"
+        },
+        {
+          "text": "Text them practical things I can do, like bring dinner or watch their kids",
+          "gift": "Service"
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "format": "A",
+      "question": "When I meet someone who does not share my faith, I naturally...",
+      "options": [
+        {
+          "text": "Feel drawn to share my story and see if it sparks curiosity",
+          "gift": "Evangelism"
+        },
+        {
+          "text": "Want to make sure they feel genuinely welcomed and comfortable around me",
+          "gift": "Hospitality"
+        },
+        {
+          "text": "Trust that God has a plan for them and pray for the right moment",
+          "gift": "Faith"
+        }
+      ]
+    },
+    {
+      "id": "S4",
+      "format": "A",
+      "question": "When I have extra money at the end of the month, I naturally...",
+      "options": [
+        {
+          "text": "Think about who or what could really use it right now",
+          "gift": "Giving"
+        },
+        {
+          "text": "Look for ways to be strategic and put it toward something with lasting impact",
+          "gift": "Administration"
+        },
+        {
+          "text": "Think about where things are heading and invest it toward that future",
+          "gift": "Leadership"
+        }
+      ]
+    },
+    {
+      "id": "S5",
+      "format": "A",
+      "question": "When I am listening to a message or reading about faith, I often notice...",
+      "options": [
+        {
+          "text": "Gaps, inconsistencies, or things that were not fully explained, and I want to dig in",
+          "gift": "Teaching"
+        },
+        {
+          "text": "Stories of transformation that I want to pass on to people I know",
+          "gift": "Evangelism"
+        },
+        {
+          "text": "Principles I can apply to how I organize or lead what I am already doing",
+          "gift": "Administration"
+        }
+      ]
+    },
+    {
+      "id": "S6",
+      "format": "A",
+      "question": "When I think about my role in a group or community, I most naturally gravitate toward...",
+      "options": [
+        {
+          "text": "Setting the vision and helping people see where things could go",
+          "gift": "Leadership"
+        },
+        {
+          "text": "Making sure everyone feels seen and included, especially new people",
+          "gift": "Hospitality"
+        },
+        {
+          "text": "Coming alongside the people who are struggling or on the edges",
+          "gift": "Shepherding"
+        }
+      ]
+    },
+    {
+      "id": "S7",
+      "format": "A",
+      "question": "When someone pushes back on something I believe strongly, I naturally...",
+      "options": [
+        {
+          "text": "Calmly explain my reasoning and invite them to think it through with me",
+          "gift": "Teaching"
+        },
+        {
+          "text": "Hold my position without anxiety, trusting that truth will eventually land",
+          "gift": "Faith"
+        },
+        {
+          "text": "Try to understand their point of view and feel what they are feeling before I respond",
+          "gift": "Mercy"
+        }
+      ]
+    },
+    {
+      "id": "S8",
+      "format": "A",
+      "question": "When I walk into a room where I do not know anyone, I naturally...",
+      "options": [
+        {
+          "text": "Spot the person standing alone and go introduce myself",
+          "gift": "Hospitality"
+        },
+        {
+          "text": "Start observing how the group functions and whether it is organized well",
+          "gift": "Administration"
+        },
+        {
+          "text": "Look for someone who seems discouraged and try to lift their spirits",
+          "gift": "Encouragement"
+        }
+      ]
+    },
+    {
+      "id": "S9",
+      "format": "A",
+      "question": "When someone on my team is struggling with their role, I naturally...",
+      "options": [
+        {
+          "text": "Find out what they need and help fill those gaps myself so they are not stuck",
+          "gift": "Service"
+        },
+        {
+          "text": "Sit with them, ask what is really going on, and help them figure out next steps",
+          "gift": "Shepherding"
+        },
+        {
+          "text": "Tell them honestly what I see in them and why I believe they can do this",
+          "gift": "Encouragement"
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "format": "A",
+      "question": "When I see a need that nobody else seems to be addressing, I naturally...",
+      "options": [
+        {
+          "text": "Step up and fill it myself, even if no one notices",
+          "gift": "Service"
+        },
+        {
+          "text": "Organize a response and recruit others to help make it sustainable",
+          "gift": "Administration"
+        },
+        {
+          "text": "Give generously toward meeting that need even if I can only do a little",
+          "gift": "Giving"
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "format": "B",
+      "question": "I feel most alive when I am...",
+      "options": [
+        {
+          "text": "Explaining something complex in a way that finally clicks for someone",
+          "gift": "Teaching"
+        },
+        {
+          "text": "Helping someone push through a moment of doubt and come out stronger",
+          "gift": "Encouragement"
+        },
+        {
+          "text": "Leading a group of people toward a shared goal that really matters",
+          "gift": "Leadership"
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "format": "B",
+      "question": "I feel most alive when I am...",
+      "options": [
+        {
+          "text": "Welcoming someone new and watching them go from awkward to at home",
+          "gift": "Hospitality"
+        },
+        {
+          "text": "Doing something practical that frees someone else up to do what they do best",
+          "gift": "Service"
+        },
+        {
+          "text": "Sitting with someone in a really hard moment, not trying to fix it, just being there",
+          "gift": "Mercy"
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "format": "B",
+      "question": "I feel most alive when I am...",
+      "options": [
+        {
+          "text": "Sharing something about my own faith journey with someone who is genuinely curious",
+          "gift": "Evangelism"
+        },
+        {
+          "text": "Giving in a way that I can see the direct impact it makes on someone's life",
+          "gift": "Giving"
+        },
+        {
+          "text": "Trusting God in a situation where there is absolutely no obvious way forward",
+          "gift": "Faith"
+        }
+      ]
+    },
+    {
+      "id": "S14",
+      "format": "B",
+      "question": "I feel most alive when I am...",
+      "options": [
+        {
+          "text": "Walking with someone through a long, hard season and watching them come out different",
+          "gift": "Shepherding"
+        },
+        {
+          "text": "Setting up the systems and structures that make everything else possible",
+          "gift": "Administration"
+        },
+        {
+          "text": "Sitting down with someone who has real questions about faith and life",
+          "gift": "Teaching"
+        }
+      ]
+    },
+    {
+      "id": "S15",
+      "format": "B",
+      "question": "I feel most alive when I am...",
+      "options": [
+        {
+          "text": "Watching someone I believed in take a big step they were too afraid to take before",
+          "gift": "Encouragement"
+        },
+        {
+          "text": "Watching a community I helped build really click together and feel like home",
+          "gift": "Hospitality"
+        },
+        {
+          "text": "Seeing someone far from God take a real step toward faith",
+          "gift": "Evangelism"
+        }
+      ]
+    },
+    {
+      "id": "S16",
+      "format": "B",
+      "question": "I feel most alive when I am...",
+      "options": [
+        {
+          "text": "Believing God for something that seems impossible, and staying steady while others panic",
+          "gift": "Faith"
+        },
+        {
+          "text": "Catching the behind-the-scenes details that everyone else missed before they became problems",
+          "gift": "Service"
+        },
+        {
+          "text": "Pouring resources into something I believe is going to change lives",
+          "gift": "Giving"
+        }
+      ]
+    },
+    {
+      "id": "S17",
+      "format": "B",
+      "question": "I feel most alive when I am...",
+      "options": [
+        {
+          "text": "Taking a long walk with someone who is carrying something too heavy to carry alone",
+          "gift": "Mercy"
+        },
+        {
+          "text": "Casting a vision that gets people genuinely excited about the future",
+          "gift": "Leadership"
+        },
+        {
+          "text": "Being the kind of steady presence in someone's life that helps them grow over years",
+          "gift": "Shepherding"
+        }
+      ]
+    },
+    {
+      "id": "S18",
+      "format": "C",
+      "question": "People most often come to me for...",
+      "options": [
+        {
+          "text": "Help making sense of something confusing or complex",
+          "gift": "Teaching"
+        },
+        {
+          "text": "A word of encouragement when they feel like giving up",
+          "gift": "Encouragement"
+        },
+        {
+          "text": "Someone to just listen without trying to fix anything",
+          "gift": "Mercy"
+        }
+      ]
+    },
+    {
+      "id": "S19",
+      "format": "C",
+      "question": "People most often come to me for...",
+      "options": [
+        {
+          "text": "Help organizing something they cannot figure out how to pull off",
+          "gift": "Administration"
+        },
+        {
+          "text": "A safe place to land when they are new or feeling out of place",
+          "gift": "Hospitality"
+        },
+        {
+          "text": "Practical help, like moving, fixing something, or just getting something done",
+          "gift": "Service"
+        }
+      ]
+    },
+    {
+      "id": "S20",
+      "format": "C",
+      "question": "People most often come to me for...",
+      "options": [
+        {
+          "text": "Direction on a big decision or help seeing the bigger picture",
+          "gift": "Leadership"
+        },
+        {
+          "text": "Advice on how to give generously or use resources in a way that matters",
+          "gift": "Giving"
+        },
+        {
+          "text": "Someone to pray with when they are scared and do not know what to do",
+          "gift": "Faith"
+        }
+      ]
+    },
+    {
+      "id": "S21",
+      "format": "C",
+      "question": "People most often come to me for...",
+      "options": [
+        {
+          "text": "Help navigating a hard season in their personal or spiritual life over the long term",
+          "gift": "Shepherding"
+        },
+        {
+          "text": "Someone to help them process hard questions about God and life without judgment",
+          "gift": "Teaching"
+        },
+        {
+          "text": "A fresh perspective when they have lost hope and need someone to believe for them",
+          "gift": "Encouragement"
+        }
+      ]
+    },
+    {
+      "id": "S22",
+      "format": "C",
+      "question": "People most often come to me for...",
+      "options": [
+        {
+          "text": "Practical logistics help, like planning an event or coordinating a group",
+          "gift": "Administration"
+        },
+        {
+          "text": "Someone to hype them up and remind them why they can do this",
+          "gift": "Encouragement"
+        },
+        {
+          "text": "Help thinking through how to share their faith with someone specific",
+          "gift": "Evangelism"
+        }
+      ]
+    },
+    {
+      "id": "S23",
+      "format": "C",
+      "question": "People most often come to me for...",
+      "options": [
+        {
+          "text": "A warm meal, a spare room, or a place where they feel genuinely welcome",
+          "gift": "Hospitality"
+        },
+        {
+          "text": "Someone to pray with them and believe alongside them for something they are trusting God for",
+          "gift": "Faith"
+        },
+        {
+          "text": "Someone who will show up and help without being asked",
+          "gift": "Service"
+        }
+      ]
+    },
+    {
+      "id": "S24",
+      "format": "C",
+      "question": "People most often come to me for...",
+      "options": [
+        {
+          "text": "Help figuring out how to give wisely and make a real impact with their resources",
+          "gift": "Giving"
+        },
+        {
+          "text": "Honest truth spoken with care, not just what they want to hear",
+          "gift": "Teaching"
+        },
+        {
+          "text": "Someone to listen without judgment when they are carrying something really painful",
+          "gift": "Mercy"
+        }
+      ]
+    },
+    {
+      "id": "S25",
+      "format": "D",
+      "question": "When I see a task that needs to be done, I just do it. I do not wait to be asked.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Service"
+    },
+    {
+      "id": "S26",
+      "format": "D",
+      "question": "I find it easy to believe God will come through, even when everything around me looks bad.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Faith"
+    },
+    {
+      "id": "S27",
+      "format": "D",
+      "question": "I genuinely enjoy having strangers or new people in my home or personal space.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Hospitality"
+    },
+    {
+      "id": "S28",
+      "format": "D",
+      "question": "I love breaking down big ideas into smaller, clearer pieces until the other person truly gets it.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Teaching"
+    },
+    {
+      "id": "S29",
+      "format": "D",
+      "question": "I feel a strong pull to stay close to people who are hurting, even when their pain is uncomfortable or complicated.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Mercy"
+    },
+    {
+      "id": "S30",
+      "format": "D",
+      "question": "When I hear about someone who does not know God, I feel a genuine urgency, not just a passing thought.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Evangelism"
+    },
+    {
+      "id": "S31",
+      "format": "D",
+      "question": "I naturally think about systems, structures, and how to make things run more smoothly.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Administration"
+    },
+    {
+      "id": "S32",
+      "format": "D",
+      "question": "I get a deep sense of satisfaction from giving money or resources to something that matters, even if no one knows I did it.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Giving"
+    },
+    {
+      "id": "S33",
+      "format": "D",
+      "question": "When someone feels stuck or defeated, I usually find something specific to say that helps them get moving again.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Encouragement"
+    },
+    {
+      "id": "S34",
+      "format": "D",
+      "question": "I naturally think in terms of where things are heading and I feel responsible for helping people get there.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Leadership"
+    },
+    {
+      "id": "S35",
+      "format": "D",
+      "question": "I check on people weeks or months after a crisis, not just in the moment. Long-term follow-through comes naturally to me.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Shepherding"
+    },
+    {
+      "id": "S36",
+      "format": "D",
+      "question": "I have given away more than I probably should have by most people's standards, and I do not regret it.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Giving"
+    },
+    {
+      "id": "S37",
+      "format": "D",
+      "question": "People in pain draw me in rather than overwhelm me. I want to be closer, not farther away.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Mercy"
+    },
+    {
+      "id": "S38",
+      "format": "D",
+      "question": "I would rather serve behind the scenes and see the thing succeed than be up front getting credit.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Service"
+    },
+    {
+      "id": "S39",
+      "format": "D",
+      "question": "I tend to know what is going on in the lives of the people around me and I make sure no one gets lost in the shuffle.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Shepherding"
+    },
+    {
+      "id": "S40",
+      "format": "D",
+      "question": "When I introduce myself to someone, I am genuinely curious about their story, and I remember what they tell me.",
+      "options": [
+        "Sounds just like me",
+        "Somewhat like me",
+        "Not really me"
+      ],
+      "gift": "Hospitality"
+    }
+  ],
+  "deep_bank": {
+    "Administration": {
+      "level_1": [
+        {
+          "id": "D-ADM-L1-1",
+          "format": "D",
+          "level": 1,
+          "question": "When I join a new team or project, I usually spot the missing systems or gaps within the first week.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L1-2",
+          "format": "D",
+          "level": 1,
+          "question": "I keep detailed lists, color-coded notes, or step-by-step plans for things other people handle casually.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L1-3",
+          "format": "D",
+          "level": 1,
+          "question": "When a process is broken or inefficient, I do not just notice it, I propose a fix and follow through.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L1-4",
+          "format": "D",
+          "level": 1,
+          "question": "I naturally take on the role of tracking who is doing what and by when, even when no one asked me to.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L1-5",
+          "format": "A",
+          "level": 1,
+          "question": "When a big event needs to be planned from scratch, I naturally gravitate toward...",
+          "options": [
+            {
+              "text": "Creating the master checklist and making sure every detail is assigned to someone",
+              "gift": "Administration"
+            },
+            {
+              "text": "Getting people excited about it and making sure it builds community",
+              "gift": "Hospitality"
+            },
+            {
+              "text": "Figuring out the finances and making sure resources are used wisely",
+              "gift": "Giving"
+            }
+          ]
+        }
+      ],
+      "level_2": [
+        {
+          "id": "D-ADM-L2-1",
+          "format": "D",
+          "level": 2,
+          "question": "The thing that frustrates me most is when people jump into execution before there is a clear plan.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L2-2",
+          "format": "D",
+          "level": 2,
+          "question": "I feel most satisfied when I turn something chaotic into something that actually runs smoothly.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L2-3",
+          "format": "D",
+          "level": 2,
+          "question": "When a project succeeds because of the systems I put in place behind the scenes, that is enough for me.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L2-4",
+          "format": "D",
+          "level": 2,
+          "question": "I feel genuinely energized by solving logistical puzzles, like how to get 20 people, 10 tasks, and one deadline to line up.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L2-5",
+          "format": "A",
+          "level": 2,
+          "question": "When a project is behind schedule and morale is sinking, what energizes me most is...",
+          "options": [
+            {
+              "text": "Getting back to the plan, adjusting it, and re-clarifying who is doing what",
+              "gift": "Administration"
+            },
+            {
+              "text": "Rallying people emotionally and reminding them why this matters",
+              "gift": "Encouragement"
+            },
+            {
+              "text": "Identifying what is most broken and rolling up my sleeves to fix it",
+              "gift": "Service"
+            }
+          ]
+        }
+      ],
+      "level_3": [
+        {
+          "id": "D-ADM-L3-1",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that loving people well often looks like creating systems that do not let them fall through the cracks.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L3-2",
+          "format": "D",
+          "level": 3,
+          "question": "I think the unglamorous work of keeping things organized is just as sacred as anything that happens on stage.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L3-3",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that chaos does not honor God, and that order creates space for people to thrive.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L3-4",
+          "format": "D",
+          "level": 3,
+          "question": "When I think about the legacy I want to leave, it includes the systems and structures that will keep working after I am gone.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        },
+        {
+          "id": "D-ADM-L3-5",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that a well-organized team can accomplish things that a talented but disorganized one never will.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Administration"
+        }
+      ]
+    },
+    "Teaching": {
+      "level_1": [
+        {
+          "id": "D-TCH-L1-1",
+          "format": "D",
+          "level": 1,
+          "question": "When I learn something new and meaningful, my first instinct is to find someone to share it with.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L1-2",
+          "format": "D",
+          "level": 1,
+          "question": "I notice when an explanation is not quite right, and I feel compelled to re-explain it more clearly.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L1-3",
+          "format": "D",
+          "level": 1,
+          "question": "I keep going with an explanation until I can tell the other person actually understands it, not just nodded politely.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L1-4",
+          "format": "D",
+          "level": 1,
+          "question": "I often prepare more than necessary before leading a discussion, because I want to get it right.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L1-5",
+          "format": "A",
+          "level": 1,
+          "question": "When someone is confused about something I know well, I...",
+          "options": [
+            {
+              "text": "Walk them through it step by step until it genuinely clicks",
+              "gift": "Teaching"
+            },
+            {
+              "text": "Connect them to someone else who can explain it in a different way",
+              "gift": "Service"
+            },
+            {
+              "text": "Encourage them to trust the process and keep going even when it is hard",
+              "gift": "Encouragement"
+            }
+          ]
+        }
+      ],
+      "level_2": [
+        {
+          "id": "D-TCH-L2-1",
+          "format": "D",
+          "level": 2,
+          "question": "Watching someone's eyes light up when they finally understand something gives me a deep sense of purpose.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L2-2",
+          "format": "D",
+          "level": 2,
+          "question": "I am frustrated when good ideas are communicated poorly, because the idea deserves better.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L2-3",
+          "format": "D",
+          "level": 2,
+          "question": "I feel most energized when I am diving deep into a topic, not just skimming the surface.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L2-4",
+          "format": "D",
+          "level": 2,
+          "question": "I care about accuracy, not just warmth. I would rather tell someone a hard truth clearly than a comfortable half-truth kindly.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L2-5",
+          "format": "B",
+          "level": 2,
+          "question": "I feel most alive when I am...",
+          "options": [
+            {
+              "text": "Doing a deep dive into a topic I care about and figuring out how to explain it to others",
+              "gift": "Teaching"
+            },
+            {
+              "text": "Watching something I said or shared actually change the way someone acts or decides",
+              "gift": "Encouragement"
+            },
+            {
+              "text": "Finding the simplest possible way to say something that everyone else makes complicated",
+              "gift": "Administration"
+            }
+          ]
+        }
+      ],
+      "level_3": [
+        {
+          "id": "D-TCH-L3-1",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that clarity is a form of love, because confusion keeps people stuck.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L3-2",
+          "format": "D",
+          "level": 3,
+          "question": "I think most people are capable of understanding complex things if someone will just take the time to explain it well.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L3-3",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that getting the details right matters, not just getting the big picture right.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L3-4",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that a well-understood truth changes lives more than a hundred emotional experiences without any real foundation.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        },
+        {
+          "id": "D-TCH-L3-5",
+          "format": "D",
+          "level": 3,
+          "question": "I think the church often moves too fast and does not slow down enough to help people truly understand what they believe and why.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Teaching"
+        }
+      ]
+    },
+    "Encouragement": {
+      "level_1": [
+        {
+          "id": "D-ENC-L1-1",
+          "format": "D",
+          "level": 1,
+          "question": "When someone seems defeated, I almost always find something specific and true to say that shifts their perspective.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L1-2",
+          "format": "D",
+          "level": 1,
+          "question": "I notice when someone goes quiet in a group and I make a point to check in with them later.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L1-3",
+          "format": "D",
+          "level": 1,
+          "question": "I have been told more than once that a text or word I sent came at exactly the right moment, and I do not think that is a coincidence.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L1-4",
+          "format": "D",
+          "level": 1,
+          "question": "I keep track of the people around me who are working hard and not getting the recognition they deserve.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L1-5",
+          "format": "A",
+          "level": 1,
+          "question": "When a friend tells me they are thinking of quitting something important to them, I...",
+          "options": [
+            {
+              "text": "Tell them specifically what I have seen in them that makes me believe they can finish",
+              "gift": "Encouragement"
+            },
+            {
+              "text": "Ask questions to understand what is really going on before I say anything",
+              "gift": "Shepherding"
+            },
+            {
+              "text": "Help them think through a practical plan to make it more manageable",
+              "gift": "Administration"
+            }
+          ]
+        }
+      ],
+      "level_2": [
+        {
+          "id": "D-ENC-L2-1",
+          "format": "D",
+          "level": 2,
+          "question": "I feel something close to urgency when I see someone about to give up on something I believe they are capable of.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L2-2",
+          "format": "D",
+          "level": 2,
+          "question": "I am genuinely motivated by watching people take steps they were too afraid to take before I came alongside them.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L2-3",
+          "format": "D",
+          "level": 2,
+          "question": "It bothers me when people in a group are contributing a lot but never being acknowledged for it.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L2-4",
+          "format": "D",
+          "level": 2,
+          "question": "When I encourage someone, I am not just trying to make them feel better. I want them to see something true that they have been missing.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L2-5",
+          "format": "C",
+          "level": 2,
+          "question": "People most often come to me when...",
+          "options": [
+            {
+              "text": "They are about to do something scary and need someone firmly in their corner",
+              "gift": "Encouragement"
+            },
+            {
+              "text": "They need help thinking through a decision step by step",
+              "gift": "Teaching"
+            },
+            {
+              "text": "They are in pain and need someone to sit with them without an agenda",
+              "gift": "Mercy"
+            }
+          ]
+        }
+      ],
+      "level_3": [
+        {
+          "id": "D-ENC-L3-1",
+          "format": "D",
+          "level": 3,
+          "question": "I believe most people give up right before their breakthrough, and that one well-timed word can change that.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L3-2",
+          "format": "D",
+          "level": 3,
+          "question": "I think the world has enough critics. What it is short on is people who genuinely believe in others.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L3-3",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that encouragement is not just nice, it is necessary. Without it, people shrink.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L3-4",
+          "format": "D",
+          "level": 3,
+          "question": "I think calling out what is genuinely good in a person is one of the most powerful things anyone can do.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        },
+        {
+          "id": "D-ENC-L3-5",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that believing in someone before they believe in themselves is one of the greatest gifts you can give another person.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Encouragement"
+        }
+      ]
+    },
+    "Giving": {
+      "level_1": [
+        {
+          "id": "D-GIV-L1-1",
+          "format": "D",
+          "level": 1,
+          "question": "When I hear about a real financial need, I almost immediately start thinking about what I can give toward it.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L1-2",
+          "format": "D",
+          "level": 1,
+          "question": "I give more than I tell people I give, and I actively prefer it that way.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L1-3",
+          "format": "D",
+          "level": 1,
+          "question": "I often think about money in terms of what it can do for others, not just what it can do for me.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L1-4",
+          "format": "D",
+          "level": 1,
+          "question": "I look for overlooked giving opportunities, like the person no one else is funding or the cause that is not trendy.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L1-5",
+          "format": "A",
+          "level": 1,
+          "question": "When I receive an unexpected financial windfall, my first move is usually to...",
+          "options": [
+            {
+              "text": "Think about who or what it could serve before I decide what to do with it",
+              "gift": "Giving"
+            },
+            {
+              "text": "Think through how to steward it wisely and make it go as far as possible",
+              "gift": "Administration"
+            },
+            {
+              "text": "Celebrate and share the joy with the people around me",
+              "gift": "Hospitality"
+            }
+          ]
+        }
+      ],
+      "level_2": [
+        {
+          "id": "D-GIV-L2-1",
+          "format": "D",
+          "level": 2,
+          "question": "I experience real joy when I give, not obligation. Generosity feels like freedom, not duty.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L2-2",
+          "format": "D",
+          "level": 2,
+          "question": "I feel bothered when I see resources hoarded or mismanaged by people who have been trusted with them.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L2-3",
+          "format": "D",
+          "level": 2,
+          "question": "When I give anonymously and someone is blessed without knowing it was me, that actually feels the best.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L2-4",
+          "format": "D",
+          "level": 2,
+          "question": "I think about giving even when finances are tight. It is not something I only do when I have extra.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L2-5",
+          "format": "B",
+          "level": 2,
+          "question": "I feel most alive when I am...",
+          "options": [
+            {
+              "text": "Being generous at a level that requires real trust that God will provide",
+              "gift": "Giving"
+            },
+            {
+              "text": "Discovering a specific, concrete need I can meet immediately",
+              "gift": "Service"
+            },
+            {
+              "text": "Getting other people excited to give together toward something that matters",
+              "gift": "Leadership"
+            }
+          ]
+        }
+      ],
+      "level_3": [
+        {
+          "id": "D-GIV-L3-1",
+          "format": "D",
+          "level": 3,
+          "question": "I genuinely believe that everything I have belongs to God first, and I am the steward, not the owner.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L3-2",
+          "format": "D",
+          "level": 3,
+          "question": "I think generosity is the antidote to fear, and I have seen that be true in my own life.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L3-3",
+          "format": "D",
+          "level": 3,
+          "question": "I believe money is neither good nor bad. It is a tool, and I feel a real sense of responsibility for how I use it.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L3-4",
+          "format": "D",
+          "level": 3,
+          "question": "I believe a community that gives freely builds a culture that can withstand almost anything.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        },
+        {
+          "id": "D-GIV-L3-5",
+          "format": "D",
+          "level": 3,
+          "question": "I do not see tithing as a ceiling. It is more like the floor.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Giving"
+        }
+      ]
+    },
+    "Leadership": {
+      "level_1": [
+        {
+          "id": "D-LDR-L1-1",
+          "format": "D",
+          "level": 1,
+          "question": "When a group I am part of lacks direction, I naturally start pointing people toward one, even without a formal role.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L1-2",
+          "format": "D",
+          "level": 1,
+          "question": "I am often the one who articulates where things are going when no one else has said it out loud.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L1-3",
+          "format": "D",
+          "level": 1,
+          "question": "I find myself thinking about how a decision made today will shape where things are in three to five years.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L1-4",
+          "format": "D",
+          "level": 1,
+          "question": "People tend to follow my lead even when I have not been given a title or formal authority.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L1-5",
+          "format": "A",
+          "level": 1,
+          "question": "When I am part of a team with no clear leader, I usually...",
+          "options": [
+            {
+              "text": "Start naturally organizing next steps and getting people aligned around a direction",
+              "gift": "Leadership"
+            },
+            {
+              "text": "Focus on what I can do with my own hands to move things forward",
+              "gift": "Service"
+            },
+            {
+              "text": "Make sure everyone in the room feels heard before any decisions get made",
+              "gift": "Shepherding"
+            }
+          ]
+        }
+      ],
+      "level_2": [
+        {
+          "id": "D-LDR-L2-1",
+          "format": "D",
+          "level": 2,
+          "question": "I feel most energized when I am casting a vision and watching people actually catch it.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L2-2",
+          "format": "D",
+          "level": 2,
+          "question": "When I see an organization or team underperforming because of unclear direction, I feel a pull to do something about it.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L2-3",
+          "format": "D",
+          "level": 2,
+          "question": "I do not lead for the recognition. I lead because I can see what is possible and it bothers me when it is not happening.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L2-4",
+          "format": "D",
+          "level": 2,
+          "question": "I find it more satisfying to lead someone else to success than to succeed on my own.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L2-5",
+          "format": "C",
+          "level": 2,
+          "question": "People most often come to me for...",
+          "options": [
+            {
+              "text": "Help seeing the bigger picture when they feel lost in the details",
+              "gift": "Leadership"
+            },
+            {
+              "text": "A practical plan to tackle something they have been putting off",
+              "gift": "Administration"
+            },
+            {
+              "text": "Someone to pray with when they do not know which direction to go",
+              "gift": "Faith"
+            }
+          ]
+        }
+      ],
+      "level_3": [
+        {
+          "id": "D-LDR-L3-1",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that good leadership is ultimately about releasing others, not holding power.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L3-2",
+          "format": "D",
+          "level": 3,
+          "question": "I think every group needs someone who sees further than the horizon and keeps pointing people in that direction.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L3-3",
+          "format": "D",
+          "level": 3,
+          "question": "I believe a leader's most important job is to build other leaders, not to build followers.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L3-4",
+          "format": "D",
+          "level": 3,
+          "question": "I think influence without character is dangerous, and I hold myself to a high standard because of it.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        },
+        {
+          "id": "D-LDR-L3-5",
+          "format": "D",
+          "level": 3,
+          "question": "I believe the best vision is not just what I dream up alone. It is what God puts in my heart for people who genuinely need it.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Leadership"
+        }
+      ]
+    },
+    "Mercy": {
+      "level_1": [
+        {
+          "id": "D-MRC-L1-1",
+          "format": "D",
+          "level": 1,
+          "question": "When I hear about someone going through something painful, I want to be near them, not keep a safe distance.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L1-2",
+          "format": "D",
+          "level": 1,
+          "question": "I often sit with people in their pain long after others have moved on to fixing things or offering advice.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L1-3",
+          "format": "D",
+          "level": 1,
+          "question": "I notice when someone is suffering and trying to hide it, and I find a way to gently open a door for them.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L1-4",
+          "format": "D",
+          "level": 1,
+          "question": "When I am in a group and someone is clearly hurting, I cannot fully focus on anything else until I have checked on them.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L1-5",
+          "format": "A",
+          "level": 1,
+          "question": "When a friend is grieving a major loss, I...",
+          "options": [
+            {
+              "text": "Go to them, stay as long as they need, and let them lead the conversation",
+              "gift": "Mercy"
+            },
+            {
+              "text": "Coordinate a meal train and practical support with the people who care about them",
+              "gift": "Administration"
+            },
+            {
+              "text": "Send a heartfelt note and make sure they know I am praying for them consistently",
+              "gift": "Faith"
+            }
+          ]
+        }
+      ],
+      "level_2": [
+        {
+          "id": "D-MRC-L2-1",
+          "format": "D",
+          "level": 2,
+          "question": "I find that being present with someone in pain, without saying or fixing anything, feels natural rather than uncomfortable.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L2-2",
+          "format": "D",
+          "level": 2,
+          "question": "I feel something almost physical when I hear about injustice or unnecessary suffering. It bothers me at a gut level.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L2-3",
+          "format": "D",
+          "level": 2,
+          "question": "What energizes me is not solving problems. It is making people feel less alone in them.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L2-4",
+          "format": "D",
+          "level": 2,
+          "question": "I get frustrated when people rush past real pain with quick answers, Bible verses, or silver linings before the person feels heard.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L2-5",
+          "format": "B",
+          "level": 2,
+          "question": "I feel most alive when I am...",
+          "options": [
+            {
+              "text": "Sitting in the middle of someone's mess with them and knowing it matters",
+              "gift": "Mercy"
+            },
+            {
+              "text": "Connecting someone to resources or support that actually make their situation better",
+              "gift": "Administration"
+            },
+            {
+              "text": "Praying over someone who has lost hope and watching them feel something shift",
+              "gift": "Faith"
+            }
+          ]
+        }
+      ],
+      "level_3": [
+        {
+          "id": "D-MRC-L3-1",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that presence is more powerful than solutions. Most people need to be felt with before they need to be fixed.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L3-2",
+          "format": "D",
+          "level": 3,
+          "question": "I think the church is too quick to celebrate healings and too slow to honor the people who quietly show up for the sick and the broken.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L3-3",
+          "format": "D",
+          "level": 3,
+          "question": "I believe compassion is not a feeling, it is a discipline. You choose to move toward people in pain even when it costs you.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L3-4",
+          "format": "D",
+          "level": 3,
+          "question": "I believe every person who is suffering deserves someone in their corner who is not trying to fix them or hurry them along.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        },
+        {
+          "id": "D-MRC-L3-5",
+          "format": "D",
+          "level": 3,
+          "question": "I think empathy is not enough on its own. You have to actually show up and stay.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Mercy"
+        }
+      ]
+    },
+    "Service": {
+      "level_1": [
+        {
+          "id": "D-SRV-L1-1",
+          "format": "D",
+          "level": 1,
+          "question": "I get antsy at an event or gathering if there are chairs to set up, tasks to do, or messes to clean and I am just standing around.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L1-2",
+          "format": "D",
+          "level": 1,
+          "question": "I am the person who shows up early to help set up and stays late to help clean up, without being asked.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L1-3",
+          "format": "D",
+          "level": 1,
+          "question": "I often notice things that need to be done that other people walk right past.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L1-4",
+          "format": "D",
+          "level": 1,
+          "question": "I prefer to let my actions speak. I do not need to announce what I did or why.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L1-5",
+          "format": "A",
+          "level": 1,
+          "question": "When someone I care about moves to a new place, I...",
+          "options": [
+            {
+              "text": "Show up with boxes, my truck, and a full day of my time without thinking twice",
+              "gift": "Service"
+            },
+            {
+              "text": "Organize a group of people to help and coordinate who is doing what",
+              "gift": "Administration"
+            },
+            {
+              "text": "Make sure they feel welcome in their new neighborhood and throw them a housewarming",
+              "gift": "Hospitality"
+            }
+          ]
+        }
+      ],
+      "level_2": [
+        {
+          "id": "D-SRV-L2-1",
+          "format": "D",
+          "level": 2,
+          "question": "I feel most useful when I am doing something concrete that directly makes someone's life easier.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L2-2",
+          "format": "D",
+          "level": 2,
+          "question": "I get frustrated when I see a practical need going unmet while people talk about it instead of just addressing it.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L2-3",
+          "format": "D",
+          "level": 2,
+          "question": "Knowing that something ran smoothly because of work I did in the background is deeply satisfying to me.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L2-4",
+          "format": "D",
+          "level": 2,
+          "question": "I do not need recognition to keep going. In fact, attention on what I did feels a little uncomfortable.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L2-5",
+          "format": "C",
+          "level": 2,
+          "question": "People most often come to me when...",
+          "options": [
+            {
+              "text": "Something practical needs to happen and they need someone who will actually do it",
+              "gift": "Service"
+            },
+            {
+              "text": "They need to vent to someone who will not judge them or try to fix them right away",
+              "gift": "Mercy"
+            },
+            {
+              "text": "They need someone to believe in them before a big moment",
+              "gift": "Encouragement"
+            }
+          ]
+        }
+      ],
+      "level_3": [
+        {
+          "id": "D-SRV-L3-1",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that serving others is not a lesser calling. It is as holy as preaching or leading.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L3-2",
+          "format": "D",
+          "level": 3,
+          "question": "I believe no task is beneath me if it serves someone I love or a cause I believe in.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L3-3",
+          "format": "D",
+          "level": 3,
+          "question": "I think the most important people in any church are the ones no one ever sees, and I am proud to be one of them.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L3-4",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that love is something you do, not something you say. Showing up is how I say it.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        },
+        {
+          "id": "D-SRV-L3-5",
+          "format": "D",
+          "level": 3,
+          "question": "I think the world would change faster if more people stopped waiting to be asked and just started helping.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Service"
+        }
+      ]
+    },
+    "Evangelism": {
+      "level_1": [
+        {
+          "id": "D-EVG-L1-1",
+          "format": "D",
+          "level": 1,
+          "question": "I bring up my faith naturally in regular conversations, not in a forced or preachy way.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L1-2",
+          "format": "D",
+          "level": 1,
+          "question": "When I meet someone who is searching for something but does not know what, I feel a natural pull to start a conversation.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L1-3",
+          "format": "D",
+          "level": 1,
+          "question": "I have had real conversations with people about faith in settings most Christians would never try, like a bar, a gym, or a waiting room.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L1-4",
+          "format": "D",
+          "level": 1,
+          "question": "I am not afraid of faith conversations with skeptics. I actually find them interesting, not threatening.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L1-5",
+          "format": "A",
+          "level": 1,
+          "question": "When I find out a coworker is going through something really hard and says they do not believe in God, I...",
+          "options": [
+            {
+              "text": "Look for an opening to share what my own faith has meant in hard seasons",
+              "gift": "Evangelism"
+            },
+            {
+              "text": "Focus on being a reliable, caring presence without forcing anything",
+              "gift": "Service"
+            },
+            {
+              "text": "Invite them over for dinner and just get to know them better",
+              "gift": "Hospitality"
+            }
+          ]
+        }
+      ],
+      "level_2": [
+        {
+          "id": "D-EVG-L2-1",
+          "format": "D",
+          "level": 2,
+          "question": "Hearing that someone took a step toward faith because of a conversation I had with them is the most satisfying thing I can experience.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L2-2",
+          "format": "D",
+          "level": 2,
+          "question": "I feel a real urgency about people who do not know God, not guilt or pressure. More like a deep care for what they are missing.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L2-3",
+          "format": "D",
+          "level": 2,
+          "question": "I am not satisfied just maintaining community with the people who already believe. I want to keep reaching further out.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L2-4",
+          "format": "D",
+          "level": 2,
+          "question": "I get a little restless in communities where everyone is already a Christian and no one is thinking about the people just outside the door.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L2-5",
+          "format": "B",
+          "level": 2,
+          "question": "I feel most alive when I am...",
+          "options": [
+            {
+              "text": "In a real, genuine conversation with someone exploring faith for the first time",
+              "gift": "Evangelism"
+            },
+            {
+              "text": "Training and equipping others to share their own stories more confidently",
+              "gift": "Teaching"
+            },
+            {
+              "text": "Gathering people together in a space that makes it easy for seekers to feel welcome",
+              "gift": "Hospitality"
+            }
+          ]
+        }
+      ],
+      "level_3": [
+        {
+          "id": "D-EVG-L3-1",
+          "format": "D",
+          "level": 3,
+          "question": "I believe every person deserves the chance to hear something real about faith from someone who actually cares about them.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L3-2",
+          "format": "D",
+          "level": 3,
+          "question": "I think most people are not anti-God. They are just waiting for someone to be honest and real with them about it.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L3-3",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that if I have found something that changed my life, keeping it to myself is not humility, it is selfishness.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L3-4",
+          "format": "D",
+          "level": 3,
+          "question": "I think the church loses something critical when it gets so comfortable with insiders that outsiders cannot find a way in.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        },
+        {
+          "id": "D-EVG-L3-5",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that sharing faith is not about having all the answers. It is about being willing to walk with someone toward them.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Evangelism"
+        }
+      ]
+    },
+    "Shepherding": {
+      "level_1": [
+        {
+          "id": "D-SHP-L1-1",
+          "format": "D",
+          "level": 1,
+          "question": "I naturally keep mental track of where each person in my circle is in life, and when I have not heard from someone in a while, I reach out.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L1-2",
+          "format": "D",
+          "level": 1,
+          "question": "I am more energized by a two-hour conversation with one person going through something hard than by a large group gathering.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L1-3",
+          "format": "D",
+          "level": 1,
+          "question": "I follow up after hard conversations. Weeks later, I still remember and I circle back to check in.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L1-4",
+          "format": "D",
+          "level": 1,
+          "question": "I think in terms of seasons and long arcs for people. I am not just trying to help someone feel better today. I want to see them grow over years.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L1-5",
+          "format": "A",
+          "level": 1,
+          "question": "When I notice someone drifting away from a group or community, I...",
+          "options": [
+            {
+              "text": "Personally reach out and quietly try to find out what is really going on",
+              "gift": "Shepherding"
+            },
+            {
+              "text": "Mention it to a leader and suggest a follow-up system so no one gets lost",
+              "gift": "Administration"
+            },
+            {
+              "text": "Send them a message letting them know they are missed and believed in",
+              "gift": "Encouragement"
+            }
+          ]
+        }
+      ],
+      "level_2": [
+        {
+          "id": "D-SHP-L2-1",
+          "format": "D",
+          "level": 2,
+          "question": "Walking with someone through a difficult season over months or years gives me a sense of purpose that short-term interactions rarely do.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L2-2",
+          "format": "D",
+          "level": 2,
+          "question": "I feel protective of the people in my care. When one of them is being pressured, misled, or hurt, I will speak up.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L2-3",
+          "format": "D",
+          "level": 2,
+          "question": "I am bothered when communities celebrate big moments but do not have real systems for caring for people in the quiet, hard stretches in between.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L2-4",
+          "format": "D",
+          "level": 2,
+          "question": "I get real satisfaction not just from helping people in a crisis, but from watching them grow and become more whole over time.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L2-5",
+          "format": "C",
+          "level": 2,
+          "question": "People most often come to me when...",
+          "options": [
+            {
+              "text": "They are in a long, hard season and need someone who will not give up on them or rush the process",
+              "gift": "Shepherding"
+            },
+            {
+              "text": "They have a specific emotional pain that needs someone to sit in it with them right now",
+              "gift": "Mercy"
+            },
+            {
+              "text": "They want a mentor who will be direct and help them grow, not just comfort them",
+              "gift": "Teaching"
+            }
+          ]
+        }
+      ],
+      "level_3": [
+        {
+          "id": "D-SHP-L3-1",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that caring for people's souls is a long game, not a sprint, and I am in it for the long haul.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L3-2",
+          "format": "D",
+          "level": 3,
+          "question": "I think every person needs at least one person who knows their whole story and will not leave when things get complicated.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L3-3",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that real community is not built at big events. It is built in the quiet, consistent investment in individual people.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L3-4",
+          "format": "D",
+          "level": 3,
+          "question": "I think the measure of a healthy community is not how exciting its services are, but how well people care for each other when no one is watching.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        },
+        {
+          "id": "D-SHP-L3-5",
+          "format": "D",
+          "level": 3,
+          "question": "I believe my calling is not to draw people to myself but to help them become more fully who God made them to be.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Shepherding"
+        }
+      ]
+    },
+    "Faith": {
+      "level_1": [
+        {
+          "id": "D-FTH-L1-1",
+          "format": "D",
+          "level": 1,
+          "question": "When everyone else in a situation is panicking, I often find myself unexpectedly calm, trusting that it will work out.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L1-2",
+          "format": "D",
+          "level": 1,
+          "question": "I have stepped into something that looked impossible from the outside because I believed God was in it, and I would do it again.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L1-3",
+          "format": "D",
+          "level": 1,
+          "question": "I pray with specific boldness. I ask for concrete things and genuinely expect God to answer.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L1-4",
+          "format": "D",
+          "level": 1,
+          "question": "I have a track record of stepping out in trust without knowing how it would work out, and I can point to what happened.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L1-5",
+          "format": "A",
+          "level": 1,
+          "question": "When a situation looks completely hopeless and everyone around me has given up, I...",
+          "options": [
+            {
+              "text": "Feel a quiet certainty that God is not done yet, and I hold that for others when they cannot hold it themselves",
+              "gift": "Faith"
+            },
+            {
+              "text": "Start praying with whoever is willing and do not stop until something breaks open",
+              "gift": "Evangelism"
+            },
+            {
+              "text": "Sit with people in the hopelessness and just be present with them in it",
+              "gift": "Mercy"
+            }
+          ]
+        }
+      ],
+      "level_2": [
+        {
+          "id": "D-FTH-L2-1",
+          "format": "D",
+          "level": 2,
+          "question": "What energizes me most is not having everything figured out. It is trusting God when I clearly do not.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L2-2",
+          "format": "D",
+          "level": 2,
+          "question": "I feel frustrated when fear is treated like wisdom. Sometimes the boldest move is the right one.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L2-3",
+          "format": "D",
+          "level": 2,
+          "question": "I find it meaningful when I can be the person who holds steady for someone else who is losing their grip on hope.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L2-4",
+          "format": "D",
+          "level": 2,
+          "question": "I am more afraid of playing it safe and missing what God is doing than of stepping out and getting it wrong.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L2-5",
+          "format": "B",
+          "level": 2,
+          "question": "I feel most alive when I am...",
+          "options": [
+            {
+              "text": "Standing on a promise with nothing visible to stand on yet, and trusting it anyway",
+              "gift": "Faith"
+            },
+            {
+              "text": "Leading people forward despite the uncertainty, because I believe in where we are headed",
+              "gift": "Leadership"
+            },
+            {
+              "text": "Praying with someone who has lost hope and watching faith rise back up in them",
+              "gift": "Encouragement"
+            }
+          ]
+        }
+      ],
+      "level_3": [
+        {
+          "id": "D-FTH-L3-1",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that doubt is not the enemy of faith. Comfort and complacency are.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L3-2",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that God is not looking for people with all the answers. He is looking for people willing to trust Him anyway.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L3-3",
+          "format": "D",
+          "level": 3,
+          "question": "I think the most dangerous prayer a person can pray is 'God, I trust you.' Because He tends to test that.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L3-4",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that the stories worth telling are almost always the ones where the outcome was not guaranteed.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        },
+        {
+          "id": "D-FTH-L3-5",
+          "format": "D",
+          "level": 3,
+          "question": "I think God often does His best work in the moments when every logical option has run out.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Faith"
+        }
+      ]
+    },
+    "Hospitality": {
+      "level_1": [
+        {
+          "id": "D-HSP-L1-1",
+          "format": "D",
+          "level": 1,
+          "question": "I pay attention to whether people at an event feel at home or feel like they are on the outside looking in.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L1-2",
+          "format": "D",
+          "level": 1,
+          "question": "Making someone feel comfortable in my home or my space is something I do naturally, without thinking much about it.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L1-3",
+          "format": "D",
+          "level": 1,
+          "question": "I notice the person sitting alone at church, at a party, at work, and I make it my business to go talk to them.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L1-4",
+          "format": "D",
+          "level": 1,
+          "question": "I find myself wanting my home to feel like a refuge for people, not just a place I live.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L1-5",
+          "format": "A",
+          "level": 1,
+          "question": "When a new family shows up at church for the first time, I...",
+          "options": [
+            {
+              "text": "Go introduce myself, remember their names, and make sure someone follows up with them later",
+              "gift": "Hospitality"
+            },
+            {
+              "text": "Think about how we could create a better system for welcoming and integrating new people",
+              "gift": "Administration"
+            },
+            {
+              "text": "Invite them to a small group or gathering where they can connect with people who have similar life stages",
+              "gift": "Shepherding"
+            }
+          ]
+        }
+      ],
+      "level_2": [
+        {
+          "id": "D-HSP-L2-1",
+          "format": "D",
+          "level": 2,
+          "question": "Creating a space where someone feels at home is genuinely one of the most satisfying things I can do.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L2-2",
+          "format": "D",
+          "level": 2,
+          "question": "I feel bothered when someone is new to a group and no one makes a real effort to include them.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L2-3",
+          "format": "D",
+          "level": 2,
+          "question": "I care deeply that people leave a gathering at my home feeling more known than when they arrived.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L2-4",
+          "format": "D",
+          "level": 2,
+          "question": "I do not think hospitality requires a big house or a fancy dinner. It requires genuine attention, and that is what I give.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L2-5",
+          "format": "C",
+          "level": 2,
+          "question": "People most often come to me when...",
+          "options": [
+            {
+              "text": "They need to be around people who feel like family, even if they are not family",
+              "gift": "Hospitality"
+            },
+            {
+              "text": "They need someone to sit with them quietly and not make it weird",
+              "gift": "Mercy"
+            },
+            {
+              "text": "They want to be around someone whose energy is just steady and warm",
+              "gift": "Encouragement"
+            }
+          ]
+        }
+      ],
+      "level_3": [
+        {
+          "id": "D-HSP-L3-1",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that belonging is a basic human need, and helping people find it is a sacred responsibility.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L3-2",
+          "format": "D",
+          "level": 3,
+          "question": "I think loneliness is one of the most serious crises the church should be addressing, and I take that personally.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L3-3",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that opening your table and your home is one of the most underrated acts of love in Scripture.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L3-4",
+          "format": "D",
+          "level": 3,
+          "question": "I believe that no one should ever leave a gathering where I was present still feeling invisible.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        },
+        {
+          "id": "D-HSP-L3-5",
+          "format": "D",
+          "level": 3,
+          "question": "I think the front door of a church is less important than how it feels to walk through it. And that is something I can control.",
+          "options": [
+            "Sounds just like me",
+            "Somewhat like me",
+            "Not really me"
+          ],
+          "gift": "Hospitality"
+        }
+      ]
+    }
+  }
+}
