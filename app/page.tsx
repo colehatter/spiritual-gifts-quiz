@@ -14,7 +14,7 @@ import Logo from '@/components/Logo';
 
 function QuizApp() {
   const searchParams = useSearchParams();
-  const [phase, setPhase] = useState<QuizPhase>('email-capture');
+  const [phase, setPhase] = useState<QuizPhase>('start');
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const [freeScores, setFreeScores] = useState<GiftScores>(initialScores());
   const [paidScores, setPaidScores] = useState<GiftScores>(initialScores());
@@ -109,6 +109,22 @@ function QuizApp() {
     <main className="min-h-screen bg-[#0d1220]">
       <div className="max-w-2xl mx-auto px-4 py-6">
         <Logo />
+        {phase === 'start' && (
+          <div className="flex flex-col items-center justify-center min-h-[60vh] text-center gap-8">
+            <div>
+              <h1 className="text-3xl font-bold text-white mb-3">Discover Your Spiritual Gifts</h1>
+              <p className="text-white/60 text-lg max-w-md mx-auto">40 questions. 5 minutes. Personalized results based on how you're actually wired.</p>
+            </div>
+            <button
+              onClick={() => { setUserInfo({ firstName: 'Friend', email: '' }); setPhase('screening'); }}
+              className="px-10 py-4 rounded-xl text-white font-semibold text-lg transition-all hover:scale-105 hover:shadow-lg"
+              style={{ background: 'linear-gradient(135deg, #1a4e8a, #34C6F4)', boxShadow: '0 0 30px rgba(52,198,244,0.3)' }}
+            >
+              Start the Quiz →
+            </button>
+            <p className="text-white/30 text-sm">Preview mode, no email required</p>
+          </div>
+        )}
         {phase === 'email-capture' && (
           <EmailCapture onSubmit={handleEmailSubmit} />
         )}
