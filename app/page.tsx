@@ -113,7 +113,7 @@ function QuizApp() {
           <div className="flex flex-col items-center justify-center min-h-[60vh] text-center gap-8">
             <div>
               <h1 className="text-3xl font-bold text-white mb-3">Discover Your Spiritual Gifts</h1>
-              <p className="text-white/60 text-lg max-w-md mx-auto">40 questions. 5 minutes. Personalized results based on how you're actually wired.</p>
+              <p className="text-white/60 text-lg max-w-md mx-auto">40 questions. 5 minutes. Personalized results based on how you are actually wired.</p>
             </div>
             <button
               onClick={() => { setUserInfo({ firstName: 'Friend', email: '' }); setPhase('screening'); }}
