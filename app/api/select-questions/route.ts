@@ -1,88 +1,118 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Anthropic from '@anthropic-ai/sdk';
 import questionsData from '@/data/questions.json';
 import { GiftScores, GiftName, Question } from '@/types/quiz';
 
-const client = new Anthropic();
+// Fisher-Yates shuffle
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function pickN<T>(arr: T[], n: number): T[] {
+  return shuffle(arr).slice(0, n);
+}
 
 export async function POST(req: NextRequest) {
   try {
     const { scores } = (await req.json()) as { scores: GiftScores };
 
-    // Get top 4 gifts
+    // --- Step 1: Rank all gifts by score ---
     const ranked = (Object.entries(scores) as [GiftName, number][])
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 4)
-      .map(([gift, score]) => ({ gift, score }));
+      .sort((a, b) => b[1] - a[1]);
 
-    const topGiftNames = ranked.map((r) => r.gift);
+    const topGifts = ranked.slice(0, 4).map(([gift]) => gift);
 
-    // Gather all deep bank questions for top gifts at levels 2 and 3
-    const deepBank = (questionsData as unknown as { deep_bank: Record<string, { level_1: Question[]; level_2?: Question[]; level_3?: Question[] }> }).deep_bank;
-
-    const candidateQuestions: Question[] = [];
-
-    for (const giftName of topGiftNames) {
-      const bank = deepBank[giftName];
-      if (bank) {
-        if (bank.level_2) candidateQuestions.push(...bank.level_2);
-        if (bank.level_3) candidateQuestions.push(...bank.level_3);
-        // Also include some level 1 for differentiation
-        if (bank.level_1) candidateQuestions.push(...bank.level_1.slice(0, 2));
+    // --- Step 2: Detect confusion zones (top gifts within 15% of each other) ---
+    const confusionPairs: [GiftName, GiftName][] = [];
+    for (let i = 0; i < Math.min(ranked.length - 1, 3); i++) {
+      const scoreA = ranked[i][1];
+      const scoreB = ranked[i + 1][1];
+      // Avoid division by zero; if both are 0 they're equally confused
+      const threshold = scoreA === 0 ? 0 : scoreA * 0.85;
+      if (scoreB >= threshold) {
+        confusionPairs.push([ranked[i][0], ranked[i + 1][0]]);
       }
     }
 
-    // Use Claude to select the best 28 questions
-    const prompt = `You are helping select adaptive quiz questions for a spiritual gifts assessment.
+    // --- Step 3: Load deep bank ---
+    type DeepBankEntry = { level_1: Question[]; level_2?: Question[]; level_3?: Question[] };
+    const deepBank = (
+      questionsData as unknown as { deep_bank: Record<string, DeepBankEntry> }
+    ).deep_bank;
 
-The user's top gifts from the screening are:
-${ranked.map((r) => `- ${r.gift}: ${r.score} points`).join('\n')}
+    // Track used IDs to avoid duplicates
+    const usedIds = new Set<string>();
 
-Here are candidate questions from the deep bank:
-${JSON.stringify(candidateQuestions.map((q) => ({ id: q.id, gift: q.gift, question: q.question, format: q.format })), null, 2)}
+    const getFromLevels = (
+      giftName: string,
+      n: number,
+      levels: ('level_1' | 'level_2' | 'level_3')[] = ['level_2', 'level_3']
+    ): Question[] => {
+      const bank = deepBank[giftName];
+      if (!bank) return [];
+      const pool: Question[] = [];
+      for (const level of levels) {
+        const qs = bank[level] ?? [];
+        pool.push(...qs.filter((q) => !usedIds.has(q.id)));
+      }
+      const picked = pickN(pool, n);
+      picked.forEach((q) => usedIds.add(q.id));
+      return picked;
+    };
 
-Select exactly 28 question IDs that will best differentiate between the top gifts and reveal the user's true gift profile. 
-Focus on questions that:
-1. Distinguish between their top 3-4 gifts
-2. Go deeper on their highest-scoring gift
-3. Check for hidden secondary gifts
-4. Mix formats (D and A/B/C) for variety
+    // --- Step 4: Allocate questions per budget ---
+    // #1 gift: 8 questions (L2 + L3)
+    // #2 gift: 6 questions (L2 + L3)
+    // #3 gift: 5 questions (L2 + L3)
+    // #4 gift: 4 questions (L2 only)
+    // confusion zones: 5 questions (extra L2/L3 from confused pairs)
+    // Total: 28
 
-Return ONLY a JSON array of question IDs like: ["D-ADM-L2-1", "D-ENC-L3-2", ...]`;
+    const selected: Question[] = [];
 
-    const message = await client.messages.create({
-      model: 'claude-haiku-4-5',
-      max_tokens: 1024,
-      messages: [{ role: 'user', content: prompt }],
+    if (topGifts[0]) selected.push(...getFromLevels(topGifts[0], 8, ['level_2', 'level_3']));
+    if (topGifts[1]) selected.push(...getFromLevels(topGifts[1], 6, ['level_2', 'level_3']));
+    if (topGifts[2]) selected.push(...getFromLevels(topGifts[2], 5, ['level_2', 'level_3']));
+    if (topGifts[3]) selected.push(...getFromLevels(topGifts[3], 4, ['level_2']));
+
+    // Confusion zone questions: pull additional coverage from confused gift pairs
+    // Budget: 5 questions total across all pairs
+    if (confusionPairs.length > 0) {
+      const perPair = Math.ceil(5 / confusionPairs.length);
+      for (const [giftA, giftB] of confusionPairs) {
+        const half = Math.ceil(perPair / 2);
+        // Pull from whichever gift hasn't been exhausted, preferring L3 (deepest differentiation)
+        selected.push(...getFromLevels(giftA, half, ['level_3', 'level_2']));
+        selected.push(...getFromLevels(giftB, perPair - half, ['level_3', 'level_2']));
+        if (selected.length >= 28) break;
+      }
+    }
+
+    // --- Step 5: Pad to 28 if budget didn't fill (e.g. sparse question bank) ---
+    if (selected.length < 28) {
+      for (const [giftName] of ranked) {
+        if (selected.length >= 28) break;
+        selected.push(...getFromLevels(giftName, 28 - selected.length, ['level_2', 'level_3', 'level_1']));
+      }
+    }
+
+    // Final shuffle so questions don't appear gift-by-gift
+    const finalQuestions = shuffle(selected).slice(0, 28);
+
+    return NextResponse.json({
+      questions: finalQuestions,
+      debug: {
+        topGifts,
+        confusionPairs,
+        totalSelected: finalQuestions.length,
+      },
     });
-
-    const responseText = (message.content[0] as { text: string }).text;
-
-    // Parse the IDs
-    const match = responseText.match(/\[[\s\S]*\]/);
-    let selectedIds: string[] = [];
-    if (match) {
-      selectedIds = JSON.parse(match[0]);
-    }
-
-    // Map IDs back to full questions
-    const idToQuestion = new Map<string, Question>(
-      candidateQuestions.map((q) => [q.id, q])
-    );
-
-    let selected = selectedIds
-      .map((id) => idToQuestion.get(id))
-      .filter(Boolean) as Question[];
-
-    // Fallback: if AI fails, just take first 28 candidates
-    if (selected.length < 10) {
-      selected = candidateQuestions.slice(0, 28);
-    }
-
-    return NextResponse.json({ questions: selected.slice(0, 30) });
   } catch (error) {
     console.error('select-questions error:', error);
-    // Fallback: return first 28 deep bank questions for top gift
     return NextResponse.json({ questions: [] }, { status: 500 });
   }
 }
