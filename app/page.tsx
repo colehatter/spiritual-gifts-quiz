@@ -44,7 +44,17 @@ function QuizApp() {
     }
   }, [searchParams]);
 
+  const fireLeadEvent = () => {
+    try {
+      if (typeof window !== 'undefined') {
+        if ((window as any).fbq) (window as any).fbq('track', 'Lead');
+        if ((window as any).dataLayer) (window as any).dataLayer.push({ event: 'quiz_start' });
+      }
+    } catch (e) { /* silent */ }
+  };
+
   const handleEmailSubmit = (info: UserInfo) => {
+    fireLeadEvent();
     setUserInfo(info);
     setPhase('screening');
   };
@@ -116,7 +126,7 @@ function QuizApp() {
               <p className="text-white/60 text-lg max-w-md mx-auto">40 questions. 5 minutes. Personalized results based on how you are actually wired.</p>
             </div>
             <button
-              onClick={() => { setUserInfo({ firstName: 'Friend', email: '' }); setPhase('screening'); }}
+              onClick={() => { fireLeadEvent(); setUserInfo({ firstName: 'Friend', email: '' }); setPhase('screening'); }}
               className="px-10 py-4 rounded-xl text-white font-semibold text-lg transition-all hover:scale-105 hover:shadow-lg"
               style={{ background: 'linear-gradient(135deg, #1a4e8a, #34C6F4)', boxShadow: '0 0 30px rgba(52,198,244,0.3)' }}
             >
