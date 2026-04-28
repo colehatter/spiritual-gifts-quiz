@@ -14,7 +14,7 @@ import Logo from '@/components/Logo';
 
 function QuizApp() {
   const searchParams = useSearchParams();
-  const [phase, setPhase] = useState<QuizPhase>('start');
+  const [phase, setPhase] = useState<QuizPhase>('email-capture');
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const [freeScores, setFreeScores] = useState<GiftScores>(initialScores());
   const [paidScores, setPaidScores] = useState<GiftScores>(initialScores());
@@ -46,9 +46,8 @@ function QuizApp() {
 
   const fireLeadEvent = () => {
     try {
-      if (typeof window !== 'undefined') {
-        if ((window as any).fbq) (window as any).fbq('track', 'Lead');
-        if ((window as any).dataLayer) (window as any).dataLayer.push({ event: 'quiz_start' });
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Lead');
       }
     } catch (e) { /* silent */ }
   };
