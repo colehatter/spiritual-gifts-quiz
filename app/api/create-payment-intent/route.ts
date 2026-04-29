@@ -7,7 +7,7 @@ export async function POST() {
   }
   try {
     const Stripe = (await import('stripe')).default;
-    const stripe = new Stripe(stripeKey, { apiVersion: '2026-03-25.dahlia' });
+    const stripe = new Stripe(stripeKey, { apiVersion: '2024-06-20' as '2026-03-25.dahlia' });
     const paymentIntent = await stripe.paymentIntents.create({
       amount: 999,
       currency: 'usd',
