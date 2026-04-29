@@ -122,11 +122,21 @@ function StartPageContent() {
   const router = useRouter();
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [showPayment, setShowPayment] = useState(false);
+  const [useHostedCheckout, setUseHostedCheckout] = useState(false);
+  const [hostedLoading, setHostedLoading] = useState(false);
 
   useEffect(() => {
     fetch('/api/create-payment-intent', { method: 'POST' })
       .then((r) => r.json())
-      .then((data) => { if (data.clientSecret) setClientSecret(data.clientSecret); });
+      .then((data) => {
+        if (data.clientSecret) {
+          setClientSecret(data.clientSecret);
+        } else {
+          // Fallback to hosted checkout if inline fails
+          setUseHostedCheckout(true);
+        }
+      })
+      .catch(() => setUseHostedCheckout(true));
   }, []);
 
   const handlePaidSuccess = () => {
@@ -202,11 +212,22 @@ function StartPageContent() {
 
             {!showPayment ? (
               <button
-                onClick={() => setShowPayment(true)}
-                className="w-full font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 hover:scale-[1.02]"
+                onClick={async () => {
+                  if (useHostedCheckout) {
+                    setHostedLoading(true);
+                    const res = await fetch('/api/checkout', { method: 'POST' });
+                    const data = await res.json();
+                    if (data.url) window.location.href = data.url;
+                    else { sessionStorage.setItem('quiz_paid', 'true'); router.push('/quiz?paid=true'); }
+                  } else {
+                    setShowPayment(true);
+                  }
+                }}
+                disabled={hostedLoading}
+                className="w-full font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 hover:scale-[1.02] disabled:opacity-60"
                 style={{ background: 'linear-gradient(135deg, #1a4e8a, #34C6F4)', color: '#ffffff', boxShadow: '0 0 20px rgba(52,198,244,0.3)' }}
               >
-                Get Full Access — $9.99
+                {hostedLoading ? 'Loading...' : 'Get Full Access — $9.99'}
               </button>
             ) : clientSecret ? (
               <Elements
