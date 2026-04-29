@@ -56,4 +56,9 @@ export const giftDescriptions: Record<GiftName, { description: string; scripture
       'You have a gift for making people feel like they belong. Wherever you are, people feel welcomed, seen, and at home. You create environments where community happens naturally.',
     scripture: 'Romans 12:13 — "Practice hospitality."',
   },
+  Prophecy: {
+    description:
+      'You have a heightened sensitivity to truth and a boldness to speak it. You see clearly where things are out of alignment with God\'s Word and feel a deep compulsion to name it — not to condemn, but to call people back. Your words carry weight, and people know it.',
+    scripture: '1 Corinthians 14:3 — "The one who prophesies speaks to people for their strengthening, encouraging and comfort."',
+  },
 };

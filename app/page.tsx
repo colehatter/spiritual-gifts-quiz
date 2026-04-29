@@ -46,10 +46,10 @@ function QuizApp() {
 
   const fireLeadEvent = () => {
     try {
-      if (typeof window !== 'undefined' && (window as any).fbq) {
-        (window as any).fbq('track', 'Lead');
+      if (typeof window !== 'undefined' && (window as { fbq?: (...args: unknown[]) => void }).fbq) {
+        (window as { fbq?: (...args: unknown[]) => void }).fbq?.('track', 'Lead');
       }
-    } catch (e) { /* silent */ }
+    } catch { /* silent */ }
   };
 
   const handleEmailSubmit = (info: UserInfo) => {
