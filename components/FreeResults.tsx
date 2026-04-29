@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { GiftScores, GiftName } from '@/types/quiz';
 import { getTopGifts } from '@/lib/scoring';
 import { giftDescriptions } from '@/lib/giftDescriptions';
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function FreeResults({ scores, firstName, onUnlock }: Props) {
+  const [showModal, setShowModal] = useState(false);
   const topGift = getTopGifts(scores, 1)[0] as GiftName;
   const { description, scripture } = giftDescriptions[topGift];
 
@@ -37,44 +39,42 @@ export default function FreeResults({ scores, firstName, onUnlock }: Props) {
         </div>
       </div>
 
-      {/* Upsell Section */}
-      <div className="bg-[#141928] rounded-2xl p-6 sm:p-8 border border-white/5 space-y-5">
-        <p className="text-white text-xl font-bold">
-          But here&apos;s what we haven&apos;t told you yet.
-        </p>
-        <p className="text-white/70 leading-relaxed">
-          Your answers reveal more than just your top gift. The way you answered across all 40
-          questions points to a specific combination of gifts, a shadow side you may not be aware
-          of, and a pattern of how you are wired to serve.
-        </p>
-        <p className="text-white/70 leading-relaxed">
-          For $9.99, the next 30 questions will be selected specifically based on how{' '}
-          <span className="text-white font-medium">YOU</span> answered, using AI to narrow down
-          exactly where your gifts are strongest. Then you will get a personalized analysis and a
-          30-day action plan written specifically for you, not a template.
-        </p>
-
+      {/* Continue Button */}
+      <div className="pt-2">
         <button
-          onClick={onUnlock}
+          onClick={() => setShowModal(true)}
           className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 animate-pulse-glow"
         >
           Continue the Test →
         </button>
-        <p className="text-center text-white/30 text-xs">Preview mode, payment disabled</p>
-
-        <div className="grid grid-cols-3 gap-3 pt-2">
-          {[
-            { icon: '🎯', label: 'AI-selected questions' },
-            { icon: '✍️', label: 'Personal narrative' },
-            { icon: '📅', label: '30-day action plan' },
-          ].map(({ icon, label }) => (
-            <div key={label} className="text-center">
-              <div className="text-2xl mb-1">{icon}</div>
-              <p className="text-white/50 text-xs">{label}</p>
-            </div>
-          ))}
-        </div>
       </div>
+
+      {/* Magic Moment Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={() => setShowModal(false)}
+          />
+          {/* Modal */}
+          <div className="relative bg-[#0d1220] border border-[#34C6F4]/40 rounded-2xl p-8 max-w-sm w-full text-center space-y-6 shadow-2xl">
+            <div className="text-5xl">✨</div>
+            <h2 className="text-2xl font-bold text-white leading-snug">
+              This is where the magic happens.
+            </h2>
+            <p className="text-white/70 text-lg leading-relaxed">
+              The rest of the questions will be personally and uniquely generated for you based on your previous answers.
+            </p>
+            <button
+              onClick={() => { setShowModal(false); onUnlock(); }}
+              className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200"
+            >
+              Let&apos;s Go →
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

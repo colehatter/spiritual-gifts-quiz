@@ -12,7 +12,6 @@ export const initialScores = (): GiftScores => ({
   Shepherding: 0,
   Faith: 0,
   Hospitality: 0,
-  Prophecy: 0,
 });
 
 // Points for Format D: "Sounds just like me" = 3, "Somewhat like me" = 1, "Not really me" = 0
