@@ -9,7 +9,8 @@ export type GiftName =
   | 'Evangelism'
   | 'Shepherding'
   | 'Faith'
-  | 'Hospitality';
+  | 'Hospitality'
+  | 'Prophecy';
 
 export type QuestionFormat = 'A' | 'B' | 'C' | 'D';
 
@@ -44,6 +45,7 @@ export interface GiftScores {
   Shepherding: number;
   Faith: number;
   Hospitality: number;
+  Prophecy: number;
 }
 
 export interface UserInfo {

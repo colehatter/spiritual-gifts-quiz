@@ -42,18 +42,18 @@
     {
       "id": "S2",
       "format": "A",
-      "question": "When someone in my friend group is going through something really hard, I naturally...",
+      "question": "Your friend has been in crisis for three months. They call you every other day. When you answer — even when you're exhausted — what does your support usually look like?",
       "options": [
         {
-          "text": "Show up and sit with them, even when there is nothing to fix",
+          "text": "I listen without trying to fix anything. Sometimes I just stay on the line with them — not because it helps me, but because I can't let them be alone in it.",
           "gift": "Mercy"
         },
         {
-          "text": "Start thinking about who else can support them and how to coordinate that over the long haul",
+          "text": "I check in on where they are in the bigger arc and quietly think about who else should be involved in walking this out with them over time.",
           "gift": "Shepherding"
         },
         {
-          "text": "Text them practical things I can do, like bring dinner or watch their kids",
+          "text": "I try to identify the most pressing practical need and figure out what I can actually do to remove one burden from their plate today.",
           "gift": "Service"
         }
       ]
@@ -61,18 +61,18 @@
     {
       "id": "S3",
       "format": "A",
-      "question": "When I meet someone who does not share my faith, I naturally...",
+      "question": "You're in a setting where most people keep things surface-level. You just met someone. You sense an opening to say something real about your faith. What do you do?",
       "options": [
         {
-          "text": "Feel drawn to share my story and see if it sparks curiosity",
+          "text": "I look for the natural moment and take it — I share my story, ask questions, see where the conversation goes.",
           "gift": "Evangelism"
         },
         {
-          "text": "Want to make sure they feel genuinely welcomed and comfortable around me",
+          "text": "I focus on making them feel genuinely comfortable and at ease — building real trust first, knowing the right moment will come when they're ready.",
           "gift": "Hospitality"
         },
         {
-          "text": "Trust that God has a plan for them and pray for the right moment",
+          "text": "I stay attentive but patient — I trust God will open the right door at the right time, and I don't want to force it.",
           "gift": "Faith"
         }
       ]
@@ -118,18 +118,18 @@
     {
       "id": "S6",
       "format": "A",
-      "question": "When I think about my role in a group or community, I most naturally gravitate toward...",
+      "question": "You walk into a gathering and notice a new person sitting alone. You're mid-conversation with someone else. What do you do?",
       "options": [
         {
-          "text": "Setting the vision and helping people see where things could go",
-          "gift": "Leadership"
-        },
-        {
-          "text": "Making sure everyone feels seen and included, especially new people",
+          "text": "I wrap up what I'm doing and go make them feel welcome — my job is to make sure no one feels invisible in a room I'm in.",
           "gift": "Hospitality"
         },
         {
-          "text": "Coming alongside the people who are struggling or on the edges",
+          "text": "I scan the room for the right person to introduce them to — someone who'll actually connect with them — and I make it happen.",
+          "gift": "Leadership"
+        },
+        {
+          "text": "I go say hello, ask a few real questions, and make sure I or someone else stays connected with them beyond tonight.",
           "gift": "Shepherding"
         }
       ]
@@ -137,18 +137,18 @@
     {
       "id": "S7",
       "format": "A",
-      "question": "When someone pushes back on something I believe strongly, I naturally...",
+      "question": "Someone pushes back hard on something you know to be true. Before you say a word — what's your honest internal response?",
       "options": [
         {
-          "text": "Calmly explain my reasoning and invite them to think it through with me",
+          "text": "I feel a flare of frustration — not because I'm threatened, but because I hate watching someone dig in on something that's going to cost them.",
+          "gift": "Prophecy"
+        },
+        {
+          "text": "I start rebuilding my case — I want to find the clearest way to explain it so they can actually see what I see.",
           "gift": "Teaching"
         },
         {
-          "text": "Hold my position without anxiety, trusting that truth will eventually land",
-          "gift": "Faith"
-        },
-        {
-          "text": "Try to understand their point of view and feel what they are feeling before I respond",
+          "text": "I get curious about what's underneath it — pushback usually means something, and I want to understand that before I respond.",
           "gift": "Mercy"
         }
       ]
@@ -213,18 +213,18 @@
     {
       "id": "S11",
       "format": "B",
-      "question": "I feel most alive when I am...",
+      "question": "Someone came to you confused about a topic you understand well. You help explain to them, but it takes much longer than expected — they're still not getting it. What keeps you going?",
       "options": [
         {
-          "text": "Explaining something complex in a way that finally clicks for someone",
+          "text": "I'm more invested in finding the right explanation than in how long it takes — I keep adjusting the angle until something lands.",
           "gift": "Teaching"
         },
         {
-          "text": "Helping someone push through a moment of doubt and come out stronger",
+          "text": "I'm watching for the moment their face changes — when the discouragement breaks and they start to believe they can actually get it.",
           "gift": "Encouragement"
         },
         {
-          "text": "Leading a group of people toward a shared goal that really matters",
+          "text": "I'm thinking about what opens up for them once they understand this — what becomes possible, and what I can help them build from here.",
           "gift": "Leadership"
         }
       ]
@@ -232,38 +232,38 @@
     {
       "id": "S12",
       "format": "B",
-      "question": "I feel most alive when I am...",
+      "question": "A friend is devastated. Nothing you say or do seems to help them. You've already been there for hours. What does the next hour look like for you?",
       "options": [
         {
-          "text": "Welcoming someone new and watching them go from awkward to at home",
+          "text": "I stay — I don't try to move things forward. I match wherever they are, even if that means sitting in the pain silently with them.",
+          "gift": "Mercy"
+        },
+        {
+          "text": "I start thinking about what I can do to make them feel safer and more cared for — getting them water, food, making sure the environment around them says someone is here.",
           "gift": "Hospitality"
         },
         {
-          "text": "Doing something practical that frees someone else up to do what they do best",
+          "text": "I start thinking about what's actually most helpful — resources to bring, people we should include, the next concrete step that might help.",
           "gift": "Service"
-        },
-        {
-          "text": "Sitting with someone in a really hard moment, not trying to fix it, just being there",
-          "gift": "Mercy"
         }
       ]
     },
     {
       "id": "S13",
       "format": "B",
-      "question": "I feel most alive when I am...",
+      "question": "You must take action in a situation you need to change, but with no plan and no guarantee. Everything logical says wait. What is your actual instinct?",
       "options": [
         {
-          "text": "Sharing something about my own faith journey with someone who is genuinely curious",
-          "gift": "Evangelism"
+          "text": "I stay the course — not because I have information others don't, but because I feel a settled certainty that something is moving even when I can't see it.",
+          "gift": "Faith"
         },
         {
-          "text": "Giving in a way that I can see the direct impact it makes on someone's life",
+          "text": "I look for the most tangible way to act — giving what I have, meeting the need I can see right now, not waiting for conditions to be better.",
           "gift": "Giving"
         },
         {
-          "text": "Trusting God in a situation where there is absolutely no obvious way forward",
-          "gift": "Faith"
+          "text": "I want to talk about it — share what I believe is happening, invite others into the conviction that something bigger is at work here.",
+          "gift": "Evangelism"
         }
       ]
     },
@@ -289,18 +289,18 @@
     {
       "id": "S15",
       "format": "B",
-      "question": "I feel most alive when I am...",
+      "question": "You notice someone holding back from something important, even though they're capable of more. What's your instinct?",
       "options": [
         {
-          "text": "Watching someone I believed in take a big step they were too afraid to take before",
+          "text": "I speak up directly — I name what I see in them and encourage them to step forward.",
           "gift": "Encouragement"
         },
         {
-          "text": "Watching a community I helped build really click together and feel like home",
+          "text": "I focus on creating a safe, supportive environment where they feel comfortable taking that step.",
           "gift": "Hospitality"
         },
         {
-          "text": "Seeing someone far from God take a real step toward faith",
+          "text": "I help them reflect on what God might be doing in this moment and what it means spiritually.",
           "gift": "Evangelism"
         }
       ]
@@ -490,33 +490,60 @@
     {
       "id": "S26",
       "format": "D",
-      "question": "I find it easy to believe God will come through, even when everything around me looks bad.",
+      "question": "Everyone around you is panicking. The situation looks genuinely bad. What's your natural response?",
       "options": [
-        "Sounds just like me",
-        "Somewhat like me",
-        "Not really me"
+        {
+          "text": "I feel a steady confidence that God is at work, even if I don't yet understand the outcome.",
+          "gift": "Faith"
+        },
+        {
+          "text": "I start organizing what we know and focus on creating a clear plan forward.",
+          "gift": "Administration"
+        },
+        {
+          "text": "I move toward the people who are most overwhelmed to support and comfort them.",
+          "gift": "Mercy"
+        }
       ],
       "gift": "Faith"
     },
     {
       "id": "S27",
       "format": "D",
-      "question": "I genuinely enjoy having strangers or new people in my home or personal space.",
+      "question": "Someone needs a place to stay — not for a night, but for an open-ended stretch. How do you actually respond?",
       "options": [
-        "Sounds just like me",
-        "Somewhat like me",
-        "Not really me"
+        {
+          "text": "I open my home and make space for them to stay as long as needed.",
+          "gift": "Hospitality"
+        },
+        {
+          "text": "I focus on helping them find practical solutions — housing options, resources, or connections.",
+          "gift": "Service"
+        },
+        {
+          "text": "I think about their longer-term stability and how to support them through the transition.",
+          "gift": "Shepherding"
+        }
       ],
       "gift": "Hospitality"
     },
     {
       "id": "S28",
       "format": "D",
-      "question": "I love breaking down big ideas into smaller, clearer pieces until the other person truly gets it.",
+      "question": "You've explained something five different ways and the person still doesn't quite get it. What's your honest internal state?",
       "options": [
-        "Sounds just like me",
-        "Somewhat like me",
-        "Not really me"
+        {
+          "text": "I'm not frustrated — I'm genuinely curious about what angle I haven't tried yet. Understanding is the goal, and I'm not done until it clicks.",
+          "gift": "Teaching"
+        },
+        {
+          "text": "I'm more focused on how they're feeling about not getting it than on the explanation itself — I don't want the confusion to turn into shame.",
+          "gift": "Mercy"
+        },
+        {
+          "text": "I want to find the version that not only makes sense, but helps them believe they're actually capable of understanding this.",
+          "gift": "Encouragement"
+        }
       ],
       "gift": "Teaching"
     },
@@ -534,11 +561,20 @@
     {
       "id": "S30",
       "format": "D",
-      "question": "When I hear about someone who does not know God, I feel a genuine urgency, not just a passing thought.",
+      "question": "You have people in your life right now who don't know God. When you think about them, which of these is most honest?",
       "options": [
-        "Sounds just like me",
-        "Somewhat like me",
-        "Not really me"
+        {
+          "text": "I'm actively creating moments for real conversation — not just inviting them to church, actually talking with them about faith, life, and what I believe.",
+          "gift": "Evangelism"
+        },
+        {
+          "text": "I'm investing in the relationship long-term — earning trust, staying close, knowing the right moment will come as they feel genuinely safe with me.",
+          "gift": "Shepherding"
+        },
+        {
+          "text": "I'm praying consistently and trusting God to work in ways I can't manufacture — my job is faithfulness and attentiveness, not engineering an outcome.",
+          "gift": "Faith"
+        }
       ],
       "gift": "Evangelism"
     },
@@ -800,11 +836,20 @@
           "id": "D-ADM-L3-1",
           "format": "D",
           "level": 3,
-          "question": "I believe that loving people well often looks like creating systems that do not let them fall through the cracks.",
+          "question": "You realize people in your community are quietly slipping through the cracks — no one is tracking who's struggling. What do you build?",
           "options": [
-            "Sounds just like me",
-            "Somewhat like me",
-            "Not really me"
+            {
+              "text": "I build a system — a follow-up cadence, a tracking doc, something concrete that makes sure no one gets forgotten, even if no one asked me to.",
+              "gift": "Administration"
+            },
+            {
+              "text": "I identify the people most at risk and personally commit to staying close to them — relationships over systems, presence over process.",
+              "gift": "Shepherding"
+            },
+            {
+              "text": "I set aside resources — time, money, or capacity — to make sure the most overlooked people have something tangible to fall back on.",
+              "gift": "Giving"
+            }
           ],
           "gift": "Administration"
         },
@@ -1068,11 +1113,20 @@
           "id": "D-ENC-L1-1",
           "format": "D",
           "level": 1,
-          "question": "When someone seems defeated, I almost always find something specific and true to say that shifts their perspective.",
+          "question": "Someone you care about is close to quitting something very important. You get one conversation with them. What's your instinct?",
           "options": [
-            "Sounds just like me",
-            "Somewhat like me",
-            "Not really me"
+            {
+              "text": "I remind them what I see in them and why I believe they can follow through.",
+              "gift": "Encouragement"
+            },
+            {
+              "text": "I focus on understanding what's really going on beneath the surface before offering direction.",
+              "gift": "Mercy"
+            },
+            {
+              "text": "I help them think it through clearly — what's true, what's fear, and what their options look like.",
+              "gift": "Teaching"
+            }
           ],
           "gift": "Encouragement"
         },
@@ -1296,11 +1350,20 @@
           "id": "D-GIV-L1-3",
           "format": "D",
           "level": 1,
-          "question": "I often think about money in terms of what it can do for others, not just what it can do for me.",
+          "question": "A real need for someone else comes up that would cost you significantly to meet. What's your instinct?",
           "options": [
-            "Sounds just like me",
-            "Somewhat like me",
-            "Not really me"
+            {
+              "text": "I give what I can right away and don't think twice about it — I don't want to hold back when I'm able to help.",
+              "gift": "Giving"
+            },
+            {
+              "text": "Possibly a little nervous, I help anyway, trusting God will provide even if the numbers don't fully make sense yet.",
+              "gift": "Faith"
+            },
+            {
+              "text": "I think through how to respond strategically — how to maximize the impact and involve others if needed.",
+              "gift": "Administration"
+            }
           ],
           "gift": "Giving"
         },
@@ -1342,11 +1405,20 @@
           "id": "D-GIV-L2-1",
           "format": "D",
           "level": 2,
-          "question": "I experience real joy when I give, not obligation. Generosity feels like freedom, not duty.",
+          "question": "You have an opportunity to give generously in a meaningful way — but it will cost you. There's no guaranteed return. What's happening inside you?",
           "options": [
-            "Sounds just like me",
-            "Somewhat like me",
-            "Not really me"
+            {
+              "text": "I feel a pull toward generosity that's stronger than the discomfort — I've learned that the math works out differently when you're operating from conviction.",
+              "gift": "Giving"
+            },
+            {
+              "text": "I look for the most direct, concrete way to help — I'd rather do something tangible right now than give in a way I can't see the impact of.",
+              "gift": "Service"
+            },
+            {
+              "text": "I hold the discomfort and move anyway — I've been in this place before and trusting God in the gap is something I know how to do.",
+              "gift": "Faith"
+            }
           ],
           "gift": "Giving"
         },
@@ -1412,11 +1484,20 @@
           "id": "D-GIV-L3-1",
           "format": "D",
           "level": 3,
-          "question": "I genuinely believe that everything I have belongs to God first, and I am the steward, not the owner.",
+          "question": "Things are a little tight this month financially. How do you approach giving?",
           "options": [
-            "Sounds just like me",
-            "Somewhat like me",
-            "Not really me"
+            {
+              "text": "I keep my giving consistent, even when it tightens things.",
+              "gift": "Giving"
+            },
+            {
+              "text": "I adjust based on the numbers and aim to steward everything responsibly.",
+              "gift": "Administration"
+            },
+            {
+              "text": "I give based on what I feel led to give and trust God with the outcome.",
+              "gift": "Faith"
+            }
           ],
           "gift": "Giving"
         },
@@ -1680,11 +1761,20 @@
           "id": "D-MRC-L1-1",
           "format": "D",
           "level": 1,
-          "question": "When I hear about someone going through something painful, I want to be near them, not keep a safe distance.",
+          "question": "A friend has been in a dark, draining place for months. The situation isn't improving. When you think about them, what's most true about how you actually show up?",
           "options": [
-            "Sounds just like me",
-            "Somewhat like me",
-            "Not really me"
+            {
+              "text": "I keep showing up — not because I have answers, but because I can't stand the idea of them being alone in this.",
+              "gift": "Mercy"
+            },
+            {
+              "text": "I'm tracking where they are in the longer arc — watching for patterns, thinking about what they'll actually need six months from now.",
+              "gift": "Shepherding"
+            },
+            {
+              "text": "I look for moments to say the thing that might shift something — I believe in what they can become even when they can't see it yet.",
+              "gift": "Encouragement"
+            }
           ],
           "gift": "Mercy"
         },
@@ -1750,11 +1840,20 @@
           "id": "D-MRC-L2-1",
           "format": "D",
           "level": 2,
-          "question": "I find that being present with someone in pain, without saying or fixing anything, feels natural rather than uncomfortable.",
+          "question": "You're with someone in deep grief, and there's nothing you can do to fix it. What's your instinct?",
           "options": [
-            "Sounds just like me",
-            "Somewhat like me",
-            "Not really me"
+            {
+              "text": "I stay present with them, even without having answers or solutions.",
+              "gift": "Mercy"
+            },
+            {
+              "text": "I start thinking about what support they'll need over time and who else should be involved.",
+              "gift": "Shepherding"
+            },
+            {
+              "text": "I look for any practical needs that should be handled alongside the situation.",
+              "gift": "Administration"
+            }
           ],
           "gift": "Mercy"
         },
@@ -1844,11 +1943,20 @@
           "id": "D-MRC-L3-3",
           "format": "D",
           "level": 3,
-          "question": "I believe compassion is not a feeling, it is a discipline. You choose to move toward people in pain even when it costs you.",
+          "question": "You showed up for someone in pain this week, even when it wasn't convenient. What led you to do that?",
           "options": [
-            "Sounds just like me",
-            "Somewhat like me",
-            "Not really me"
+            {
+              "text": "I felt drawn to be there for them, regardless of my own situation.",
+              "gift": "Mercy"
+            },
+            {
+              "text": "I knew I could help in a practical way, so I stepped in.",
+              "gift": "Service"
+            },
+            {
+              "text": "I sensed a deeper prompting to be there and chose to follow it.",
+              "gift": "Faith"
+            }
           ],
           "gift": "Mercy"
         },
@@ -2088,11 +2196,20 @@
           "id": "D-EVG-L1-1",
           "format": "D",
           "level": 1,
-          "question": "I bring up my faith naturally in regular conversations, not in a forced or preachy way.",
+          "question": "Last month you were in a setting where most people kept things surface-level. Faith came up — or clearly could have. What would you have done?",
           "options": [
-            "Sounds just like me",
-            "Somewhat like me",
-            "Not really me"
+            {
+              "text": "I said something real — staying quiet felt wrong, so I shared what I believe and let it land wherever it landed.",
+              "gift": "Evangelism"
+            },
+            {
+              "text": "I was more focused on being genuinely useful and present — I figured the best thing I could do was show something rather than say something.",
+              "gift": "Service"
+            },
+            {
+              "text": "I made sure whoever was around felt comfortable and included — I trusted that being a warm, safe presence was its own form of witness.",
+              "gift": "Hospitality"
+            }
           ],
           "gift": "Evangelism"
         },
@@ -2182,11 +2299,20 @@
           "id": "D-EVG-L2-3",
           "format": "D",
           "level": 2,
-          "question": "I am not satisfied just maintaining community with the people who already believe. I want to keep reaching further out.",
+          "question": "You realize your social circle is almost entirely Christians. How does that sit with you — and what do you actually do about it?",
           "options": [
-            "Sounds just like me",
-            "Somewhat like me",
-            "Not really me"
+            {
+              "text": "It bothers me — I'm actively looking for ways to push past the bubble and have real conversations with people who haven't heard the gospel yet.",
+              "gift": "Evangelism"
+            },
+            {
+              "text": "I think about the people I know who are slowly drifting — I'm more concerned about walking with those on the edge than reaching out to strangers.",
+              "gift": "Shepherding"
+            },
+            {
+              "text": "I focus on making my existing spaces more welcoming — if my community is genuinely warm and real, people will want to come in and belong.",
+              "gift": "Hospitality"
+            }
           ],
           "gift": "Evangelism"
         },
@@ -2660,11 +2786,20 @@
           "id": "D-FTH-L3-3",
           "format": "D",
           "level": 3,
-          "question": "I think the most dangerous prayer a person can pray is 'God, I trust you.' Because He tends to test that.",
+          "question": "You prayed 'God, I trust you.' Things got harder. You stayed the course. When someone asks how you held on, what's the truest answer?",
           "options": [
-            "Sounds just like me",
-            "Somewhat like me",
-            "Not really me"
+            {
+              "text": "I didn't have a strategy — I just kept trusting, one day at a time, even when it didn't make sense and the evidence said otherwise.",
+              "gift": "Faith"
+            },
+            {
+              "text": "I stayed close to the people around me who were also struggling — their struggles helped me hold onto something outside myself.",
+              "gift": "Mercy"
+            },
+            {
+              "text": "I kept moving — leading, doing, showing up — because sitting still in uncertainty was harder for me than going forward into it.",
+              "gift": "Leadership"
+            }
           ],
           "gift": "Faith"
         },
