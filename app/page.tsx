@@ -153,6 +153,7 @@ function QuizApp() {
           <PaymentGate
             onSuccess={handlePaymentSuccess}
             isLoadingQuestions={isLoadingPaidQuestions}
+            firstName={userInfo?.firstName || ''}
           />
         )}
         {phase === 'paid-questions' && paidQuestions.length > 0 && (
