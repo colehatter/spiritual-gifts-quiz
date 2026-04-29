@@ -22,6 +22,17 @@ function QuizApp() {
   const [paidQuestions, setPaidQuestions] = useState<Question[]>([]);
   const [isLoadingPaidQuestions, setIsLoadingPaidQuestions] = useState(false);
 
+  // Handle paid=true param (paid upfront on /start page)
+  useEffect(() => {
+    const paid = searchParams.get('paid');
+    if (paid === 'true' || sessionStorage.getItem('quiz_paid') === 'true') {
+      setIsPaidUpfront(true);
+    }
+  }, [searchParams]);
+
+  // Track whether user paid upfront
+  const [isPaidUpfront, setIsPaidUpfront] = useState(false);
+
   // Handle Stripe redirect back
   useEffect(() => {
     const payment = searchParams.get('payment');
@@ -58,9 +69,29 @@ function QuizApp() {
     setPhase('screening');
   };
 
-  const handleScreeningComplete = (scores: GiftScores) => {
+  const handleScreeningComplete = async (scores: GiftScores) => {
     setFreeScores(scores);
-    setPhase('free-results');
+    if (isPaidUpfront) {
+      // Skip free results and payment — load paid questions directly
+      setIsLoadingPaidQuestions(true);
+      try {
+        const res = await fetch('/api/select-questions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ scores }),
+        });
+        const data = await res.json();
+        setPaidQuestions(data.questions || []);
+        setPhase('paid-questions');
+      } catch (e) {
+        console.error('Failed to load paid questions', e);
+        setPhase('free-results');
+      } finally {
+        setIsLoadingPaidQuestions(false);
+      }
+    } else {
+      setPhase('free-results');
+    }
   };
 
   const handleUnlockPaid = async () => {
@@ -87,7 +118,7 @@ function QuizApp() {
     } finally {
       setIsLoadingPaidQuestions(false);
     }
-    setPhase('paid-questions');
+    setPhase('free-results');
   };
 
   const handlePaymentSuccess = () => {

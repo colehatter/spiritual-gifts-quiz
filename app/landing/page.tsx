@@ -18,7 +18,7 @@ export default function LandingPage() {
           <p style={{ fontSize: '1.15rem', color: '#555555', lineHeight: 1.7, marginBottom: '36px', maxWidth: '580px', margin: '0 auto 36px' }}>
             Take the free Spiritual Gifts Assessment and get a personalized 30-day plan to activate your calling — grounded in Scripture, written by AI specifically for you.
           </p>
-          <Link href="/quiz">
+          <Link href="/start">
             <button style={{ background: '#22C55E', color: '#FFFFFF', fontWeight: 700, fontSize: '1.1rem', padding: '16px 40px', borderRadius: '12px', border: 'none', cursor: 'pointer', display: 'inline-block' }}>
               Find My Gifts → Free
             </button>
@@ -125,7 +125,7 @@ export default function LandingPage() {
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
           <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 900, marginBottom: '20px', color: '#111111' }}>Your purpose is already inside you.</h2>
           <p style={{ color: '#555555', fontSize: '1.05rem', marginBottom: '36px' }}>Stop guessing. Start knowing.</p>
-          <Link href="/quiz">
+          <Link href="/start">
             <button style={{ background: '#22C55E', color: '#FFFFFF', fontWeight: 700, fontSize: '1.1rem', padding: '16px 40px', borderRadius: '12px', border: 'none', cursor: 'pointer' }}>
               Find My Gifts → Free
             </button>
