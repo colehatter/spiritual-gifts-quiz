@@ -8,61 +8,17 @@ import Logo from '@/components/Logo';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-function CheckoutForm({ onSuccess, clientSecret }: { onSuccess: () => void; clientSecret: string }) {
+function CheckoutForm({ onSuccess }: { onSuccess: () => void }) {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [promoCode, setPromoCode] = useState('');
-  const [promoApplied, setPromoApplied] = useState(false);
-  const [promoError, setPromoError] = useState<string | null>(null);
-  const [isFree, setIsFree] = useState(false);
-  const [discountLabel, setDiscountLabel] = useState<string | null>(null);
-  const [applyingPromo, setApplyingPromo] = useState(false);
-
-  // Extract paymentIntentId from clientSecret
-  const paymentIntentId = clientSecret.split('_secret_')[0];
-
-  const applyPromo = async () => {
-    if (!promoCode.trim()) return;
-    setApplyingPromo(true);
-    setPromoError(null);
-    try {
-      const res = await fetch('/api/apply-promo', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: promoCode.trim(), paymentIntentId }),
-      });
-      const data = await res.json();
-      if (data.valid) {
-        setPromoApplied(true);
-        if (data.isFree) {
-          setIsFree(true);
-          setDiscountLabel('100% off — Free!');
-        } else {
-          setDiscountLabel(`${data.percentOff}% off applied`);
-        }
-      } else {
-        setPromoError(data.error || 'Invalid promo code');
-      }
-    } catch {
-      setPromoError('Failed to apply code. Try again.');
-    } finally {
-      setApplyingPromo(false);
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!stripe || !elements) return;
     setLoading(true);
     setError(null);
-
-    if (isFree) {
-      onSuccess();
-      return;
-    }
-
-    if (!stripe || !elements) return;
     const result = await stripe.confirmPayment({
       elements,
       redirect: 'if_required',
@@ -77,41 +33,15 @@ function CheckoutForm({ onSuccess, clientSecret }: { onSuccess: () => void; clie
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-      {/* Promo code field */}
-      {!promoApplied ? (
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={promoCode}
-            onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
-            placeholder="Promo code"
-            className="flex-1 bg-[#0d1220] border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 outline-none focus:border-[#34C6F4] text-sm"
-          />
-          <button
-            type="button"
-            onClick={applyPromo}
-            disabled={applyingPromo || !promoCode.trim()}
-            className="px-4 py-3 rounded-xl border border-[#34C6F4] text-[#34C6F4] font-semibold text-sm disabled:opacity-40 hover:bg-[#34C6F4]/10 transition-all"
-          >
-            {applyingPromo ? '...' : 'Apply'}
-          </button>
-        </div>
-      ) : (
-        <div className="flex items-center gap-2 text-sm text-green-400 font-medium">
-          <span>✓</span><span>{discountLabel}</span>
-        </div>
-      )}
-      {promoError && <p className="text-red-400 text-xs">{promoError}</p>}
-
-      {!isFree && <PaymentElement options={{ layout: 'tabs' }} />}
+      <PaymentElement options={{ layout: 'tabs' }} />
       {error && <p className="text-red-400 text-sm">{error}</p>}
       <button
         type="submit"
-        disabled={(!isFree && !stripe) || loading}
+        disabled={!stripe || loading}
         className="w-full font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 disabled:opacity-60"
         style={{ background: 'linear-gradient(135deg, #1a4e8a, #34C6F4)', color: '#ffffff' }}
       >
-        {loading ? 'Processing...' : isFree ? 'Unlock Full Access — Free' : 'Unlock Full Access — $9.99'}
+        {loading ? 'Processing...' : 'Unlock Full Access — $9.99'}
       </button>
       <p className="text-center text-white/30 text-xs">Secure payment · No subscription</p>
     </form>
@@ -122,21 +52,11 @@ function StartPageContent() {
   const router = useRouter();
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [showPayment, setShowPayment] = useState(false);
-  const [useHostedCheckout, setUseHostedCheckout] = useState(false);
-  const [hostedLoading, setHostedLoading] = useState(false);
 
   useEffect(() => {
     fetch('/api/create-payment-intent', { method: 'POST' })
       .then((r) => r.json())
-      .then((data) => {
-        if (data.clientSecret) {
-          setClientSecret(data.clientSecret);
-        } else {
-          // Fallback to hosted checkout if inline fails
-          setUseHostedCheckout(true);
-        }
-      })
-      .catch(() => setUseHostedCheckout(true));
+      .then((data) => { if (data.clientSecret) setClientSecret(data.clientSecret); });
   }, []);
 
   const handlePaidSuccess = () => {
@@ -212,22 +132,11 @@ function StartPageContent() {
 
             {!showPayment ? (
               <button
-                onClick={async () => {
-                  if (useHostedCheckout) {
-                    setHostedLoading(true);
-                    const res = await fetch('/api/checkout', { method: 'POST' });
-                    const data = await res.json();
-                    if (data.url) window.location.href = data.url;
-                    else { sessionStorage.setItem('quiz_paid', 'true'); router.push('/quiz?paid=true'); }
-                  } else {
-                    setShowPayment(true);
-                  }
-                }}
-                disabled={hostedLoading}
-                className="w-full font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 hover:scale-[1.02] disabled:opacity-60"
+                onClick={() => setShowPayment(true)}
+                className="w-full font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 hover:scale-[1.02]"
                 style={{ background: 'linear-gradient(135deg, #1a4e8a, #34C6F4)', color: '#ffffff', boxShadow: '0 0 20px rgba(52,198,244,0.3)' }}
               >
-                {hostedLoading ? 'Loading...' : 'Get Full Access — $9.99'}
+                Get Full Access — $9.99
               </button>
             ) : clientSecret ? (
               <Elements
@@ -240,7 +149,7 @@ function StartPageContent() {
                   },
                 }}
               >
-                <CheckoutForm onSuccess={handlePaidSuccess} clientSecret={clientSecret} />
+                <CheckoutForm onSuccess={handlePaidSuccess} />
               </Elements>
             ) : (
               <p className="text-white/40 text-sm text-center py-4">Loading payment options...</p>
