@@ -35,8 +35,8 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
-      success_url: `${origin}/?payment=success&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/?payment=cancelled`,
+      success_url: `${origin}/quiz?payment=success&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/quiz?payment=cancelled`,
     });
 
     return NextResponse.json({ url: session.url });
