@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     title: 'Spiritual Gifts Assessment | 3Nails.ai',
     description: 'Discover your spiritual gifts with a personalized AI-powered assessment.',
   },
+  other: {
+    'facebook-domain-verification': 'wdjwu05d57ju3qmvztm5phk36998q7',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
