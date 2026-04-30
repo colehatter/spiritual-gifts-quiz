@@ -29,7 +29,7 @@ const SocialProof = () => {
             color: '#333',
           }}
         >
-          "This is the most accurate thing I have ever taken. I finally understand why I am the way I am."
+          &ldquo;This is the most accurate thing I have ever taken. I finally understand why I am the way I am.&rdquo;
         </blockquote>
         <p
           style={{
