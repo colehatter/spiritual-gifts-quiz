@@ -44,28 +44,33 @@ export default function LandingPage() {
 
       {/* FINALLY UNDERSTOOD — "This might explain why…" */}
       <section style={{ background: '#F9FAFB', padding: '72px 24px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 900, marginBottom: '16px', color: '#111111' }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 900, marginBottom: '36px', color: '#111111' }}>
             This might explain why…
           </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', textAlign: 'left', margin: '32px auto', maxWidth: '520px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', margin: '0 auto 36px', maxWidth: '480px' }}>
             {[
-              "You've never quite felt like you fit — even in church.",
+              "You\'ve never quite felt like you fit — even in church.",
               "Some roles feel completely natural, and others leave you drained.",
-              "You know you're meant for more, but can't pinpoint what.",
-              "You've prayed about your purpose. You're still waiting for an answer.",
+              "You know you\'re meant for more, but can\'t pinpoint what.",
+              "You\'ve prayed about your purpose. You\'re still waiting for an answer.",
             ].map((line, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
-                <span style={{ color: '#22C55E', fontSize: '1.1rem', fontWeight: 700, flexShrink: 0, marginTop: '2px' }}>→</span>
-                <p style={{ margin: 0, color: '#333333', fontSize: '1.05rem', lineHeight: 1.65 }}>{line}</p>
+              <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+                <span style={{ color: '#22C55E', fontSize: '1rem', fontWeight: 700, flexShrink: 0 }}>→</span>
+                <p style={{ margin: 0, color: '#333333', fontSize: '1rem', lineHeight: 1.6, textAlign: 'left' }}>{line}</p>
               </div>
             ))}
           </div>
-          <p style={{ fontSize: '1.1rem', color: '#111111', fontWeight: 700, lineHeight: 1.6, marginBottom: '8px' }}>
+          <p style={{ fontSize: '1rem', color: '#555555', lineHeight: 1.8, marginBottom: '6px' }}>
+            You&apos;re not broken. And you&apos;re not behind.
+          </p>
+          <p style={{ fontSize: '1rem', color: '#555555', lineHeight: 1.8, marginBottom: '6px' }}>
+            You were created a specific way — on purpose.
+          </p>
+          <p style={{ fontSize: '1.05rem', color: '#111111', fontWeight: 700, lineHeight: 1.6, marginBottom: '6px' }}>
             That feeling isn&apos;t random. It&apos;s a signal.
           </p>
-          <p style={{ fontSize: '1rem', color: '#555555', lineHeight: 1.7, marginBottom: '36px' }}>
-            You&apos;re not off — you&apos;re just not aligned with how you were created.<br />
+          <p style={{ fontSize: '1rem', color: '#555555', lineHeight: 1.8, marginBottom: '36px' }}>
             Most people discover they&apos;ve been serving in the wrong place.
           </p>
           <Link href="/">
