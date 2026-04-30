@@ -12,10 +12,10 @@ export default function LandingPage() {
           <div style={{ display: 'inline-block', background: '#F0FDF4', border: '1px solid #22C55E', borderRadius: '999px', padding: '6px 16px', fontSize: '0.85rem', color: '#15803D', fontWeight: 600, marginBottom: '28px' }}>
             Free Assessment · Takes 10 Minutes
           </div>
-          <h1 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 900, lineHeight: 1.2, marginBottom: '20px', color: '#111111' }}>
+          <h1 style={{ fontSize: 'clamp(2.4rem, 5vw, 3.6rem)', fontWeight: 900, lineHeight: 1.2, marginBottom: '20px', color: '#111111' }}>
             You don&apos;t feel lost — you feel out of place.<br />This shows you where you belong.
           </h1>
-          <p style={{ fontSize: '1.15rem', color: '#555555', lineHeight: 1.7, marginBottom: '36px', maxWidth: '580px', margin: '0 auto 36px' }}>
+          <p style={{ fontSize: '1.25rem', color: '#555555', lineHeight: 1.7, marginBottom: '36px', maxWidth: '580px', margin: '0 auto 36px' }}>
             Take the free Spiritual Gifts Assessment and get a personalized 30-day plan to activate your calling — grounded in Scripture, written by AI specifically for you.
           </p>
           <Link href="/start">
@@ -48,7 +48,7 @@ export default function LandingPage() {
               { text: 'You want to make a difference, but you don\'t know where to start.' },
               { text: 'You\'ve prayed about your purpose. You\'re still waiting for an answer.' },
             ].map((item, i) => (
-              <div key={i} style={{ background: '#FFFFFF', borderLeft: '4px solid #22C55E', borderRadius: '8px', padding: '20px 20px 20px 20px', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
+              <div key={i} style={{ background: '#FFFFFF', border: '2px solid #22C55E', borderRadius: '999px', padding: '24px 32px' }}>
                 <p style={{ margin: 0, color: '#444444', lineHeight: 1.6, fontSize: '0.95rem' }}>{item.text}</p>
               </div>
             ))}
@@ -63,12 +63,11 @@ export default function LandingPage() {
           <p style={{ color: '#555555', marginBottom: '40px', fontSize: '1rem' }}>The only Spiritual Gifts assessment that uses live AI to write your results — personalized to you, grounded in Scripture.</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '28px' }}>
             {[
-              { icon: '🎯', title: 'Discover your spiritual gifts', desc: 'Wired by God, not chosen by you. Finally understand how you\'re built.' },
-              { icon: '🪞', title: 'See your shadow side', desc: 'How your gift gets misused — and how to surrender it back to God.' },
-              { icon: '📅', title: '30-day activation plan', desc: 'Week-by-week steps to start living out your gifts in real life.' },
+              { title: 'Discover your spiritual gifts', desc: 'Wired by God, not chosen by you. Finally understand how you\'re built.' },
+              { title: 'See your shadow side', desc: 'How your gift gets misused — and how to surrender it back to God.' },
+              { title: '30-day activation plan', desc: 'Week-by-week steps to start living out your gifts in real life.' },
             ].map((card, i) => (
-              <div key={i} style={{ background: '#F9FAFB', borderRadius: '12px', padding: '28px 20px', textAlign: 'left' }}>
-                <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>{card.icon}</div>
+              <div key={i} style={{ background: '#FFFFFF', border: '2px solid #22C55E', borderRadius: '999px', padding: '24px 28px', textAlign: 'left' }}>
                 <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '8px', color: '#111111' }}>{card.title}</h3>
                 <p style={{ fontSize: '0.9rem', color: '#666666', lineHeight: 1.6, margin: 0 }}>{card.desc}</p>
               </div>
