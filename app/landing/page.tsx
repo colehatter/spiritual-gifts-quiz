@@ -40,27 +40,32 @@ export default function LandingPage() {
       </section>
 
       {/* THIS MIGHT EXPLAIN WHY */}
-      <section style={{ background: '#FFFFFF', padding: '64px 24px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '560px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 900, marginBottom: '28px', color: '#111111' }}>
+      <section style={{ background: '#FFFFFF', padding: '56px 24px 48px', textAlign: 'center' }}>
+        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.4rem)', fontWeight: 900, marginBottom: '32px', color: '#111111' }}>
             This might explain why&hellip;
           </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px', textAlign: 'left' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '32px', textAlign: 'left', maxWidth: '600px', margin: '0 auto 32px' }}>
             {[
               "You've never quite felt like you fit — even in church.",
               "Some roles feel completely natural, and others leave you drained.",
               "You know you're meant for more, but can't pinpoint what.",
               "You've prayed about your purpose. You're still waiting for an answer.",
             ].map((line, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <span style={{ color: '#22C55E', fontWeight: 700, fontSize: '1.1rem', flexShrink: 0, marginTop: '2px' }}>{'->'}</span>
-                <p style={{ margin: 0, color: '#333333', fontSize: '1.05rem', lineHeight: 1.65 }}>{line}</p>
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
+                <span style={{ color: '#22C55E', fontWeight: 900, fontSize: '1.3rem', flexShrink: 0, marginTop: '1px' }}>{'→'}</span>
+                <p style={{ margin: 0, color: '#222222', fontSize: '1.15rem', lineHeight: 1.65 }}>{line}</p>
               </div>
             ))}
           </div>
-          <p style={{ fontSize: '1rem', color: '#555555', lineHeight: 1.8, marginBottom: '4px' }}>You&apos;re not broken. And you&apos;re not behind.</p>
-          <p style={{ fontSize: '1.1rem', color: '#111111', fontWeight: 700, lineHeight: 1.6, marginBottom: '4px' }}>That feeling isn&apos;t random. It&apos;s a signal.</p>
-          <p style={{ fontSize: '1rem', color: '#555555', lineHeight: 1.8 }}>You were created a specific way &mdash; on purpose. You just haven&apos;t seen it clearly yet.</p>
+          <p style={{ fontSize: '1.1rem', color: '#555555', lineHeight: 1.8, marginBottom: '6px' }}>You&apos;re not broken. And you&apos;re not behind.</p>
+          <p style={{ fontSize: '1.25rem', color: '#111111', fontWeight: 800, lineHeight: 1.6, marginBottom: '6px' }}>That feeling isn&apos;t random. It&apos;s a signal.</p>
+          <p style={{ fontSize: '1.1rem', color: '#555555', lineHeight: 1.8, marginBottom: '36px' }}>You were created a specific way &mdash; on purpose. You just haven&apos;t seen it clearly yet.</p>
+          <Link href="/start">
+            <button style={{ background: '#22C55E', color: '#FFFFFF', fontWeight: 700, fontSize: '1.1rem', padding: '16px 40px', borderRadius: '12px', border: 'none', cursor: 'pointer' }}>
+              Start the Quiz &rarr; Free
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -84,20 +89,21 @@ export default function LandingPage() {
 
       {/* WHAT YOU GET */}
       <section style={{ background: '#FFFFFF', padding: '64px 24px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '760px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '860px', margin: '0 auto' }}>
           <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '12px', color: '#111111' }}>Most spiritual gifts tests give you a list.</h2>
-          <p style={{ color: '#111111', fontWeight: 700, fontSize: '1.1rem', marginBottom: '8px' }}>This shows you where you actually belong &mdash; and where you don&apos;t.</p>
-          <p style={{ color: '#555555', marginBottom: '40px', fontSize: '1rem' }}>The only assessment that uses live AI to write your results &mdash; personalized to you, grounded in Scripture. This isn&apos;t a generic result. It&apos;s a reflection of how you were created.</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '28px' }}>
+          <p style={{ color: '#22C55E', fontWeight: 900, fontSize: '1.35rem', marginBottom: '16px', lineHeight: 1.4 }}>This shows you where you actually belong &mdash; and where you don&apos;t.</p>
+          <p style={{ color: '#333333', marginBottom: '12px', fontSize: '1.05rem', lineHeight: 1.7, maxWidth: '720px', margin: '0 auto 12px' }}>The only Spiritual Gifts assessment that uses live AI to write your results &mdash; personalized to you, grounded in Scripture. Every person is unique, which is why every gift result is unique to you.</p>
+          <p style={{ color: '#111111', fontWeight: 700, fontSize: '1.05rem', marginBottom: '40px', lineHeight: 1.7 }}>The days of generic results are over. You weren&apos;t made to fit in a box &mdash; a test shouldn&apos;t put you in one either.</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px', marginBottom: '28px' }}>
             {[
               { icon: '🎯', title: 'Discover your spiritual gifts', desc: 'Wired by God, not chosen by you. Finally understand how you\'re built.' },
               { icon: '🪞', title: 'See your shadow side', desc: 'How your gift gets misused — and how to surrender it back to God.' },
               { icon: '📅', title: '30-day activation plan', desc: 'Week-by-week steps to start living out your gifts in real life.' },
             ].map((card, i) => (
-              <div key={i} style={{ background: '#F9FAFB', borderRadius: '12px', padding: '28px 20px', textAlign: 'left' }}>
-                <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>{card.icon}</div>
-                <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '8px', color: '#111111' }}>{card.title}</h3>
-                <p style={{ fontSize: '0.9rem', color: '#666666', lineHeight: 1.6, margin: 0 }}>{card.desc}</p>
+              <div key={i} style={{ background: '#F9FAFB', borderRadius: '16px', padding: '36px 28px', textAlign: 'left' }}>
+                <div style={{ fontSize: '2.2rem', marginBottom: '14px' }}>{card.icon}</div>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '10px', color: '#22C55E' }}>{card.title}</h3>
+                <p style={{ fontSize: '1rem', color: '#444444', lineHeight: 1.65, margin: 0 }}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -107,22 +113,30 @@ export default function LandingPage() {
 
       {/* HOW IT WORKS */}
       <section style={{ background: '#F0FDF4', padding: '64px 24px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '40px', color: '#111111' }}>How it works</h2>
+        <div style={{ maxWidth: '760px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '12px', color: '#111111' }}>How it works</h2>
+          <p style={{ color: '#555555', fontSize: '1.1rem', marginBottom: '40px' }}>Simple. Fast. Mind-blowingly accurate.</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', textAlign: 'left' }}>
             {[
               { step: '1', title: 'Answer 40 questions', desc: 'Honest scenarios that reveal how you actually operate — not how you wish you did.' },
-              { step: '2', title: 'See your top gift', desc: 'Instantly get your primary spiritual gift with a full description grounded in Scripture.' },
-              { step: '3', title: 'Unlock your full results', desc: 'For $9.99, get your complete gift profile, shadow side analysis, and 30-day plan written by AI for you.' },
+              { step: '2', title: 'See your top spiritual gift — instantly', desc: 'Get your primary spiritual gift with a full description grounded in Scripture.' },
+              { step: '3', title: 'Unlock your complete gift profile', desc: 'For $9.99, get your full gift breakdown, shadow side analysis, and a 30-day plan written by AI specifically for you.' },
             ].map((item, i) => (
-              <div key={i} style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-                <div style={{ background: '#22C55E', color: '#FFFFFF', fontWeight: 800, fontSize: '1rem', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{item.step}</div>
+              <div key={i} style={{ display: 'flex', gap: '20px', alignItems: 'flex-start', background: '#FFFFFF', borderRadius: '14px', padding: '24px 28px', boxShadow: '0 1px 6px rgba(0,0,0,0.05)' }}>
+                <div style={{ background: '#22C55E', color: '#FFFFFF', fontWeight: 800, fontSize: '1.1rem', width: '44px', height: '44px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{item.step}</div>
                 <div>
-                  <h3 style={{ fontWeight: 700, margin: '0 0 4px', fontSize: '1rem', color: '#111111' }}>{item.title}</h3>
-                  <p style={{ margin: 0, color: '#555555', fontSize: '0.9rem', lineHeight: 1.6 }}>{item.desc}</p>
+                  <h3 style={{ fontWeight: 800, margin: '0 0 6px', fontSize: '1.1rem', color: '#111111' }}>{item.title}</h3>
+                  <p style={{ margin: 0, color: '#555555', fontSize: '0.95rem', lineHeight: 1.65 }}>{item.desc}</p>
                 </div>
               </div>
             ))}
+          </div>
+          <div style={{ marginTop: '40px' }}>
+            <Link href="/start">
+              <button style={{ background: '#22C55E', color: '#FFFFFF', fontWeight: 700, fontSize: '1.1rem', padding: '16px 40px', borderRadius: '12px', border: 'none', cursor: 'pointer' }}>
+                Start the Quiz &rarr; Free
+              </button>
+            </Link>
           </div>
         </div>
       </section>
