@@ -23,7 +23,7 @@ const Scripture: React.FC = () => {
           fontStyle: 'italic',
           marginBottom: '10px',
         }}>
-          "Now there are varieties of gifts, but the same Spirit; and there are varieties of service, but the same Lord."
+          &ldquo;Now there are varieties of gifts, but the same Spirit; and there are varieties of service, but the same Lord.&rdquo;
         </p>
         <p style={{
           color: '#22C55E',
