@@ -15,9 +15,10 @@ export default function LandingPage() {
           <h1 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 900, lineHeight: 1.2, marginBottom: '20px', color: '#111111' }}>
             You don&apos;t feel lost — you feel out of place.<br />This shows you where you belong.
           </h1>
-          <p style={{ fontSize: '1.15rem', color: '#555555', lineHeight: 1.7, marginBottom: '36px', maxWidth: '580px', margin: '0 auto 36px' }}>
+          <p style={{ fontSize: '1.15rem', color: '#555555', lineHeight: 1.7, marginBottom: '36px', maxWidth: '580px', margin: '0 auto 16px' }}>
             Take the free Spiritual Gifts Assessment and get a personalized 30-day plan to activate your calling — grounded in Scripture, written by AI specifically for you.
           </p>
+          <p style={{ fontSize: '1rem', color: '#888888', fontStyle: 'italic', margin: '0 auto 36px', maxWidth: '480px' }}>Designed to feel surprisingly personal.</p>
           <Link href="/">
             <button style={{ background: '#22C55E', color: '#FFFFFF', fontWeight: 700, fontSize: '1.1rem', padding: '16px 40px', borderRadius: '12px', border: 'none', cursor: 'pointer', display: 'inline-block' }}>
               Find My Gifts → Free
@@ -35,6 +36,31 @@ export default function LandingPage() {
             <p style={{ color: '#888888', fontSize: '0.95rem', margin: 0 }}>Watch: How to find your calling</p>
           </div>
           <p style={{ color: '#888888', fontSize: '0.9rem', marginTop: '16px' }}>See how thousands are discovering their God-given purpose</p>
+        </div>
+      </section>
+
+      {/* THIS MIGHT EXPLAIN WHY */}
+      <section style={{ background: '#FFFFFF', padding: '64px 24px', textAlign: 'center' }}>
+        <div style={{ maxWidth: '560px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 900, marginBottom: '28px', color: '#111111' }}>
+            This might explain why&hellip;
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px', textAlign: 'left' }}>
+            {[
+              "You've never quite felt like you fit — even in church.",
+              "Some roles feel completely natural, and others leave you drained.",
+              "You know you're meant for more, but can't pinpoint what.",
+              "You've prayed about your purpose. You're still waiting for an answer.",
+            ].map((line, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <span style={{ color: '#22C55E', fontWeight: 700, fontSize: '1.1rem', flexShrink: 0, marginTop: '2px' }}>{'->'}</span>
+                <p style={{ margin: 0, color: '#333333', fontSize: '1.05rem', lineHeight: 1.65 }}>{line}</p>
+              </div>
+            ))}
+          </div>
+          <p style={{ fontSize: '1rem', color: '#555555', lineHeight: 1.8, marginBottom: '4px' }}>You&apos;re not broken. And you&apos;re not behind.</p>
+          <p style={{ fontSize: '1.1rem', color: '#111111', fontWeight: 700, lineHeight: 1.6, marginBottom: '4px' }}>That feeling isn&apos;t random. It&apos;s a signal.</p>
+          <p style={{ fontSize: '1rem', color: '#555555', lineHeight: 1.8 }}>You were created a specific way &mdash; on purpose. You just haven&apos;t seen it clearly yet.</p>
         </div>
       </section>
 
@@ -59,8 +85,9 @@ export default function LandingPage() {
       {/* WHAT YOU GET */}
       <section style={{ background: '#FFFFFF', padding: '64px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '760px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '12px', color: '#111111' }}>This isn&apos;t a personality test. It&apos;s a blueprint.</h2>
-          <p style={{ color: '#555555', marginBottom: '40px', fontSize: '1rem' }}>The only Spiritual Gifts assessment that uses live AI to write your results — personalized to you, grounded in Scripture.</p>
+          <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '12px', color: '#111111' }}>Most spiritual gifts tests give you a list.</h2>
+          <p style={{ color: '#111111', fontWeight: 700, fontSize: '1.1rem', marginBottom: '8px' }}>This shows you where you actually belong &mdash; and where you don&apos;t.</p>
+          <p style={{ color: '#555555', marginBottom: '40px', fontSize: '1rem' }}>The only assessment that uses live AI to write your results &mdash; personalized to you, grounded in Scripture. This isn&apos;t a generic result. It&apos;s a reflection of how you were created.</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '28px' }}>
             {[
               { icon: '🎯', title: 'Discover your spiritual gifts', desc: 'Wired by God, not chosen by you. Finally understand how you\'re built.' },
@@ -124,7 +151,8 @@ export default function LandingPage() {
       <section style={{ background: '#FFFFFF', padding: '72px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
           <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 900, marginBottom: '20px', color: '#111111' }}>Your purpose is already inside you.</h2>
-          <p style={{ color: '#555555', fontSize: '1.05rem', marginBottom: '36px' }}>Stop guessing. Start knowing.</p>
+          <p style={{ color: '#555555', fontSize: '1.05rem', marginBottom: '16px' }}>Stop guessing. Start knowing.</p>
+          <p style={{ color: '#111111', fontWeight: 700, fontSize: '1.05rem', marginBottom: '36px' }}>Most people discover they&apos;ve been serving in the wrong place.</p>
           <Link href="/">
             <button style={{ background: '#22C55E', color: '#FFFFFF', fontWeight: 700, fontSize: '1.1rem', padding: '16px 40px', borderRadius: '12px', border: 'none', cursor: 'pointer' }}>
               Find My Gifts → Free
