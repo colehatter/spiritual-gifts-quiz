@@ -10,10 +10,10 @@ export default function LandingV3() {
           Free Assessment · Takes 10 Minutes
         </div>
         <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, color: '#111111', margin: '0 0 1rem' }}>
-          You're not lost — you just haven't seen how you're wired yet.
+          You&apos;re not lost — you just haven&apos;t seen how you&apos;re wired yet.
         </h1>
         <p style={{ fontSize: '1.2rem', color: '#111111', fontWeight: 'bold', margin: '0 0 1rem' }}>
-          In minutes, discover your God-given gifts — and why some things feel natural while others don't.
+          In minutes, discover your God-given gifts — and why some things feel natural while others don&apos;t.
         </p>
         <p style={{ fontSize: '1rem', color: '#333333', fontStyle: 'italic', margin: '0 0 2rem' }}>
           Designed to feel surprisingly personal.
@@ -38,23 +38,23 @@ export default function LandingV3() {
           Why other roles leave you drained
         </p>
         <p style={{ fontSize: '1.2rem', color: '#E5E7EB', margin: '0 0 1rem' }}>
-          Why you've never quite felt like you fit
+          Why you&apos;ve never quite felt like you fit
         </p>
         <p style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: '0 0 1rem' }}>
-          That feeling isn't random. It's a signal.
+          That feeling isn&apos;t random. It&apos;s a signal.
         </p>
         <p style={{ fontSize: '1.2rem', color: '#D1FAE5', margin: '0 0 2rem' }}>
-          You're not broken. And you're not behind. You were created a specific way — on purpose. You just haven't seen it clearly yet.
+          You&apos;re not broken. And you&apos;re not behind. You were created a specific way — on purpose. You just haven&apos;t seen it clearly yet.
         </p>
         <Link href="/" style={{ display: 'inline-block', padding: '18px 44px', backgroundColor: '#22C55E', color: '#FFFFFF', borderRadius: '12px', fontSize: '1.15rem', textDecoration: 'none' }}>
           Find My Gifts Now →
         </Link>
       </section>
 
-      {/* SECTION 3 — CREDIBILITY / WHAT YOU'LL DISCOVER */}
+      {/* SECTION 3 — CREDIBILITY / WHAT YOU&apos;LL DISCOVER */}
       <section style={{ background: '#FFFFFF', padding: '4rem 2rem', textAlign: 'center' }}>
         <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111111', margin: '0 0 2rem' }}>
-          Here's what you'll discover:
+          Here&apos;s what you&apos;ll discover:
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem', margin: '0 auto', maxWidth: '1200px' }}>
           <div style={{ backgroundColor: '#F9FAFB', borderLeft: '4px solid #22C55E', borderRadius: '8px', padding: '20px', textAlign: 'left' }}>
@@ -62,7 +62,7 @@ export default function LandingV3() {
               🎯 Your top God-given spiritual gifts
             </p>
             <p style={{ fontSize: '1rem', color: '#777777', margin: '0' }}>
-              Wired by God, not chosen by you. Finally understand how you're built.
+              Wired by God, not chosen by you. Finally understand how you&apos;re built.
             </p>
           </div>
           <div style={{ backgroundColor: '#F9FAFB', borderLeft: '4px solid #22C55E', borderRadius: '8px', padding: '20px', textAlign: 'left' }}>
@@ -70,7 +70,7 @@ export default function LandingV3() {
               📍 Where you actually belong
             </p>
             <p style={{ fontSize: '1rem', color: '#777777', margin: '0' }}>
-              Find where you fit — and where you don't. That contrast changes everything.
+              Find where you fit — and where you don&apos;t. That contrast changes everything.
             </p>
           </div>
           <div style={{ backgroundColor: '#F9FAFB', borderLeft: '4px solid #22C55E', borderRadius: '8px', padding: '20px', textAlign: 'left' }}>
