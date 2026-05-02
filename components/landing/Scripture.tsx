@@ -1,40 +1,17 @@
-import React from 'react';
-
-const Scripture: React.FC = () => {
+export default function Scripture() {
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh',
-      backgroundColor: 'white',
-    }}>
-      <div style={{
-        textAlign: 'center',
-        maxWidth: '600px',
-        padding: '20px',
-        border: '1px solid #E5E5E5',
-        borderRadius: '8px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-      }}>
-        <p style={{
-          fontSize: '1.2em',
-          color: '#333',
-          fontStyle: 'italic',
-          marginBottom: '10px',
-        }}>
-          &ldquo;Now there are varieties of gifts, but the same Spirit; and there are varieties of service, but the same Lord.&rdquo;
-        </p>
-        <p style={{
-          color: '#22C55E',
-          fontSize: '0.9em',
-          margin: 0,
-        }}>
-          1 Corinthians 12:4-5
-        </p>
+    <section style={{ maxWidth: 720, margin: '0 auto', padding: '40px 20px', textAlign: 'center' }}>
+      <h2 style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 700, marginBottom: 16, color: '#111111' }}>
+        Completely grounded in Scripture
+      </h2>
+      <p style={{ fontSize: '1.05rem', color: '#444444', lineHeight: 1.7, marginBottom: 20 }}>
+        Based on 1 Corinthians 12, Romans 12, and Ephesians 4 — with a live Bible API behind every result, giving you the full biblical context for who God made you to be.
+      </p>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '10px 16px' }}>
+        {['1 Corinthians 12', 'Romans 12', 'Ephesians 4'].map(ref => (
+          <span key={ref} style={{ border: '2px solid #22C55E', borderRadius: 999, padding: '6px 16px', fontSize: '0.9rem', fontWeight: 600, color: '#22C55E' }}>{ref}</span>
+        ))}
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Scripture;
+}

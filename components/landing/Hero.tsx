@@ -1,27 +1,44 @@
-import React from 'react';
+import Link from 'next/link';
 
-const HeroSection = () => {
+export default function Hero() {
   return (
-    <section style={{ background: '#fff', padding: '4rem 0', textAlign: 'center' }}>
-      <div style={{ margin: '0 auto', maxWidth: '700px' }}>
-        <div style={{ background: '#22C55E', color: '#fff', padding: '0.5rem 1.5rem', borderRadius: '20px', marginBottom: '2rem', display: 'inline-block' }}>
-          Free Assessment · Takes 10 Minutes
-        </div>
-        <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 4rem)', fontWeight: 900, margin: '0 0 1rem' }}>
-          You do not feel lost — you feel out of place. This shows you where you belong.
-        </h1>
-        <p style={{ fontSize: '1.2rem', color: '#555', marginBottom: '2rem' }}>
-          Discover your unique spiritual gifts with our free 30-day assessment plan. Take the first step towards understanding your true purpose.
-        </p>
-        <a href="/start" style={{ display: 'inline-block', background: '#22C55E', color: '#fff', padding: '1rem 2rem', borderRadius: '5px', textDecoration: 'none', fontWeight: 'bold' }}>
-          Find My Gifts → Free
-        </a>
-        <div style={{ marginTop: '2rem', color: '#777' }}>
-          Trusted by millions of users worldwide
-        </div>
+    <section style={{ maxWidth: 760, margin: '0 auto', padding: '36px 20px 28px', textAlign: 'center' }}>
+      <div style={{ display: 'inline-block', border: '2px solid #22C55E', borderRadius: 999, padding: '10px 24px', fontSize: '1rem', fontWeight: 600, color: '#22C55E', marginBottom: 20 }}>
+        Free Assessment · No Sign-Up Required
       </div>
+      <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.1rem)', fontWeight: 900, lineHeight: 1.15, marginBottom: 20, color: '#111111' }}>
+        You don&apos;t feel lost — you feel out of place.{' '}
+        <span style={{ color: '#22C55E' }}>This shows you where you belong.</span>
+      </h1>
+      <p style={{ fontSize: '1.25rem', color: '#111111', lineHeight: 1.7, maxWidth: 600, margin: '0 auto 28px' }}>
+        In minutes, discover your God-given gifts — and why some things feel natural while others don&apos;t.
+      </p>
+      <Link
+        href="/"
+        style={{
+          display: 'inline-block',
+          backgroundColor: '#22C55E',
+          color: '#FFFFFF',
+          fontWeight: 700,
+          fontSize: '1.125rem',
+          padding: '16px 44px',
+          borderRadius: 12,
+          textDecoration: 'none',
+          width: '100%',
+          maxWidth: 360,
+          boxSizing: 'border-box',
+        }}
+      >
+        Find My Gifts → Free
+      </Link>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '10px 20px', marginTop: 16 }}>
+        {['✓ Free', '✓ Takes 10 minutes', '✓ No sign-up required'].map(t => (
+          <span key={t} style={{ fontSize: '0.875rem', color: '#555555', fontWeight: 500 }}>{t}</span>
+        ))}
+      </div>
+      <p style={{ fontSize: '0.9rem', color: '#888888', marginTop: 12, fontStyle: 'italic' }}>
+        Most people discover they&apos;ve been serving in the wrong place.
+      </p>
     </section>
   );
-};
-
-export default HeroSection;
+}

@@ -1,48 +1,15 @@
-import React from 'react';
-
-const SocialProof = () => {
+export default function SocialProof() {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: 'white',
-      }}
-    >
-      <div
-        style={{
-          padding: '20px',
-          maxWidth: '500px',
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-          borderRadius: '8px',
-          textAlign: 'center',
-          backgroundColor: 'white',
-        }}
-      >
-        <blockquote
-          style={{
-            fontStyle: 'italic',
-            fontSize: '18px',
-            lineHeight: '1.5',
-            color: '#333',
-          }}
-        >
-          &ldquo;This is the most accurate thing I have ever taken. I finally understand why I am the way I am.&rdquo;
-        </blockquote>
-        <p
-          style={{
-            color: '#22C55E',
-            fontSize: '14px',
-            marginTop: '10px',
-          }}
-        >
-          — Sarah M.
+    <section style={{ maxWidth: 600, margin: '0 auto', padding: '40px 20px', textAlign: 'center' }}>
+      <p style={{ fontSize: '1.1rem', color: '#888888', marginBottom: 20, fontStyle: 'italic' }}>
+        Thousands are beginning to discover where they truly belong. You might be closer than you think.
+      </p>
+      <blockquote style={{ margin: 0, borderLeft: '4px solid #22C55E', paddingLeft: 20, textAlign: 'left' }}>
+        <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: '#111111', fontStyle: 'italic', marginBottom: 10 }}>
+          &ldquo;This is the most accurate thing I&apos;ve ever taken. I finally understand why I am the way I am.&rdquo;
         </p>
-      </div>
-    </div>
+        <footer style={{ color: '#555555', fontWeight: 600 }}>— Sarah M.</footer>
+      </blockquote>
+    </section>
   );
-};
-
-export default SocialProof;
+}

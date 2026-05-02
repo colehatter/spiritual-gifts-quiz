@@ -1,40 +1,29 @@
-'use client';
-
-const cards = [
-  {
-    title: 'Discover your spiritual gifts',
-    desc: 'Wired by God, not chosen by you. Finally understand how you\'re built.',
-  },
-  {
-    title: 'See your shadow side',
-    desc: 'How your gift gets misused — and how to surrender it back to God.',
-  },
-  {
-    title: '30-day activation plan',
-    desc: 'Week-by-week steps to start living out your gifts in real life.',
-  },
-];
+import Link from 'next/link';
 
 export default function WhatYouGet() {
   return (
-    <section style={{ background: '#FFFFFF', padding: '72px 24px', textAlign: 'center' }}>
-      <div style={{ maxWidth: '760px', margin: '0 auto' }}>
-        <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)', fontWeight: 900, marginBottom: '16px', color: '#111111' }}>
-          This isn&apos;t a personality test. It&apos;s a blueprint.
-        </h2>
-        <p style={{ color: '#555555', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '48px', maxWidth: '640px', margin: '0 auto 48px' }}>
-          The only Spiritual Gifts assessment that uses live AI to write your results — personalized to you, grounded in Scripture. Every person is unique, which is why every gift result is unique to you. The days of generic results are over.
-        </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px', marginBottom: '32px' }}>
-          {cards.map((card, i) => (
-            <div key={i} style={{ border: '2px solid #22C55E', borderRadius: '999px', padding: '28px 24px', background: '#FFFFFF', textAlign: 'left' }}>
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '10px', color: '#111111' }}>{card.title}</h3>
-              <p style={{ fontSize: '0.9rem', color: '#666666', lineHeight: 1.6, margin: 0 }}>{card.desc}</p>
-            </div>
-          ))}
-        </div>
-        <p style={{ color: '#9CA3AF', fontSize: '0.85rem' }}>40 questions free. Deeper insights unlock for $9.99.</p>
+    <section style={{ maxWidth: 860, margin: '0 auto', padding: '40px 20px' }}>
+      <h2 style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 700, textAlign: 'center', marginBottom: 28, color: '#111111' }}>
+        Here&apos;s what you&apos;ll get
+      </h2>
+      <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
+        {[
+          { title: 'Your top spiritual gifts', body: "Discover the gifts God wired into you — not the ones you wish you had." },
+          { title: 'Where you actually belong', body: "Find where you fit — and where you don't. That clarity alone changes everything." },
+          { title: 'A 30-day activation plan', body: 'Clear next steps to start using your gifts immediately. Week by week.' },
+        ].map(({ title, body }) => (
+          <div key={title} style={{ border: '3px solid #22C55E', borderRadius: 16, padding: '32px 28px' }}>
+            <h3 style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: 8, color: '#111111' }}>{title}</h3>
+            <p style={{ color: '#555555', lineHeight: 1.6, margin: 0, fontSize: '1.05rem' }}>{body}</p>
+          </div>
+        ))}
       </div>
+      <Link href='/' style={{ backgroundColor: '#22C55E', color: 'white', padding: '14px 36px', borderRadius: 10, fontWeight: 700, display: 'block', maxWidth: 300, margin: '24px auto 0', textDecoration: 'none', textAlign: 'center' }}>
+        Start the Free Quiz →
+      </Link>
+      <p style={{ textAlign: 'center', color: '#888888', marginTop: 20, fontSize: '0.9rem' }}>
+        40 questions free. Deeper AI insights unlock for $9.99.
+      </p>
     </section>
   );
 }

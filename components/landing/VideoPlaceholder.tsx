@@ -1,54 +1,17 @@
-import React from 'react';
-
-const VideoPlaceholder: React.FC = () => {
+export default function VideoPlaceholder() {
   return (
-    <section style={{
-      padding: '56px 24px',
-      backgroundColor: '#111111',
-      color: '#888888',
-      textAlign: 'center',
-    }}>
-      <div style={{
-        display: 'inline-block',
-        backgroundColor: '#1a1a1a',
-        border: '2px solid #22C55E',
-        borderRadius: '16px',
-        padding: '0',
-        position: 'relative',
-        width: '100%',
-        maxWidth: '640px',
-        paddingTop: '56.25%', // 16:9 aspect ratio
-      }}>
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          color: '#22C55E',
-          fontSize: '4rem',
-        }}>
-          ▶
+    <section style={{ backgroundColor: '#111111', padding: '40px 20px' }}>
+      <div style={{ maxWidth: 800, margin: '0 auto' }}>
+        <div style={{ position: 'relative', paddingBottom: '56.25%', border: '2px solid #22C55E', borderRadius: 16, overflow: 'hidden', backgroundColor: '#1a1a1a' }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ fontSize: '4rem', color: '#22C55E', lineHeight: 1, marginBottom: 12 }}>▶</div>
+            <p style={{ color: '#aaaaaa', fontSize: '1rem', margin: 0 }}>Watch: How to find your calling</p>
+          </div>
         </div>
-        <div style={{
-          position: 'absolute',
-          top: '60%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          color: '#888888',
-          fontSize: '1.2rem',
-        }}>
-          Watch: How to find your calling
-        </div>
-      </div>
-      <div style={{
-        marginTop: '16px',
-        color: '#888888',
-        fontSize: '1rem',
-      }}>
-        See how thousands are discovering their God-given purpose
+        <p style={{ textAlign: 'center', color: '#aaaaaa', marginTop: 16, fontSize: '0.95rem' }}>
+          See how thousands are discovering their God-given purpose
+        </p>
       </div>
     </section>
   );
-};
-
-export default VideoPlaceholder;
+}

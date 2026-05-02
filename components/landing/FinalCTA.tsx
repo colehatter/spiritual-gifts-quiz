@@ -1,55 +1,35 @@
 import Link from 'next/link';
 
-const FinalCTA = () => {
+export default function FinalCTA() {
   return (
-    <section style={{
-      backgroundColor: 'white',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '50px 20px',
-    }}>
-      <h2 style={{
-        fontSize: '2.5rem',
-        fontWeight: 'bold',
-        color: '#111111',
-        margin: '0 0 20px',
-      }}>
-        Your purpose is already inside you.
+    <section style={{ maxWidth: 760, margin: '0 auto', padding: '32px 20px', textAlign: 'center' }}>
+      <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', fontWeight: 800, color: '#111111', marginBottom: 8 }}>
+        Ready to finally see how you&apos;re wired?
       </h2>
-      <p style={{
-        fontSize: '1.2rem',
-        color: '#555555',
-        margin: '0 0 30px',
-      }}>
-        Stop guessing. Start knowing.
-      </p>
-      <Link href="/start" style={{
-        textDecoration: 'none',
-      }}>
-        <button style={{
+      <p style={{ color: '#555555', marginBottom: 28, fontSize: '1rem' }}>Your purpose is already inside you. It&apos;s time to be shown it.</p>
+      <Link
+        href="/"
+        style={{
+          display: 'inline-block',
           backgroundColor: '#22C55E',
-          color: 'white',
-          fontWeight: 'bold',
-          padding: '18px 48px',
-          borderRadius: '12px',
-          border: 'none',
-          cursor: 'pointer',
-          fontSize: '1rem',
-        }}>
-          Find My Gifts → Free
-        </button>
+          color: '#FFFFFF',
+          fontWeight: 700,
+          fontSize: '1.125rem',
+          padding: '16px 44px',
+          borderRadius: 12,
+          textDecoration: 'none',
+          width: '100%',
+          maxWidth: 360,
+          boxSizing: 'border-box',
+        }}
+      >
+        Find My Gifts → Free
       </Link>
-      <div style={{
-        color: '#9CA3AF',
-        fontSize: '0.9rem',
-        marginTop: '20px',
-      }}>
-        ✓ Free &nbsp; ✓ Takes 10 minutes &nbsp; ✓ No sign-up required
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '10px 20px', marginTop: 16 }}>
+        {['✓ Free', '✓ Takes 10 minutes', '✓ No sign-up required'].map(t => (
+          <span key={t} style={{ fontSize: '0.875rem', color: '#555555', fontWeight: 500 }}>{t}</span>
+        ))}
       </div>
     </section>
   );
-};
-
-export default FinalCTA;
+}
