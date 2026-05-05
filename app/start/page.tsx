@@ -51,7 +51,7 @@ function CheckoutForm({ onSuccess, clientSecret }: { onSuccess: () => void; clie
     if (isFree) { onSuccess(); return; }
     if (!stripe || !elements) return;
     const result = await stripe.confirmPayment({ elements, redirect: 'if_required' });
-    if (result.error) {
+if (result.error) {
       setError(result.error.message || 'Payment failed. Please try again.');
       setLoading(false);
     } else if (result.paymentIntent?.status === 'succeeded') {
@@ -61,6 +61,10 @@ function CheckoutForm({ onSuccess, clientSecret }: { onSuccess: () => void; clie
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+      <div className="max-w-4xl mx-auto text-center mb-10 px-2 bg-[#1a2035] rounded-2xl p-6 border border-white/10">
+        <p className="text-sm sm:text-base">Your introductory text goes here. It should be engaging and clear, providing the user with the necessary information to understand the context and purpose of the form below.</p>
+        <p className="text-sm sm:text-base font-semibold">This is a bold closing line that summarizes the key point or call to action.</p>
+      </div>
       {!promoApplied ? (
         <div className="flex gap-2">
           <input
