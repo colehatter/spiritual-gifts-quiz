@@ -13,9 +13,25 @@ interface Props {
 
 export default function FreeResults({ scores, firstName, onUnlock }: Props) {
   const [showModal, setShowModal] = useState(false);
-  const [copied, setCopied] = useState(false);
   const topGift = getTopGifts(scores, 1)[0] as GiftName;
   const { description, scripture } = giftDescriptions[topGift];
+  const [copied, setCopied] = useState(false);
+
+  const handleShare = async () => {
+    const shareText = `I just discovered my spiritual gift is ${topGift}! Find yours at findyourgifts.ai`;
+    if (navigator.share) {
+      try {
+        await navigator.share({ text: shareText });
+      } catch (error) {
+        console.error('Error sharing:', error);
+      }
+    } else {
+      navigator.clipboard.writeText(shareText).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      });
+    }
+  };
 
   return (
     <div className="animate-slide-up space-y-8">
@@ -43,27 +59,18 @@ export default function FreeResults({ scores, firstName, onUnlock }: Props) {
       {/* Share Button */}
       <div className="pt-2">
         <button
-          onClick={async () => {
-            const text = `I just discovered my spiritual gift is ${topGift}! Find yours at findyourgifts.ai`;
-            if (navigator.share) {
-              await navigator.share({ title: 'My Spiritual Gift', text });
-            } else {
-              await navigator.clipboard.writeText(text);
-              setCopied(true);
-              setTimeout(() => setCopied(false), 2000);
-            }
-          }}
-          className="w-full flex items-center justify-center gap-2 border border-white/20 text-white/70 font-semibold py-3 px-6 rounded-xl hover:border-white/40 hover:text-white transition-all mb-3"
+          onClick={handleShare}
+          className="w-full border border-white/20 text-white/70 font-semibold py-3 px-6 rounded-xl hover:border-white/40 hover:text-white transition-all flex items-center justify-center"
         >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
           </svg>
-          {copied ? 'Copied!' : 'Share My Gift'}
+          {copied ? 'Copied!' : 'Share'}
         </button>
       </div>
 
       {/* Continue Button */}
-      <div className="pt-0">
+      <div className="pt-2">
         <button
           onClick={() => setShowModal(true)}
           className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 animate-pulse-glow"
