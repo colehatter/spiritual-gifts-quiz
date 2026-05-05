@@ -139,11 +139,11 @@ function StartPageContent() {
           <p className="text-white/60 text-lg italic">This isn&apos;t a personality test. It&apos;s a discovery.</p>
         </div>
 
-        <div className="max-w-2xl mx-auto text-center mb-10 px-2">
-          <p className="text-white/75 text-base leading-relaxed">Both options below will give you deeper, more accurate insights into how God wired you than anything you&apos;ve taken before.</p>
-          <p className="text-white/75 text-base leading-relaxed mt-4">The free quiz identifies your #1 spiritual gift in about 10 minutes — and that alone can change how you see yourself.</p>
-          <p className="text-white/75 text-base leading-relaxed mt-4">The full experience is something different entirely. As you answer, the AI is actually thinking — adapting in real time, selecting questions uniquely for you based on how you respond. No two people get the same assessment. When you finish, you&apos;ll receive a fully custom report: your complete gift profile ranked, a 30-day plan to activate and develop what you&apos;ve been given, Scripture specific to how you&apos;re wired, and a deep personal portrait of who you are and how you&apos;re built to serve.</p>
-          <p className="text-white/90 text-base font-semibold mt-5">The free quiz tells you your gift. The full experience shows you what to do with it.</p>
+        <div className="w-full text-center mb-10 bg-[#1a2035] rounded-2xl p-6 border-2 border-[#34C6F4]" style={{ boxShadow: '0 0 30px rgba(52,198,244,0.10)' }}>
+          <p className="text-white/75 text-sm sm:text-base leading-relaxed">Both options below will give you deeper, more accurate insights into how God wired you than anything you&apos;ve taken before.</p>
+          <p className="text-white/75 text-sm sm:text-base leading-relaxed mt-4">The free quiz identifies your #1 spiritual gift in about 10 minutes — and that alone can change how you see yourself.</p>
+          <p className="text-white/75 text-sm sm:text-base leading-relaxed mt-4">The full experience is something different entirely. As you answer, the AI is actually thinking — adapting in real time, selecting questions uniquely for you based on how you respond. No two people get the same assessment. When you finish, you&apos;ll receive a fully custom report: your complete gift profile ranked, a 30-day plan to activate and develop what you&apos;ve been given, Scripture specific to how you&apos;re wired, and a deep personal portrait of who you are and how you&apos;re built to serve.</p>
+          <p className="text-white/90 text-sm sm:text-base font-semibold mt-5">The free quiz tells you your gift. The full experience shows you what to do with it.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
