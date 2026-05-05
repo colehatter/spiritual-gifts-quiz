@@ -84,7 +84,7 @@ function CheckoutForm({ onSuccess, clientSecret }: { onSuccess: () => void; clie
       <button type="submit" disabled={(!isFree && !stripe) || loading}
         className="w-full font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 disabled:opacity-60"
         style={{ background: 'linear-gradient(135deg, #1a4e8a, #34C6F4)', color: '#ffffff' }}>
-        {loading ? 'Processing...' : isFree ? 'Unlock Full Access — Free' : 'Unlock Full Access — $9.99'}
+        {loading ? 'Processing...' : isFree ? 'Unlock Full Access — Free' : 'Unlock Everything — $9.99'}
       </button>
       <p className="text-center text-white/30 text-xs">Secure payment · No subscription</p>
     </form>
@@ -129,8 +129,15 @@ function StartPageContent() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Logo />
         <div className="text-center mb-10 mt-4">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">Choose how you want to start</h1>
-          <p className="text-white/60 text-lg">Free gets you started. $9.99 gets you everything.</p>
+          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">Your gifts are already in you. Let's find them.</h1>
+          <p className="text-white/60 text-lg italic">This isn't a personality test. It's a discovery.</p>
+        </div>
+
+        <div className="max-w-2xl mx-auto text-center mb-10 px-2">
+          <p className="text-white/75 text-base leading-relaxed">Both options below will give you deeper, more accurate insights into how God wired you than anything you&apos;ve taken before.</p>
+          <p className="text-white/75 text-base leading-relaxed mt-4">The free quiz identifies your #1 spiritual gift in about 10 minutes — and that alone can change how you see yourself.</p>
+          <p className="text-white/75 text-base leading-relaxed mt-4">The full experience is something different entirely. As you answer, the AI is actually thinking — adapting in real time, selecting questions uniquely for you based on how you respond. No two people get the same assessment. When you finish, you&apos;ll receive a fully custom report: your complete gift profile ranked, a 30-day plan to activate and develop what you&apos;ve been given, Scripture specific to how you&apos;re wired, and a deep personal portrait of who you are and how you&apos;re built to serve.</p>
+          <p className="text-white/90 text-base font-semibold mt-5">The free quiz tells you your gift. The full experience shows you what to do with it.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
@@ -153,7 +160,7 @@ function StartPageContent() {
               onClick={() => router.push('/quiz')}
               className="w-full border border-white/20 text-white/70 font-semibold py-3 px-6 rounded-xl hover:border-white/40 hover:text-white transition-all"
             >
-              Start Free Quiz →
+              Start Free →
             </button>
           </div>
 
@@ -179,7 +186,7 @@ function StartPageContent() {
                 className="w-full font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 hover:scale-[1.02]"
                 style={{ background: 'linear-gradient(135deg, #1a4e8a, #34C6F4)', color: '#ffffff', boxShadow: '0 0 20px rgba(52,198,244,0.3)' }}
               >
-                Get Full Access — $9.99
+                Unlock Everything — $9.99
               </button>
             ) : clientSecret ? (
               <Elements
@@ -200,9 +207,10 @@ function StartPageContent() {
           </div>
         </div>
 
-        <p className="text-center text-white/30 text-xs mt-6">
-          No sign-up required · Takes 10 minutes · Results powered by AI
-        </p>
+        <div className="text-center mt-6 space-y-2">
+          <p className="text-white/30 text-xs">No sign-up required · Takes 10 minutes · Results powered by AI</p>
+          <p className="text-white/40 text-xs">🔒 Your results are yours alone. We don&apos;t store, share, or sell your answers or your report. No one sees your results but you.</p>
+        </div>
       </div>
     </main>
   );
