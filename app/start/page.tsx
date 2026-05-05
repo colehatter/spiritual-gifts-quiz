@@ -129,8 +129,8 @@ function StartPageContent() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Logo />
         <div className="text-center mb-10 mt-4">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">Your gifts are already in you. Let's find them.</h1>
-          <p className="text-white/60 text-lg italic">This isn't a personality test. It's a discovery.</p>
+          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">Your gifts are already in you. Let&apos;s find them.</h1>
+          <p className="text-white/60 text-lg italic">This isn&apos;t a personality test. It&apos;s a discovery.</p>
         </div>
 
         <div className="max-w-2xl mx-auto text-center mb-10 px-2">
