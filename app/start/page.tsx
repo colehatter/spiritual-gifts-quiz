@@ -61,10 +61,12 @@ if (result.error) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-      <div className="max-w-4xl mx-auto text-center mb-10 px-2 bg-[#1a2035] rounded-2xl p-6 border border-white/10">
-        <p className="text-sm sm:text-base">Your introductory text goes here. It should be engaging and clear, providing the user with the necessary information to understand the context and purpose of the form below.</p>
-        <p className="text-sm sm:text-base font-semibold">This is a bold closing line that summarizes the key point or call to action.</p>
-      </div>
+      <div className="max-w-4xl mx-auto text-center mb-10 bg-[#1a2035] rounded-2xl p-6 border border-white/10">
+          <p className="text-white/75 text-sm sm:text-base leading-relaxed">Both options below will give you deeper, more accurate insights into how God wired you than anything you&apos;ve taken before.</p>
+          <p className="text-white/75 text-sm sm:text-base leading-relaxed mt-4">The free quiz identifies your #1 spiritual gift in about 10 minutes — and that alone can change how you see yourself.</p>
+          <p className="text-white/75 text-sm sm:text-base leading-relaxed mt-4">The full experience is something different entirely. As you answer, the AI is actually thinking — adapting in real time, selecting questions uniquely for you based on how you respond. No two people get the same assessment. When you finish, you&apos;ll receive a fully custom report: your complete gift profile ranked, a 30-day plan to activate and develop what you&apos;ve been given, Scripture specific to how you&apos;re wired, and a deep personal portrait of who you are and how you&apos;re built to serve.</p>
+          <p className="text-white/90 text-sm sm:text-base font-semibold mt-5">The free quiz tells you your gift. The full experience shows you what to do with it.</p>
+        </div>
       {!promoApplied ? (
         <div className="flex gap-2">
           <input
