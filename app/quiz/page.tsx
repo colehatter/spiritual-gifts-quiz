@@ -162,7 +162,7 @@ function QuizApp() {
 
   return (
     <main className="min-h-screen bg-[#0d1220]">
-      <div className="max-w-2xl mx-auto px-4 py-6">
+      <div className="max-w-2xl mx-auto px-4 py-2">
         <Logo />
         {phase === 'start' && (
           <div className="flex flex-col items-center justify-center min-h-[60vh] text-center gap-8">
