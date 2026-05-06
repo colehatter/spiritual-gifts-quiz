@@ -6,8 +6,8 @@ export default function Logo() {
       <Image
         src="/logo-white-slogan.png"
         alt="3Nails.ai"
-        width={160}
-        height={60}
+        width={320}
+        height={120}
         style={{ objectFit: 'contain' }}
         priority
       />
