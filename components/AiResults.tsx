@@ -230,6 +230,34 @@ export default function AiResults({ results, firstName, email, freeScores, paidS
         </div>
       </div>
 
+      {/* Bottom email capture */}
+      {!topEmailSent ? (
+        <div className="bg-[#1a2035] rounded-2xl p-5 border border-white/10">
+          <p className="text-white font-semibold mb-1">Get your PDF results</p>
+          <p className="text-white/50 text-sm mb-4">Enter your email and we&apos;ll send your full report to your inbox.</p>
+          <form onSubmit={handleTopEmailSubmit} className="flex gap-3">
+            <input
+              type="email"
+              value={topEmail}
+              onChange={(e) => setTopEmail(e.target.value)}
+              placeholder="your@email.com"
+              className="flex-1 bg-[#0d1220] border border-white/10 focus:border-[#34C6F4] rounded-xl px-4 py-3 text-white placeholder-white/30 outline-none transition-colors text-sm"
+            />
+            <button
+              type="submit"
+              disabled={topEmailSending}
+              className="bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold px-5 py-3 rounded-xl transition-all text-sm whitespace-nowrap disabled:opacity-50"
+            >
+              {topEmailSending ? 'Sending...' : 'Send PDF'}
+            </button>
+          </form>
+        </div>
+      ) : (
+        <div className="bg-[#34C6F4]/10 border border-[#34C6F4]/30 rounded-2xl p-4 text-center">
+          <p className="text-[#34C6F4] font-semibold text-sm">📧 Your PDF results have been emailed. Check your inbox.</p>
+        </div>
+      )}
+
       {/* Share Button */}
       <div className="pt-2">
         <button
