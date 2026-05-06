@@ -140,6 +140,21 @@ function QuizApp() {
       });
       const data = await res.json();
       setAiResults(data.results);
+      // Email results to paid user
+      if (data.results && userInfo?.email) {
+        fetch('/api/email-results', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: userInfo.email,
+            firstName: userInfo.firstName,
+            results: data.results,
+            freeScores,
+            paidScores: scores,
+            source: 'quiz',
+          }),
+        }).catch(console.error);
+      }
     } catch (e) {
       console.error('Failed to generate results', e);
     }
@@ -200,6 +215,7 @@ function QuizApp() {
             email={userInfo?.email || ''}
             freeScores={freeScores}
             paidScores={paidScores}
+            emailSent={!!(userInfo?.email)}
           />
         )}
       </div>
