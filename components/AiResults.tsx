@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { AIResults, GiftScores, GiftName } from '@/types/quiz';
 import { getTopGifts } from '@/lib/scoring';
 import GiftChart from './GiftChart';
+import { careerMatches } from '@/lib/careerMatches';
 
 interface Props {
   results: AIResults | null;
@@ -161,6 +162,32 @@ export default function AiResults({ results, firstName, email, freeScores, paidS
           </div>
         </div>
       )}
+
+      {/* Career Matching */}
+      <div className="bg-[#1a2035] rounded-2xl p-6">
+        <h2 className="text-[#34C6F4] font-semibold text-sm uppercase tracking-wider mb-2">Where Your Gifts Come Alive at Work</h2>
+        <p className="text-white/50 text-sm mb-5">Based on your results, here are a few roles and ministry paths worth considering — not an exhaustive list, just a starting point.</p>
+        <div className="space-y-5">
+          {topGifts.map((gift, i) => {
+            const match = careerMatches[gift];
+            if (!match) return null;
+            return (
+              <div key={gift}>
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-5 h-5 rounded-full bg-[#34C6F4]/20 flex items-center justify-center text-xs font-bold text-[#34C6F4]">{i + 1}</div>
+                  <h3 className="font-bold text-white">{gift}</h3>
+                </div>
+                <p className="text-white/50 text-sm mb-2">{match.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {match.roles.map((role) => (
+                    <span key={role} className="text-xs bg-white/5 border border-white/10 text-white/60 px-3 py-1 rounded-full">{role}</span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Share Button */}
       <div className="pt-2">
