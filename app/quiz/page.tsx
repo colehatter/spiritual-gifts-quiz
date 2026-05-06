@@ -216,6 +216,22 @@ function QuizApp() {
             freeScores={freeScores}
             paidScores={paidScores}
             emailSent={!!(userInfo?.email)}
+            onEmailSubmit={async (email) => {
+              try {
+                await fetch('/api/email-results', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    email,
+                    firstName: userInfo?.firstName,
+                    results: aiResults,
+                    freeScores,
+                    paidScores,
+                    source: 'quiz',
+                  }),
+                });
+              } catch (e) { console.error(e); }
+            }}
           />
         )}
       </div>

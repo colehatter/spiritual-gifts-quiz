@@ -48,34 +48,6 @@ function FriendsQuizApp() {
     }
   };
 
-  const [friendEmail, setFriendEmail] = useState('');
-  const [friendEmailSent, setFriendEmailSent] = useState(false);
-  const [sendingEmail, setSendingEmail] = useState(false);
-
-  const handleFriendEmailSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!friendEmail || !aiResults) return;
-    setSendingEmail(true);
-    try {
-      await fetch('/api/email-results', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: friendEmail,
-          firstName: userInfo?.firstName,
-          results: aiResults,
-          freeScores,
-          paidScores,
-          source: 'friend-quiz',
-        }),
-      });
-      setFriendEmailSent(true);
-    } catch (e) {
-      console.error('Email send failed', e);
-    }
-    setSendingEmail(false);
-  };
-
   const handlePaidComplete = async (scores: GiftScores) => {
     setPaidScores(scores);
     setPhase('ai-results');
@@ -141,43 +113,30 @@ function FriendsQuizApp() {
           />
         )}
         {phase === 'ai-results' && (
-          <div>
-            <AiResults
-              results={aiResults}
-              firstName={userInfo?.firstName || ''}
-              email=''
-              freeScores={freeScores}
-              paidScores={paidScores}
-              emailSent={false}
-            />
-            {/* Optional PDF email capture */}
-            {!friendEmailSent ? (
-              <div className="mt-6 bg-[#1a2035] rounded-2xl p-6 border border-white/10">
-                <h3 className="text-white font-semibold mb-1">Want a PDF copy?</h3>
-                <p className="text-white/50 text-sm mb-4">Enter your email and we&apos;ll send your full results.</p>
-                <form onSubmit={handleFriendEmailSubmit} className="flex gap-3">
-                  <input
-                    type="email"
-                    value={friendEmail}
-                    onChange={(e) => setFriendEmail(e.target.value)}
-                    placeholder="your@email.com"
-                    className="flex-1 bg-[#0d1220] border border-white/10 focus:border-[#34C6F4] rounded-xl px-4 py-3 text-white placeholder-white/30 outline-none transition-colors text-sm"
-                  />
-                  <button
-                    type="submit"
-                    disabled={sendingEmail}
-                    className="bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold px-5 py-3 rounded-xl transition-all text-sm whitespace-nowrap disabled:opacity-50"
-                  >
-                    {sendingEmail ? 'Sending...' : 'Send PDF'}
-                  </button>
-                </form>
-              </div>
-            ) : (
-              <div className="mt-6 bg-[#34C6F4]/10 border border-[#34C6F4]/30 rounded-2xl p-5 text-center">
-                <p className="text-[#34C6F4] font-semibold">Your results have been emailed. Check your inbox.</p>
-              </div>
-            )}
-          </div>
+          <AiResults
+            results={aiResults}
+            firstName={userInfo?.firstName || ''}
+            email=''
+            freeScores={freeScores}
+            paidScores={paidScores}
+            emailSent={false}
+            onEmailSubmit={async (email) => {
+              try {
+                await fetch('/api/email-results', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    email,
+                    firstName: userInfo?.firstName,
+                    results: aiResults,
+                    freeScores,
+                    paidScores,
+                    source: 'friend-quiz',
+                  }),
+                });
+              } catch (e) { console.error(e); }
+            }}
+          />
         )}
       </div>
     </main>

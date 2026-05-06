@@ -13,6 +13,7 @@ interface Props {
   freeScores?: GiftScores;
   paidScores?: GiftScores;
   emailSent?: boolean;
+  onEmailSubmit?: (email: string) => void;
 }
 
 function mergeScores(a?: GiftScores, b?: GiftScores): GiftScores {
@@ -25,11 +26,23 @@ function mergeScores(a?: GiftScores, b?: GiftScores): GiftScores {
   return base;
 }
 
-export default function AiResults({ results, firstName, email, freeScores, paidScores, emailSent }: Props) {
+export default function AiResults({ results, firstName, email, freeScores, paidScores, emailSent, onEmailSubmit }: Props) {
   const [copied, setCopied] = useState(false);
+  const [topEmail, setTopEmail] = useState(email || '');
+  const [topEmailSent, setTopEmailSent] = useState(!!email);
+  const [topEmailSending, setTopEmailSending] = useState(false);
 
   const combinedScores = mergeScores(freeScores, paidScores);
   const topGifts = getTopGifts(combinedScores, 3) as GiftName[];
+
+  const handleTopEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!topEmail || topEmailSent) return;
+    setTopEmailSending(true);
+    if (onEmailSubmit) onEmailSubmit(topEmail);
+    setTopEmailSent(true);
+    setTopEmailSending(false);
+  };
 
   const handleShare = async () => {
     const shareText = `I just discovered my top spiritual gifts are ${topGifts.slice(0, 2).join(' and ')}! Find yours at findyourgifts.ai`;
@@ -80,6 +93,34 @@ export default function AiResults({ results, firstName, email, freeScores, paidS
           </p>
         )}
       </div>
+
+      {/* Top email capture — shown when no email yet */}
+      {!topEmailSent ? (
+        <div className="bg-[#1a2035] rounded-2xl p-5 border border-[#34C6F4]/20">
+          <p className="text-white font-semibold mb-1">Get your PDF results</p>
+          <p className="text-white/50 text-sm mb-4">Enter your email and we&apos;ll send your full report — then keep scrolling to read your results now.</p>
+          <form onSubmit={handleTopEmailSubmit} className="flex gap-3">
+            <input
+              type="email"
+              value={topEmail}
+              onChange={(e) => setTopEmail(e.target.value)}
+              placeholder="your@email.com"
+              className="flex-1 bg-[#0d1220] border border-white/10 focus:border-[#34C6F4] rounded-xl px-4 py-3 text-white placeholder-white/30 outline-none transition-colors text-sm"
+            />
+            <button
+              type="submit"
+              disabled={topEmailSending}
+              className="bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold px-5 py-3 rounded-xl transition-all text-sm whitespace-nowrap disabled:opacity-50"
+            >
+              {topEmailSending ? 'Sending...' : 'Send PDF'}
+            </button>
+          </form>
+        </div>
+      ) : (
+        <div className="bg-[#34C6F4]/10 border border-[#34C6F4]/30 rounded-2xl p-4 text-center">
+          <p className="text-[#34C6F4] font-semibold text-sm">📧 Your PDF results are on their way — keep scrolling to read them now.</p>
+        </div>
+      )}
 
       {/* Gift Chart */}
       {freeScores && (

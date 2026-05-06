@@ -151,10 +151,24 @@ function buildEmailHtml(firstName: string, results: AIResults, topGifts: GiftNam
 </html>`;
 }
 
+async function getGmailAccessToken(): Promise<string> {
+  const res = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      grant_type: 'refresh_token',
+      refresh_token: process.env.GMAIL_REFRESH_TOKEN || '',
+      client_id: process.env.GMAIL_CLIENT_ID || '',
+      client_secret: process.env.GMAIL_CLIENT_SECRET || '',
+    }),
+  });
+  const data = await res.json();
+  if (!data.access_token) throw new Error('Failed to get access token: ' + JSON.stringify(data));
+  return data.access_token;
+}
+
 async function sendEmail(to: string, firstName: string, html: string): Promise<boolean> {
   try {
-    // Use Gmail API via fetch with im@3nails.ai
-    // Build raw email
     const subject = `${firstName ? `${firstName}, your` : 'Your'} Spiritual Gifts Report`;
     const rawEmail = [
       `From: 3Nails.ai <im@3nails.ai>`,
@@ -167,14 +181,23 @@ async function sendEmail(to: string, firstName: string, html: string): Promise<b
     ].join('\r\n');
 
     const encoded = Buffer.from(rawEmail).toString('base64url');
+    const accessToken = await getGmailAccessToken();
 
-    // Call Gmail API - we'll use a server-side approach with the token
-    const tokenRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://findyourgifts.ai'}/api/send-email`, {
+    const gmailRes = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ raw: encoded }),
     });
-    return tokenRes.ok;
+
+    if (!gmailRes.ok) {
+      const err = await gmailRes.text();
+      console.error('Gmail API error:', err);
+      return false;
+    }
+    return true;
   } catch (e) {
     console.error('Email send error:', e);
     return false;
