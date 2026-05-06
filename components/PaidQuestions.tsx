@@ -77,7 +77,9 @@ export default function PaidQuestions({ questions, onComplete }: Props) {
     }
   };
 
-  const optionsABC = (currentQuestion.options as { text: string; gift: GiftName }[]);
+  const isLikert = typeof (currentQuestion.options as unknown[])[0] === 'string';
+  const optionsABC = isLikert ? null : (currentQuestion.options as { text: string; gift: GiftName }[]);
+  const optionsD = isLikert ? (currentQuestion.options as string[]) : null;
 
   return (
     <div className="space-y-6">
@@ -104,6 +106,22 @@ export default function PaidQuestions({ questions, onComplete }: Props) {
           <p className="text-white text-lg sm:text-xl font-medium leading-relaxed mb-6">
             {currentQuestion.question}
           </p>
+
+          {optionsD && (
+            <div className="space-y-3">
+              {optionsD.map((opt, i) => (
+                <button
+                  key={i}
+                  onClick={() => selectAnswer(i)}
+                  className={`answer-card w-full text-left px-5 py-4 rounded-xl text-white font-medium transition-all ${
+                    answers[currentIndex] === i ? 'selected' : ''
+                  }`}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
+          )}
 
           {optionsABC && (
             <div className="space-y-3">

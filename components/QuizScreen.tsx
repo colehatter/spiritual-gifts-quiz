@@ -88,7 +88,9 @@ export default function QuizScreen({ onComplete }: Props) {
     }
   };
 
-  const optionsABC = (currentQuestion.options as { text: string; gift: GiftName }[]);
+  const isLikert = typeof (currentQuestion.options as unknown[])[0] === 'string';
+  const optionsABC = isLikert ? null : (currentQuestion.options as { text: string; gift: GiftName }[]);
+  const optionsD = isLikert ? (currentQuestion.options as string[]) : null;
 
   return (
     <div className="space-y-6">
@@ -115,7 +117,24 @@ export default function QuizScreen({ onComplete }: Props) {
             {currentQuestion.question}
           </p>
 
-          {/* All question formats use A/B/C option text */}
+          {/* Likert format (Sounds just like me / Somewhat / Not really) */}
+          {optionsD && (
+            <div className="space-y-3">
+              {optionsD.map((opt, i) => (
+                <button
+                  key={i}
+                  onClick={() => selectAnswer(i)}
+                  className={`answer-card w-full text-left px-5 py-4 rounded-xl text-white font-medium transition-all ${
+                    answers[currentIndex] === i ? 'selected' : ''
+                  }`}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* A/B/C gift-mapped options */}
           {optionsABC && (
             <div className="space-y-3">
               {optionsABC.map((opt, i) => (

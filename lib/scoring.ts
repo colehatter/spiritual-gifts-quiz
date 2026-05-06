@@ -14,13 +14,21 @@ export const initialScores = (): GiftScores => ({
   Hospitality: 0,
 });
 
-// All formats: selecting an option = 3 points for that option's mapped gift
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function getPoints(_format: string, _selectedIndex: number): number {
+// Points: Likert = 3/1/0, A/B/C gift-mapped = always 3
+// isLikert is passed from the caller based on option type detection
+export function getPoints(format: string, selectedIndex: number, isLikert = false): number {
+  if (isLikert) {
+    return selectedIndex === 0 ? 3 : selectedIndex === 1 ? 1 : 0;
+  }
   return 3;
 }
 
 export function getGiftFromAnswer(question: Question, selectedIndex: number): GiftName {
+  const firstOpt = (question.options as unknown[])[0];
+  if (typeof firstOpt === 'string') {
+    // Likert question — award points to primary gift
+    return question.gift as GiftName;
+  }
   const options = question.options as { text: string; gift: GiftName }[];
   return options[selectedIndex].gift;
 }

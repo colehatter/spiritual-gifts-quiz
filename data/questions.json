@@ -270,7 +270,7 @@
     {
       "id": "S14",
       "format": "B",
-      "question": "I feel most alive when I am...",
+      "question": "Which of these describes the moment you feel most fully yourself?",
       "options": [
         {
           "text": "Walking with someone through a long, hard season and watching them come out different",
@@ -308,7 +308,7 @@
     {
       "id": "S16",
       "format": "B",
-      "question": "I feel most alive when I am...",
+      "question": "When you reflect on the past month, which of these stands out most?",
       "options": [
         {
           "text": "Believing God for something that seems impossible, and staying steady while others panic",
@@ -327,7 +327,7 @@
     {
       "id": "S17",
       "format": "B",
-      "question": "I feel most alive when I am...",
+      "question": "If you had a free Saturday to give to others, what would you actually end up doing?",
       "options": [
         {
           "text": "Taking a long walk with someone who is carrying something too heavy to carry alone",
@@ -346,7 +346,7 @@
     {
       "id": "S18",
       "format": "C",
-      "question": "People most often come to me for...",
+      "question": "When someone in my life needs help, what they usually get from me is...",
       "options": [
         {
           "text": "Help making sense of something confusing or complex",
@@ -365,7 +365,7 @@
     {
       "id": "S19",
       "format": "C",
-      "question": "People most often come to me for...",
+      "question": "If I had to describe my role in most groups or teams, it would be...",
       "options": [
         {
           "text": "Help organizing something they cannot figure out how to pull off",
@@ -384,7 +384,7 @@
     {
       "id": "S20",
       "format": "C",
-      "question": "People most often come to me for...",
+      "question": "My closest friends would say that when things get hard, I show up as...",
       "options": [
         {
           "text": "Direction on a big decision or help seeing the bigger picture",
@@ -403,7 +403,7 @@
     {
       "id": "S21",
       "format": "C",
-      "question": "People most often come to me for...",
+      "question": "In most relationships, what I naturally bring to the table is...",
       "options": [
         {
           "text": "Help navigating a hard season in their personal or spiritual life over the long term",
@@ -422,7 +422,7 @@
     {
       "id": "S22",
       "format": "C",
-      "question": "People most often come to me for...",
+      "question": "When someone asks for my help, I tend to offer...",
       "options": [
         {
           "text": "Practical logistics help, like planning an event or coordinating a group",
@@ -441,7 +441,7 @@
     {
       "id": "S23",
       "format": "C",
-      "question": "People most often come to me for...",
+      "question": "The thing people seem to value most about me is...",
       "options": [
         {
           "text": "A warm meal, a spare room, or a place where they feel genuinely welcome",
@@ -460,7 +460,7 @@
     {
       "id": "S24",
       "format": "C",
-      "question": "People most often come to me for...",
+      "question": "If someone had to describe my biggest strength in one sentence, they would say...",
       "options": [
         {
           "text": "Help figuring out how to give wisely and make a real impact with their resources",
