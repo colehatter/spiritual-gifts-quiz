@@ -14,19 +14,13 @@ export const initialScores = (): GiftScores => ({
   Hospitality: 0,
 });
 
-// Points for Format D: "Sounds just like me" = 3, "Somewhat like me" = 1, "Not really me" = 0
-// Points for Format A/B/C: selecting an option = 3 points for that gift
-export function getPoints(format: string, selectedIndex: number): number {
-  if (format === 'D') {
-    return selectedIndex === 0 ? 3 : selectedIndex === 1 ? 1 : 0;
-  }
+// All formats: selecting an option = 3 points for that option's mapped gift
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function getPoints(_format: string, _selectedIndex: number): number {
   return 3;
 }
 
 export function getGiftFromAnswer(question: Question, selectedIndex: number): GiftName {
-  if (question.format === 'D') {
-    return question.gift as GiftName;
-  }
   const options = question.options as { text: string; gift: GiftName }[];
   return options[selectedIndex].gift;
 }

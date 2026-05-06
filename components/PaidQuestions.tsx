@@ -77,13 +77,7 @@ export default function PaidQuestions({ questions, onComplete }: Props) {
     }
   };
 
-  const isFormatD = currentQuestion.format === 'D';
-  const optionsABC = !isFormatD
-    ? (currentQuestion.options as { text: string; gift: GiftName }[])
-    : null;
-  const optionsD = isFormatD
-    ? ['Sounds just like me', 'Somewhat like me', 'Not really me']
-    : null;
+  const optionsABC = (currentQuestion.options as { text: string; gift: GiftName }[]);
 
   return (
     <div className="space-y-6">
@@ -111,23 +105,7 @@ export default function PaidQuestions({ questions, onComplete }: Props) {
             {currentQuestion.question}
           </p>
 
-          {isFormatD && optionsD && (
-            <div className="space-y-3">
-              {optionsD.map((opt, i) => (
-                <button
-                  key={i}
-                  onClick={() => selectAnswer(i)}
-                  className={`answer-card w-full text-left px-5 py-4 rounded-xl text-white font-medium transition-all ${
-                    answers[currentIndex] === i ? 'selected' : ''
-                  }`}
-                >
-                  {opt}
-                </button>
-              ))}
-            </div>
-          )}
-
-          {!isFormatD && optionsABC && (
+          {optionsABC && (
             <div className="space-y-3">
               {optionsABC.map((opt, i) => (
                 <button
