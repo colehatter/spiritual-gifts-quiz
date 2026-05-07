@@ -31,22 +31,22 @@ export default function AiResults({ results, firstName, email, freeScores, paidS
   const [downloading, setDownloading] = useState(false);
 
   const handleDownloadPDF = async () => {
+    if (!results) return;
     setDownloading(true);
     try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const html2pdf = (await import('html2pdf.js')).default as any;
-      const element = document.getElementById('results-content');
-      if (!element) return;
-      await html2pdf()
-        .set({
-          margin: 10,
-          filename: `${firstName || 'My'}-Spiritual-Gifts-Report.pdf`,
-          image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { scale: 2, useCORS: true },
-          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        })
-        .from(element)
-        .save();
+      const res = await fetch('/api/download-pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName, results, freeScores, paidScores }),
+      });
+      if (!res.ok) throw new Error('PDF generation failed');
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${firstName ? `${firstName}-` : ''}Spiritual-Gifts-Report.pdf`;
+      a.click();
+      URL.revokeObjectURL(url);
     } catch (e) {
       console.error('PDF error:', e);
     }

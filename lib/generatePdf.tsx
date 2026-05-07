@@ -1,5 +1,6 @@
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { AIResults, GiftScores, GiftName } from '@/types/quiz';
+import { careerMatches } from '@/lib/careerMatches';
 
 const ACCENT = rgb(0.204, 0.776, 0.957);   // #34C6F4
 const DARK   = rgb(0.1, 0.1, 0.1);
@@ -187,6 +188,35 @@ export async function generateGiftsPdf(firstName: string, results: AIResults, al
       for (const action of week.actions) {
         if (ctx.y < 60) break;
         drawWrappedText(ctx, `• ${action}`, 9, MID, 8, 4);
+      }
+      ctx.y -= 6;
+    }
+  }
+
+  // Career matching
+  const topGiftNames = sorted.slice(0, 3).map(([g]) => g);
+  if (topGiftNames.length) {
+    ctx.y -= 4;
+    sectionLabel(ctx, 'Where Your Gifts Come Alive at Work');
+    ctx.page.drawText('Based on your results, here are roles and ministry paths worth considering.', { x: MARGIN, y: ctx.y, size: 8, font: regular, color: LIGHT });
+    ctx.y -= 16;
+    for (let i = 0; i < topGiftNames.length; i++) {
+      const gift = topGiftNames[i];
+      const match = careerMatches[gift];
+      if (!match || ctx.y < 80) break;
+      // Gift name with number
+      ctx.page.drawRectangle({ x: MARGIN, y: ctx.y - 2, width: 16, height: 16, color: ACCENT });
+      ctx.page.drawText(`${i + 1}`, { x: MARGIN + 5, y: ctx.y, size: 9, font: bold, color: WHITE });
+      ctx.page.drawText(gift, { x: MARGIN + 22, y: ctx.y, size: 10, font: bold, color: DARK });
+      ctx.y -= 15;
+      drawWrappedText(ctx, match.description, 8.5, MID, 0, 4);
+      // Roles as pills (inline text)
+      const rolesText = match.roles.join('  ·  ');
+      const roleLines = wrapText(rolesText, regular, 8, CONTENT_W);
+      for (const line of roleLines) {
+        if (ctx.y < 60) break;
+        ctx.page.drawText(line, { x: MARGIN, y: ctx.y, size: 8, font: regular, color: ACCENT });
+        ctx.y -= 12;
       }
       ctx.y -= 6;
     }
