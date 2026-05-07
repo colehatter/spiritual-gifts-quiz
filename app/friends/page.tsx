@@ -17,6 +17,7 @@ function FriendsQuizApp() {
   const [paidScores, setPaidScores] = useState<GiftScores>(initialScores());
   const [aiResults, setAiResults] = useState<AIResults | null>(null);
   const [paidQuestions, setPaidQuestions] = useState<Question[]>([]);
+  const [pendingEmail, setPendingEmail] = useState<string | null>(null);
 
   const handleStart = (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,6 +64,21 @@ function FriendsQuizApp() {
       });
       const data = await res.json();
       setAiResults(data.results);
+      // Fire pending email if user already submitted their address
+      if (data.results && pendingEmail) {
+        fetch('/api/email-results', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: pendingEmail,
+            firstName: userInfo?.firstName,
+            results: data.results,
+            freeScores,
+            paidScores: scores,
+            source: 'friend-quiz',
+          }),
+        }).catch(console.error);
+      }
     } catch (e) {
       console.error('Failed to generate results', e);
     }
@@ -121,8 +137,9 @@ function FriendsQuizApp() {
             paidScores={paidScores}
             emailSent={false}
             onEmailSubmit={async (email) => {
-              try {
-                await fetch('/api/email-results', {
+              if (aiResults) {
+                // Results already loaded — send immediately
+                fetch('/api/email-results', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({
@@ -133,8 +150,11 @@ function FriendsQuizApp() {
                     paidScores,
                     source: 'friend-quiz',
                   }),
-                });
-              } catch (e) { console.error(e); }
+                }).catch(console.error);
+              } else {
+                // Results still loading — store email and fire when ready
+                setPendingEmail(email);
+              }
             }}
           />
         )}

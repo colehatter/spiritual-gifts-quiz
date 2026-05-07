@@ -21,6 +21,7 @@ function QuizApp() {
   const [aiResults, setAiResults] = useState<AIResults | null>(null);
   const [paidQuestions, setPaidQuestions] = useState<Question[]>([]);
   const [isLoadingPaidQuestions, setIsLoadingPaidQuestions] = useState(false);
+  const [pendingEmail, setPendingEmail] = useState<string | null>(null);
 
   // Handle paid=true param (paid upfront on /start page)
   useEffect(() => {
@@ -140,14 +141,15 @@ function QuizApp() {
       });
       const data = await res.json();
       setAiResults(data.results);
-      // Email results to paid user
-      if (data.results && userInfo?.email) {
+      // Email results — use known email, or pending email from top capture
+      const emailToSend = userInfo?.email || pendingEmail;
+      if (data.results && emailToSend) {
         fetch('/api/email-results', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            email: userInfo.email,
-            firstName: userInfo.firstName,
+            email: emailToSend,
+            firstName: userInfo?.firstName,
             results: data.results,
             freeScores,
             paidScores: scores,
@@ -217,8 +219,8 @@ function QuizApp() {
             paidScores={paidScores}
             emailSent={!!(userInfo?.email)}
             onEmailSubmit={async (email) => {
-              try {
-                await fetch('/api/email-results', {
+              if (aiResults) {
+                fetch('/api/email-results', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({
@@ -229,8 +231,10 @@ function QuizApp() {
                     paidScores,
                     source: 'quiz',
                   }),
-                });
-              } catch (e) { console.error(e); }
+                }).catch(console.error);
+              } else {
+                setPendingEmail(email);
+              }
             }}
           />
         )}
