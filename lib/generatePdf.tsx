@@ -1,349 +1,199 @@
-import { Document, Page, Text, View, StyleSheet, renderToBuffer, Font } from '@react-pdf/renderer';
-import React from 'react';
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { AIResults, GiftScores, GiftName } from '@/types/quiz';
 
-// Register fonts (system fallbacks)
-Font.registerHyphenationCallback(word => [word]);
+const ACCENT = rgb(0.204, 0.776, 0.957);   // #34C6F4
+const DARK   = rgb(0.1, 0.1, 0.1);
+const MID    = rgb(0.35, 0.35, 0.35);
+const LIGHT  = rgb(0.6, 0.6, 0.6);
+const WHITE  = rgb(1, 1, 1);
+const RULE   = rgb(0.85, 0.85, 0.85);
+const BAR_BG = rgb(0.9, 0.9, 0.9);
+const PAGE_W = 595.28;
+const PAGE_H = 841.89;
+const MARGIN = 48;
+const CONTENT_W = PAGE_W - MARGIN * 2;
 
-const colors = {
-  bg: '#0d1220',
-  card: '#1a2035',
-  accent: '#34C6F4',
-  white: '#ffffff',
-  muted: '#9ca3af',
-  border: '#2a3350',
-  lightBg: '#f0f9ff',
-};
-
-const styles = StyleSheet.create({
-  page: {
-    backgroundColor: colors.bg,
-    padding: 40,
-    fontFamily: 'Helvetica',
-    color: colors.white,
-  },
-  // Header
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 28,
-    paddingBottom: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border,
-  },
-  brandName: {
-    fontSize: 22,
-    fontFamily: 'Helvetica-Bold',
-    color: colors.white,
-  },
-  brandTagline: {
-    fontSize: 9,
-    color: colors.muted,
-    marginTop: 2,
-  },
-  headerRight: {
-    alignItems: 'flex-end',
-  },
-  headerLabel: {
-    fontSize: 9,
-    color: colors.accent,
-    letterSpacing: 1.5,
-    textTransform: 'uppercase',
-    marginBottom: 2,
-  },
-  headerTitle: {
-    fontSize: 13,
-    fontFamily: 'Helvetica-Bold',
-    color: colors.white,
-  },
-  // Section headings
-  sectionLabel: {
-    fontSize: 8,
-    color: colors.accent,
-    letterSpacing: 2,
-    textTransform: 'uppercase',
-    marginBottom: 8,
-    marginTop: 20,
-  },
-  // Gift chart
-  chartRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 5,
-  },
-  chartLabel: {
-    width: 100,
-    fontSize: 9,
-    color: colors.muted,
-    paddingRight: 8,
-  },
-  chartLabelTop: {
-    width: 100,
-    fontSize: 9,
-    fontFamily: 'Helvetica-Bold',
-    color: colors.white,
-    paddingRight: 8,
-  },
-  chartBarBg: {
-    flex: 1,
-    height: 8,
-    backgroundColor: '#2a3350',
-    borderRadius: 4,
-  },
-  chartBarFill: {
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: colors.accent,
-  },
-  chartBarFillMuted: {
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: '#3a4460',
-  },
-  chartScore: {
-    width: 28,
-    fontSize: 8,
-    color: colors.muted,
-    textAlign: 'right',
-    paddingLeft: 6,
-  },
-  chartScoreTop: {
-    width: 28,
-    fontSize: 8,
-    color: colors.accent,
-    fontFamily: 'Helvetica-Bold',
-    textAlign: 'right',
-    paddingLeft: 6,
-  },
-  // Cards
-  card: {
-    backgroundColor: colors.card,
-    borderRadius: 8,
-    padding: 16,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  cardAccent: {
-    backgroundColor: '#0d2040',
-    borderRadius: 8,
-    padding: 14,
-    marginBottom: 10,
-    borderLeftWidth: 3,
-    borderLeftColor: colors.accent,
-  },
-  // Text styles
-  narrativeText: {
-    fontSize: 10,
-    color: '#d1d5db',
-    lineHeight: 1.7,
-  },
-  giftTitle: {
-    fontSize: 12,
-    fontFamily: 'Helvetica-Bold',
-    color: colors.white,
-    marginBottom: 4,
-  },
-  giftDesc: {
-    fontSize: 9,
-    color: '#d1d5db',
-    lineHeight: 1.6,
-  },
-  synergyText: {
-    fontSize: 9,
-    color: '#d1d5db',
-    fontFamily: 'Helvetica-Oblique',
-    lineHeight: 1.6,
-  },
-  scriptureRef: {
-    fontSize: 10,
-    fontFamily: 'Helvetica-Bold',
-    color: '#60b4d8',
-    marginBottom: 3,
-  },
-  scriptureText: {
-    fontSize: 9,
-    color: '#d1d5db',
-    fontFamily: 'Helvetica-Oblique',
-    lineHeight: 1.6,
-    marginBottom: 10,
-  },
-  weekTitle: {
-    fontSize: 10,
-    fontFamily: 'Helvetica-Bold',
-    color: colors.white,
-    marginBottom: 4,
-    marginTop: 10,
-  },
-  actionItem: {
-    fontSize: 9,
-    color: '#d1d5db',
-    marginBottom: 3,
-    paddingLeft: 10,
-    lineHeight: 1.5,
-  },
-  // Footer
-  footer: {
-    position: 'absolute',
-    bottom: 24,
-    left: 40,
-    right: 40,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingTop: 10,
-    borderTopWidth: 1,
-    borderTopColor: colors.border,
-  },
-  footerText: {
-    fontSize: 7,
-    color: colors.muted,
-  },
-  pageNum: {
-    fontSize: 7,
-    color: colors.muted,
-  },
-});
-
-interface PdfProps {
+interface Ctx {
+  page: ReturnType<PDFDocument['addPage']>;
+  doc: PDFDocument;
+  bold: Awaited<ReturnType<PDFDocument['embedFont']>>;
+  regular: Awaited<ReturnType<PDFDocument['embedFont']>>;
+  italic: Awaited<ReturnType<PDFDocument['embedFont']>>;
+  y: number;
   firstName: string;
-  results: AIResults;
-  allScores: GiftScores;
 }
 
-function GiftsPdf({ firstName, results, allScores }: PdfProps) {
-  const sorted = (Object.entries(allScores) as [GiftName, number][]).sort((a, b) => b[1] - a[1]);
-  const maxScore = sorted[0]?.[1] || 1;
-  const top3 = new Set(sorted.slice(0, 3).map(([g]) => g));
-  const BAR_MAX_WIDTH = 200;
+function drawHeader(ctx: Ctx) {
+  const { page, bold, regular, firstName } = ctx;
+  // White background
+  page.drawRectangle({ x: 0, y: PAGE_H - 70, width: PAGE_W, height: 70, color: WHITE });
+  // Accent bar
+  page.drawRectangle({ x: 0, y: PAGE_H - 73, width: PAGE_W, height: 3, color: ACCENT });
+  // Brand
+  page.drawText('3Nails.ai', { x: MARGIN, y: PAGE_H - 30, size: 18, font: bold, color: DARK });
+  page.drawText('Make Heaven Crowded  ·  findyourgifts.ai', { x: MARGIN, y: PAGE_H - 48, size: 9, font: regular, color: LIGHT });
+  // Report label right
+  const label = `${firstName ? `${firstName}'s ` : ''}Spiritual Gifts Report`;
+  const labelW = bold.widthOfTextAtSize(label, 11);
+  page.drawText(label, { x: PAGE_W - MARGIN - labelW, y: PAGE_H - 35, size: 11, font: bold, color: DARK });
+  ctx.y = PAGE_H - 90;
+}
 
-  return (
-    <Document title={`${firstName ? `${firstName}'s` : 'Your'} Spiritual Gifts Report`} author="3Nails.ai">
-      {/* Page 1: Profile + Narrative + Gifts */}
-      <Page size="A4" style={styles.page}>
-        {/* Header */}
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.brandName}>3Nails.ai</Text>
-            <Text style={styles.brandTagline}>Make Heaven Crowded · findyourgifts.ai</Text>
-          </View>
-          <View style={styles.headerRight}>
-            <Text style={styles.headerLabel}>Spiritual Gifts Report</Text>
-            <Text style={styles.headerTitle}>{firstName ? `${firstName}'s Profile` : 'Your Profile'}</Text>
-          </View>
-        </View>
+function drawFooter(ctx: Ctx, pageNum: number, total: number) {
+  const { page, regular } = ctx;
+  page.drawRectangle({ x: 0, y: 0, width: PAGE_W, height: 32, color: WHITE });
+  page.drawRectangle({ x: 0, y: 31, width: PAGE_W, height: 1, color: RULE });
+  page.drawText('3Nails.ai  ·  findyourgifts.ai  ·  Make Heaven Crowded', { x: MARGIN, y: 10, size: 7, font: regular, color: LIGHT });
+  const pg = `${pageNum} / ${total}`;
+  const pgW = regular.widthOfTextAtSize(pg, 7);
+  page.drawText(pg, { x: PAGE_W - MARGIN - pgW, y: 10, size: 7, font: regular, color: LIGHT });
+}
 
-        {/* Gift Chart */}
-        <Text style={styles.sectionLabel}>Your Full Gift Profile</Text>
-        <View style={styles.card}>
-          {sorted.map(([gift, score]) => {
-            const isTop = top3.has(gift);
-            const barWidth = Math.max(4, (score / maxScore) * BAR_MAX_WIDTH);
-            return (
-              <View key={gift} style={styles.chartRow}>
-                <Text style={isTop ? styles.chartLabelTop : styles.chartLabel}>{gift}</Text>
-                <View style={styles.chartBarBg}>
-                  <View style={[isTop ? styles.chartBarFill : styles.chartBarFillMuted, { width: barWidth }]} />
-                </View>
-                <Text style={isTop ? styles.chartScoreTop : styles.chartScore}>{score}</Text>
-              </View>
-            );
-          })}
-        </View>
+function sectionLabel(ctx: Ctx, text: string) {
+  ctx.y -= 18;
+  ctx.page.drawText(text.toUpperCase(), { x: MARGIN, y: ctx.y, size: 8, font: ctx.bold, color: ACCENT });
+  ctx.y -= 6;
+  ctx.page.drawRectangle({ x: MARGIN, y: ctx.y, width: CONTENT_W, height: 1, color: RULE });
+  ctx.y -= 10;
+}
 
-        {/* Narrative */}
-        <Text style={styles.sectionLabel}>Your Story</Text>
-        <View style={styles.card}>
-          <Text style={styles.narrativeText}>{results.narrative}</Text>
-        </View>
+function wrapText(text: string, font: Awaited<ReturnType<PDFDocument['embedFont']>>, size: number, maxW: number): string[] {
+  const words = text.split(' ');
+  const lines: string[] = [];
+  let line = '';
+  for (const word of words) {
+    const test = line ? `${line} ${word}` : word;
+    if (font.widthOfTextAtSize(test, size) > maxW && line) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = test;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
 
-        {/* Top Gifts */}
-        <Text style={styles.sectionLabel}>Your Gifts at Work</Text>
-        {results.topGifts.map((g, i) => (
-          <View key={i} style={styles.card}>
-            <Text style={styles.giftTitle}>{i + 1}. {g.name}</Text>
-            <Text style={styles.giftDesc}>{g.description}</Text>
-          </View>
-        ))}
+function drawWrappedText(ctx: Ctx, text: string, size: number, color: typeof DARK, indent = 0, lineGap = 4): number {
+  const lines = wrapText(text, ctx.regular, size, CONTENT_W - indent);
+  for (const line of lines) {
+    if (ctx.y < 60) return ctx.y;
+    ctx.page.drawText(line, { x: MARGIN + indent, y: ctx.y, size, font: ctx.regular, color });
+    ctx.y -= size + lineGap;
+  }
+  return ctx.y;
+}
 
-        {/* Synergy */}
-        {results.giftSynergy && (
-          <View style={styles.cardAccent}>
-            <Text style={styles.synergyText}>{results.giftSynergy}</Text>
-          </View>
-        )}
-
-        {/* Footer */}
-        <View style={styles.footer} fixed>
-          <Text style={styles.footerText}>3Nails.ai · findyourgifts.ai · Make Heaven Crowded</Text>
-          <Text style={styles.pageNum} render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`} />
-        </View>
-      </Page>
-
-      {/* Page 2: Shadow Side + Scriptures + Action Plan */}
-      <Page size="A4" style={styles.page}>
-        {/* Header repeat */}
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.brandName}>3Nails.ai</Text>
-            <Text style={styles.brandTagline}>Make Heaven Crowded · findyourgifts.ai</Text>
-          </View>
-          <View style={styles.headerRight}>
-            <Text style={styles.headerLabel}>Spiritual Gifts Report</Text>
-            <Text style={styles.headerTitle}>{firstName ? `${firstName}'s Profile` : 'Your Profile'}</Text>
-          </View>
-        </View>
-
-        {/* Shadow Side */}
-        <Text style={styles.sectionLabel}>Your Shadow Side</Text>
-        <View style={styles.card}>
-          <Text style={styles.narrativeText}>{results.shadowSide}</Text>
-        </View>
-
-        {/* Scriptures */}
-        {results.scriptures?.length > 0 && (
-          <>
-            <Text style={styles.sectionLabel}>Scriptures for Your Profile</Text>
-            <View style={styles.card}>
-              {results.scriptures.map((s, i) => (
-                <View key={i}>
-                  <Text style={styles.scriptureRef}>{s.reference}</Text>
-                  <Text style={styles.scriptureText}>{s.text}</Text>
-                </View>
-              ))}
-            </View>
-          </>
-        )}
-
-        {/* 30-Day Action Plan */}
-        {results.actionPlan?.length > 0 && (
-          <>
-            <Text style={styles.sectionLabel}>Your 30-Day Action Plan</Text>
-            <View style={styles.card}>
-              {results.actionPlan.map((week) => (
-                <View key={week.week}>
-                  <Text style={styles.weekTitle}>Week {week.week}: {week.theme}</Text>
-                  {week.actions.map((action, i) => (
-                    <Text key={i} style={styles.actionItem}>• {action}</Text>
-                  ))}
-                </View>
-              ))}
-            </View>
-          </>
-        )}
-
-        {/* Footer */}
-        <View style={styles.footer} fixed>
-          <Text style={styles.footerText}>3Nails.ai · findyourgifts.ai · Make Heaven Crowded</Text>
-          <Text style={styles.pageNum} render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`} />
-        </View>
-      </Page>
-    </Document>
-  );
+function drawBoldText(ctx: Ctx, text: string, size: number, color: typeof DARK) {
+  if (ctx.y < 60) return;
+  const lines = wrapText(text, ctx.bold, size, CONTENT_W);
+  for (const line of lines) {
+    ctx.page.drawText(line, { x: MARGIN, y: ctx.y, size, font: ctx.bold, color });
+    ctx.y -= size + 4;
+  }
 }
 
 export async function generateGiftsPdf(firstName: string, results: AIResults, allScores: GiftScores): Promise<Buffer> {
-  const element = React.createElement(GiftsPdf, { firstName, results, allScores });
-  return await renderToBuffer(element as React.ReactElement);
+  const doc = await PDFDocument.create();
+  const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+  const regular = await doc.embedFont(StandardFonts.Helvetica);
+  const italic = await doc.embedFont(StandardFonts.HelveticaOblique);
+
+  const sorted = (Object.entries(allScores) as [GiftName, number][]).sort((a, b) => b[1] - a[1]);
+  const maxScore = sorted[0]?.[1] || 1;
+  const top3 = new Set(sorted.slice(0, 3).map(([g]) => g));
+
+  // ── PAGE 1 ──
+  const p1 = doc.addPage([PAGE_W, PAGE_H]);
+  p1.drawRectangle({ x: 0, y: 0, width: PAGE_W, height: PAGE_H, color: WHITE });
+  const ctx: Ctx = { page: p1, doc, bold, regular, italic, y: PAGE_H - 90, firstName };
+  drawHeader(ctx);
+
+  // Gift chart
+  sectionLabel(ctx, 'Your Full Gift Profile');
+  const BAR_MAX = CONTENT_W - 130;
+  for (const [gift, score] of sorted) {
+    if (ctx.y < 60) break;
+    const isTop = top3.has(gift);
+    const barW = Math.max(3, (score / maxScore) * BAR_MAX);
+    const color = isTop ? DARK : MID;
+    ctx.page.drawText(gift, { x: MARGIN, y: ctx.y, size: isTop ? 9 : 8, font: isTop ? bold : regular, color });
+    ctx.page.drawRectangle({ x: MARGIN + 110, y: ctx.y - 1, width: BAR_MAX, height: 7, color: BAR_BG });
+    ctx.page.drawRectangle({ x: MARGIN + 110, y: ctx.y - 1, width: barW, height: 7, color: isTop ? ACCENT : rgb(0.75, 0.75, 0.75) });
+    ctx.page.drawText(`${score}`, { x: MARGIN + 110 + BAR_MAX + 6, y: ctx.y, size: 8, font: isTop ? bold : regular, color: isTop ? ACCENT : LIGHT });
+    ctx.y -= 14;
+  }
+
+  // Narrative
+  ctx.y -= 4;
+  sectionLabel(ctx, 'Your Story');
+  drawWrappedText(ctx, results.narrative, 9.5, DARK, 0, 5);
+
+  // Top gifts
+  ctx.y -= 4;
+  sectionLabel(ctx, 'Your Gifts at Work');
+  for (let i = 0; i < results.topGifts.length; i++) {
+    const g = results.topGifts[i];
+    if (ctx.y < 80) break;
+    drawBoldText(ctx, `${i + 1}. ${g.name}`, 10, DARK);
+    drawWrappedText(ctx, g.description, 9, MID, 12, 4);
+    ctx.y -= 6;
+  }
+
+  // Synergy
+  if (results.giftSynergy && ctx.y > 80) {
+    ctx.page.drawRectangle({ x: MARGIN, y: ctx.y - 4, width: 3, height: 36, color: ACCENT });
+    drawWrappedText(ctx, results.giftSynergy, 9, MID, 10, 5);
+  }
+
+  drawFooter(ctx, 1, 2);
+
+  // ── PAGE 2 ──
+  const p2 = doc.addPage([PAGE_W, PAGE_H]);
+  p2.drawRectangle({ x: 0, y: 0, width: PAGE_W, height: PAGE_H, color: WHITE });
+  ctx.page = p2;
+  ctx.y = PAGE_H - 90;
+  drawHeader(ctx);
+
+  // Shadow side
+  sectionLabel(ctx, 'Your Shadow Side');
+  drawWrappedText(ctx, results.shadowSide, 9.5, DARK, 0, 5);
+
+  // Scriptures
+  if (results.scriptures?.length) {
+    ctx.y -= 4;
+    sectionLabel(ctx, 'Scriptures for Your Profile');
+    for (const s of results.scriptures) {
+      if (ctx.y < 80) break;
+      ctx.page.drawText(s.reference, { x: MARGIN, y: ctx.y, size: 10, font: bold, color: ACCENT });
+      ctx.y -= 14;
+      const ilines = wrapText(s.text, italic, 9, CONTENT_W);
+      for (const line of ilines) {
+        if (ctx.y < 60) break;
+        ctx.page.drawText(line, { x: MARGIN, y: ctx.y, size: 9, font: italic, color: MID });
+        ctx.y -= 13;
+      }
+      ctx.y -= 6;
+    }
+  }
+
+  // Action plan
+  if (results.actionPlan?.length) {
+    ctx.y -= 4;
+    sectionLabel(ctx, 'Your 30-Day Action Plan');
+    for (const week of results.actionPlan) {
+      if (ctx.y < 80) break;
+      drawBoldText(ctx, `Week ${week.week}: ${week.theme}`, 10, DARK);
+      for (const action of week.actions) {
+        if (ctx.y < 60) break;
+        drawWrappedText(ctx, `• ${action}`, 9, MID, 8, 4);
+      }
+      ctx.y -= 6;
+    }
+  }
+
+  drawFooter(ctx, 2, 2);
+
+  const bytes = await doc.save();
+  return Buffer.from(bytes);
 }

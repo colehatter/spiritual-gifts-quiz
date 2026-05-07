@@ -17,6 +17,7 @@ function FriendsQuizApp() {
   const [aiResults, setAiResults] = useState<AIResults | null>(null);
   const [paidQuestions, setPaidQuestions] = useState<Question[]>([]);
   const [pendingEmail, setPendingEmail] = useState<string | null>(null);
+  const [pendingScores, setPendingScores] = useState<GiftScores | null>(null);
 
   const handleStart = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,6 +28,7 @@ function FriendsQuizApp() {
 
   const handleScreeningComplete = (scores: GiftScores) => {
     setFreeScores(scores);
+    setPendingScores(scores);
     setPhase('pre-paid');
   };
 
@@ -127,7 +129,7 @@ function FriendsQuizApp() {
                 The rest of the questions will be personally and uniquely generated for you based on your previous answers.
               </p>
               <button
-                onClick={() => handleUnlockPaid()}
+                onClick={() => handleUnlockPaid(pendingScores || freeScores)}
                 className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200"
               >
                 Let&apos;s Go →
