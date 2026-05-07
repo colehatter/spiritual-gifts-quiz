@@ -4,17 +4,19 @@ export default function Hero() {
   return (
     <section style={{ maxWidth: 760, margin: '0 auto', padding: '36px 20px 28px', textAlign: 'center' }}>
       <div style={{ display: 'inline-block', border: '2px solid #22C55E', borderRadius: 999, padding: '10px 24px', fontSize: '1rem', fontWeight: 600, color: '#22C55E', marginBottom: 20 }}>
-        Free Assessment · No Sign-Up Required
+        Free Assessment · Takes 10 Minutes
       </div>
       <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.1rem)', fontWeight: 900, lineHeight: 1.15, marginBottom: 20, color: '#111111' }}>
-        You don&apos;t feel lost — you feel out of place.{' '}
-        <span style={{ color: '#22C55E' }}>This shows you where you belong.</span>
+        You&apos;re not lost — you just haven&apos;t seen how you&apos;re wired yet.
       </h1>
-      <p style={{ fontSize: '1.25rem', color: '#111111', lineHeight: 1.7, maxWidth: 600, margin: '0 auto 28px' }}>
+      <p style={{ fontSize: '1.15rem', color: '#555555', lineHeight: 1.7, maxWidth: 600, margin: '0 auto 8px' }}>
         In minutes, discover your God-given gifts — and why some things feel natural while others don&apos;t.
       </p>
+      <p style={{ fontSize: '1rem', color: '#888888', fontStyle: 'italic', marginBottom: 28 }}>
+        Designed to feel surprisingly personal.
+      </p>
       <Link
-        href="/"
+        href="/start"
         style={{
           display: 'inline-block',
           backgroundColor: '#22C55E',
@@ -36,9 +38,6 @@ export default function Hero() {
           <span key={t} style={{ fontSize: '0.875rem', color: '#555555', fontWeight: 500 }}>{t}</span>
         ))}
       </div>
-      <p style={{ fontSize: '0.9rem', color: '#888888', marginTop: 12, fontStyle: 'italic' }}>
-        Most people discover they&apos;ve been serving in the wrong place.
-      </p>
     </section>
   );
 }

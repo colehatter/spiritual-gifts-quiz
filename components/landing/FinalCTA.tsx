@@ -8,7 +8,7 @@ export default function FinalCTA() {
       </h2>
       <p style={{ color: '#555555', marginBottom: 28, fontSize: '1rem' }}>Your purpose is already inside you. It&apos;s time to be shown it.</p>
       <Link
-        href="/"
+        href="/start"
         style={{
           display: 'inline-block',
           backgroundColor: '#22C55E',

@@ -10,11 +10,11 @@ export default function Differentiation() {
             This shows you where you actually belong — and what to do next. Every person is unique, which is why every gift result is unique to you.
           </p>
         </div>
-        <p style={{ fontSize: '1.05rem', color: '#444444', lineHeight: 1.75, marginBottom: 20 }}>
-          The only Spiritual Gifts assessment that uses live AI to write your results — personalized to you, grounded in Scripture.
+        <p style={{ fontSize: '1.05rem', color: '#444444', lineHeight: 1.75, marginBottom: 16 }}>
+          The only Spiritual Gifts assessment that uses live AI to write your results — personalized to you, grounded in Scripture. Every person is unique, which is why every gift result is unique to you. The days of generic results are over. You weren&apos;t made to fit in a box — a test shouldn&apos;t put you in one either.
         </p>
-        <p style={{ fontSize: '1rem', color: '#555555', fontStyle: 'italic', lineHeight: 1.7 }}>
-          You weren&apos;t made to fit in a box. A test shouldn&apos;t put you in one either.
+        <p style={{ fontSize: '1.05rem', fontWeight: 700, color: '#111111', lineHeight: 1.7 }}>
+          Discover the unique way God designed YOU to show up.
         </p>
       </div>
     </section>
