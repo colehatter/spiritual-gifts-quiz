@@ -3,7 +3,7 @@ import { google } from 'googleapis';
 import { GiftScores, GiftName, AIResults } from '@/types/quiz';
 import { generateGiftsPdf } from '@/lib/generatePdf';
 
-const HUBSPOT_TOKEN = '${HUBSPOT_TOKEN_PLACEHOLDER}';
+const HUBSPOT_TOKEN = process.env.HUBSPOT_TOKEN || '';
 
 function getOAuthClient() {
   const client = new google.auth.OAuth2(
