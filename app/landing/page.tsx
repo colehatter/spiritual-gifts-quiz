@@ -2,6 +2,7 @@ import Hero from '@/components/landing/Hero';
 import MidCTA from '@/components/landing/MidCTA';
 import VideoPlaceholder from '@/components/landing/VideoPlaceholder';
 import WhatYouGet from '@/components/landing/WhatYouGet';
+import FinallyUnderstood from '@/components/landing/FinallyUnderstood';
 import HowItWorks from '@/components/landing/HowItWorks';
 import Differentiation from '@/components/landing/Differentiation';
 import Scripture from '@/components/landing/Scripture';
@@ -36,10 +37,10 @@ export default function LandingPage() {
     <div style={{ backgroundColor: '#FFFFFF', color: '#111111', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif', minHeight: '100vh' }}>
       <Hero />
       <VideoPlaceholder />
-      <MidCTA />
       <HR />
       <WhatYouGet />
       <HR />
+      <FinallyUnderstood />
       <HowItWorks />
       <HR />
       <Differentiation />

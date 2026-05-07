@@ -6,8 +6,8 @@ export default function Hero() {
       <div style={{ display: 'inline-block', border: '2px solid #22C55E', borderRadius: 999, padding: '10px 24px', fontSize: '1rem', fontWeight: 600, color: '#22C55E', marginBottom: 20 }}>
         Free Assessment · No Sign-Up Required
       </div>
-      <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.1rem)', fontWeight: 900, lineHeight: 1.15, marginBottom: 20, color: '#111111' }}>
-        You&apos;re not lost — you just haven&apos;t seen how you&apos;re wired yet.
+      <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.1rem)', fontWeight: 900, lineHeight: 1.2, marginBottom: 20, color: '#111111', maxWidth: 640, margin: '0 auto 20px' }}>
+        You&apos;re not lost — you just haven&apos;t seen{' '}<span style={{ whiteSpace: 'nowrap' }}>how you&apos;re wired yet.</span>
       </h1>
       <p style={{ fontSize: '1.25rem', color: '#111111', lineHeight: 1.7, maxWidth: 620, margin: '0 auto 16px' }}>
         In minutes, discover your God-given gifts — and why some things feel natural while others don&apos;t. This quiz will show you where you belong.
