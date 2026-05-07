@@ -28,6 +28,30 @@ function mergeScores(a?: GiftScores, b?: GiftScores): GiftScores {
 
 export default function AiResults({ results, firstName, email, freeScores, paidScores, emailSent, onEmailSubmit }: Props) {
   const [copied, setCopied] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+
+  const handleDownloadPDF = async () => {
+    setDownloading(true);
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const html2pdf = (await import('html2pdf.js')).default as any;
+      const element = document.getElementById('results-content');
+      if (!element) return;
+      await html2pdf()
+        .set({
+          margin: 10,
+          filename: `${firstName || 'My'}-Spiritual-Gifts-Report.pdf`,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        })
+        .from(element)
+        .save();
+    } catch (e) {
+      console.error('PDF error:', e);
+    }
+    setDownloading(false);
+  };
   const [topEmail, setTopEmail] = useState(email || '');
   const [topEmailSent, setTopEmailSent] = useState(!!email);
   const [topEmailSending, setTopEmailSending] = useState(false);
@@ -74,7 +98,7 @@ export default function AiResults({ results, firstName, email, freeScores, paidS
   }
 
   return (
-    <div className="animate-slide-up space-y-8 pb-16">
+    <div className="animate-slide-up space-y-8 pb-16" id="results-content">
 
       {/* Header */}
       <div className="text-center">
@@ -258,16 +282,26 @@ export default function AiResults({ results, firstName, email, freeScores, paidS
         </div>
       )}
 
-      {/* Share Button */}
-      <div className="pt-2">
+      {/* Download + Share Buttons */}
+      <div className="pt-2 flex gap-3">
+        <button
+          onClick={handleDownloadPDF}
+          disabled={downloading}
+          className="flex-1 bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          {downloading ? 'Generating...' : 'Download PDF'}
+        </button>
         <button
           onClick={handleShare}
-          className="w-full border border-white/20 text-white/70 font-semibold py-3 px-6 rounded-xl hover:border-white/40 hover:text-white transition-all flex items-center justify-center gap-2"
+          className="flex-1 border border-white/20 text-white/70 font-semibold py-3 px-4 rounded-xl hover:border-white/40 hover:text-white transition-all flex items-center justify-center gap-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
           </svg>
-          {copied ? 'Link Copied!' : 'Share This Quiz'}
+          {copied ? 'Copied!' : 'Share Quiz'}
         </button>
       </div>
 
