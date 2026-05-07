@@ -1,43 +1,24 @@
-import Link from 'next/link';
-
 export default function Hero() {
   return (
-    <section style={{ maxWidth: 760, margin: '0 auto', padding: '36px 20px 28px', textAlign: 'center' }}>
-      <div style={{ display: 'inline-block', border: '2px solid #22C55E', borderRadius: 999, padding: '10px 24px', fontSize: '1rem', fontWeight: 600, color: '#22C55E', marginBottom: 20 }}>
+    <section style={{ background: '#FFFFFF', padding: '4rem 2rem', textAlign: 'center' }}>
+      <div style={{ display: 'inline-block', padding: '8px 20px', border: '2px solid #22C55E', backgroundColor: '#F0FDF4', color: '#22C55E', borderRadius: 20, marginBottom: '2rem' }}>
         Free Assessment · Takes 10 Minutes
       </div>
-      <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.1rem)', fontWeight: 900, lineHeight: 1.15, marginBottom: 20, color: '#111111' }}>
+      <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, color: '#111111', margin: '0 0 1rem' }}>
         You&apos;re not lost — you just haven&apos;t seen how you&apos;re wired yet.
       </h1>
-      <p style={{ fontSize: '1.15rem', color: '#555555', lineHeight: 1.7, maxWidth: 600, margin: '0 auto 8px' }}>
+      <p style={{ fontSize: '1.2rem', color: '#111111', fontWeight: 'bold', margin: '0 0 1rem' }}>
         In minutes, discover your God-given gifts — and why some things feel natural while others don&apos;t.
       </p>
-      <p style={{ fontSize: '1rem', color: '#888888', fontStyle: 'italic', marginBottom: 28 }}>
+      <p style={{ fontSize: '1rem', color: '#333333', fontStyle: 'italic', margin: '0 0 2rem' }}>
         Designed to feel surprisingly personal.
       </p>
-      <Link
-        href="/start"
-        style={{
-          display: 'inline-block',
-          backgroundColor: '#22C55E',
-          color: '#FFFFFF',
-          fontWeight: 700,
-          fontSize: '1.125rem',
-          padding: '16px 44px',
-          borderRadius: 12,
-          textDecoration: 'none',
-          width: '100%',
-          maxWidth: 360,
-          boxSizing: 'border-box',
-        }}
-      >
+      <a style={{ display: 'inline-block', padding: '18px 44px', backgroundColor: '#22C55E', color: '#FFFFFF', borderRadius: 12, fontSize: '1.15rem', textDecoration: 'none' }} href="/start">
         Find My Gifts → Free
-      </Link>
-      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '10px 20px', marginTop: 16 }}>
-        {['✓ Free', '✓ Takes 10 minutes', '✓ No sign-up required'].map(t => (
-          <span key={t} style={{ fontSize: '0.875rem', color: '#555555', fontWeight: 500 }}>{t}</span>
-        ))}
-      </div>
+      </a>
+      <p style={{ color: '#777777', fontSize: '0.8rem', marginTop: '1rem' }}>
+        ✓ Free  ✓ Takes 10 minutes  ✓ No sign-up required
+      </p>
     </section>
   );
 }
