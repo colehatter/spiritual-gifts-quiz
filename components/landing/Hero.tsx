@@ -7,14 +7,16 @@ export default function Hero() {
         Free Assessment · No Sign-Up Required
       </div>
       <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.1rem)', fontWeight: 900, lineHeight: 1.15, marginBottom: 20, color: '#111111' }}>
-        You don&apos;t feel lost — you feel out of place.{' '}
-        <span style={{ color: '#22C55E' }}>This shows you where you belong.</span>
+        You&apos;re not lost — you just haven&apos;t seen how you&apos;re wired yet.
       </h1>
-      <p style={{ fontSize: '1.25rem', color: '#111111', lineHeight: 1.7, maxWidth: 600, margin: '0 auto 28px' }}>
-        In minutes, discover your God-given gifts — and why some things feel natural while others don&apos;t.
+      <p style={{ fontSize: '1.25rem', color: '#111111', lineHeight: 1.7, maxWidth: 620, margin: '0 auto 16px' }}>
+        In minutes, discover your God-given gifts — and why some things feel natural while others don&apos;t. This quiz will show you where you belong.
+      </p>
+      <p style={{ fontSize: '1.15rem', color: '#22C55E', fontWeight: 700, marginBottom: 28 }}>
+        Designed to feel mindblowingly accurate.
       </p>
       <Link
-        href="/"
+        href="/start"
         style={{
           display: 'inline-block',
           backgroundColor: '#22C55E',
@@ -31,9 +33,9 @@ export default function Hero() {
       >
         Find My Gifts → Free
       </Link>
-      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '10px 20px', marginTop: 16 }}>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '10px 24px', marginTop: 18 }}>
         {['✓ Free', '✓ Takes 10 minutes', '✓ No sign-up required'].map(t => (
-          <span key={t} style={{ fontSize: '0.875rem', color: '#555555', fontWeight: 500 }}>{t}</span>
+          <span key={t} style={{ fontSize: '1rem', color: '#555555', fontWeight: 600 }}>{t}</span>
         ))}
       </div>
       <p style={{ fontSize: '0.9rem', color: '#888888', marginTop: 12, fontStyle: 'italic' }}>

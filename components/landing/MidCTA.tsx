@@ -4,7 +4,7 @@ export default function MidCTA() {
   return (
     <div style={{ textAlign: 'center', padding: '28px 20px' }}>
       <Link
-        href="/"
+        href="/start"
         style={{
           display: 'inline-block',
           backgroundColor: '#22C55E',
