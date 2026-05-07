@@ -4,7 +4,6 @@ import { useState, Suspense } from 'react';
 import { GiftScores, QuizPhase, UserInfo, AIResults, Question } from '@/types/quiz';
 import { initialScores } from '@/lib/scoring';
 import QuizScreen from '@/components/QuizScreen';
-import FreeResults from '@/components/FreeResults';
 import PaidQuestions from '@/components/PaidQuestions';
 import AiResults from '@/components/AiResults';
 import Logo from '@/components/Logo';
@@ -28,16 +27,16 @@ function FriendsQuizApp() {
 
   const handleScreeningComplete = (scores: GiftScores) => {
     setFreeScores(scores);
-    setPhase('free-results');
+    handleUnlockPaid(scores);
   };
 
-  const handleUnlockPaid = async () => {
-    // No paywall — go straight to paid questions
+  const handleUnlockPaid = async (scores?: GiftScores) => {
+    const scoresArg = scores || freeScores;
     try {
       const res = await fetch('/api/select-questions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ scores: freeScores }),
+        body: JSON.stringify({ scores: scoresArg }),
       });
       const data = await res.json();
       const questions = data.questions || [];
@@ -115,13 +114,7 @@ function FriendsQuizApp() {
         {phase === 'screening' && (
           <QuizScreen onComplete={handleScreeningComplete} />
         )}
-        {phase === 'free-results' && (
-          <FreeResults
-            scores={freeScores}
-            firstName={userInfo?.firstName || ''}
-            onUnlock={handleUnlockPaid}
-          />
-        )}
+
         {phase === 'paid-questions' && paidQuestions.length > 0 && (
           <PaidQuestions
             questions={paidQuestions}
