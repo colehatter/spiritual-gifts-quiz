@@ -27,7 +27,7 @@ function FriendsQuizApp() {
 
   const handleScreeningComplete = (scores: GiftScores) => {
     setFreeScores(scores);
-    handleUnlockPaid(scores);
+    setPhase('pre-paid');
   };
 
   const handleUnlockPaid = async (scores?: GiftScores) => {
@@ -113,6 +113,27 @@ function FriendsQuizApp() {
         )}
         {phase === 'screening' && (
           <QuizScreen onComplete={handleScreeningComplete} />
+        )}
+
+        {phase === 'pre-paid' && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+            <div className="relative bg-[#0d1220] border border-[#34C6F4]/40 rounded-2xl p-8 max-w-sm w-full text-center space-y-6 shadow-2xl">
+              <div className="text-5xl">✨</div>
+              <h2 className="text-2xl font-bold text-white leading-snug">
+                This is where things get exciting.
+              </h2>
+              <p className="text-white/70 text-lg leading-relaxed">
+                The rest of the questions will be personally and uniquely generated for you based on your previous answers.
+              </p>
+              <button
+                onClick={() => handleUnlockPaid()}
+                className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200"
+              >
+                Let&apos;s Go →
+              </button>
+            </div>
+          </div>
         )}
 
         {phase === 'paid-questions' && paidQuestions.length > 0 && (

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { google } from 'googleapis';
 import { GiftScores, GiftName, AIResults } from '@/types/quiz';
+import { generateGiftsPdf } from '@/lib/generatePdf';
 
 const HUBSPOT_TOKEN = '${HUBSPOT_TOKEN_PLACEHOLDER}';
 
@@ -118,23 +119,63 @@ function buildEmailHtml(firstName: string, results: AIResults, topGifts: GiftNam
 </body></html>`;
 }
 
-async function sendEmail(to: string, firstName: string, html: string): Promise<boolean> {
+async function sendEmail(to: string, firstName: string, html: string, allScores: GiftScores, results: AIResults): Promise<boolean> {
   try {
     const auth = getOAuthClient();
     const gmail = google.gmail({ version: 'v1', auth });
 
     const subject = `${firstName ? `${firstName}, your` : 'Your'} Spiritual Gifts Report`;
-    const mimeMessage = [
-      `From: 3Nails.ai <support@3nails.ai>`,
-      `To: ${to}`,
-      `Subject: ${subject}`,
-      `MIME-Version: 1.0`,
-      `Content-Type: text/html; charset=UTF-8`,
-      ``,
-      html,
-    ].join('\r\n');
+    const boundary = `boundary_${Date.now()}_${Math.random().toString(36).slice(2)}`;
 
-    // Correct base64url encoding (critical — standard base64 causes silent delivery failure)
+    // Generate PDF
+    let pdfBuffer: Buffer | null = null;
+    try {
+      pdfBuffer = await generateGiftsPdf(firstName, results, allScores);
+    } catch (pdfErr) {
+      console.error('PDF generation failed, sending without attachment:', pdfErr);
+    }
+
+    let mimeMessage: string;
+
+    if (pdfBuffer) {
+      const pdfBase64 = pdfBuffer.toString('base64');
+      const pdfFilename = `${firstName ? `${firstName}-` : ''}Spiritual-Gifts-Report.pdf`;
+
+      mimeMessage = [
+        `From: 3Nails.ai <support@3nails.ai>`,
+        `To: ${to}`,
+        `Subject: ${subject}`,
+        `MIME-Version: 1.0`,
+        `Content-Type: multipart/mixed; boundary="${boundary}"`,
+        ``,
+        `--${boundary}`,
+        `Content-Type: text/html; charset=UTF-8`,
+        `Content-Transfer-Encoding: 7bit`,
+        ``,
+        html,
+        ``,
+        `--${boundary}`,
+        `Content-Type: application/pdf; name="${pdfFilename}"`,
+        `Content-Transfer-Encoding: base64`,
+        `Content-Disposition: attachment; filename="${pdfFilename}"`,
+        ``,
+        pdfBase64,
+        ``,
+        `--${boundary}--`,
+      ].join('\r\n');
+    } else {
+      // Fallback: HTML only
+      mimeMessage = [
+        `From: 3Nails.ai <support@3nails.ai>`,
+        `To: ${to}`,
+        `Subject: ${subject}`,
+        `MIME-Version: 1.0`,
+        `Content-Type: text/html; charset=UTF-8`,
+        ``,
+        html,
+      ].join('\r\n');
+    }
+
     const encoded = Buffer.from(mimeMessage)
       .toString('base64')
       .replace(/\+/g, '-')
@@ -146,7 +187,7 @@ async function sendEmail(to: string, firstName: string, html: string): Promise<b
       requestBody: { raw: encoded },
     });
 
-    console.log('Gmail send success, id:', result.data.id);
+    console.log('Gmail send success, id:', result.data.id, '| PDF attached:', !!pdfBuffer);
     return true;
   } catch (e: unknown) {
     const err = e as { response?: { data?: unknown }; message?: string };
@@ -169,7 +210,7 @@ export async function POST(req: NextRequest) {
     // HubSpot and email — both fully awaited before returning
     await Promise.all([
       createHubSpotContact(email, firstName, topGifts, source || 'quiz'),
-      sendEmail(email, firstName, buildEmailHtml(firstName, results, topGifts, combined)),
+      sendEmail(email, firstName, buildEmailHtml(firstName, results, topGifts, combined), combined, results),
     ]);
 
     return NextResponse.json({ success: true });

@@ -56,6 +56,7 @@ export type QuizPhase =
   | 'email-capture'
   | 'screening'
   | 'free-results'
+  | 'pre-paid'
   | 'payment'
   | 'paid-questions'
   | 'ai-results';
