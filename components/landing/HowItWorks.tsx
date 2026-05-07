@@ -5,7 +5,7 @@ export default function HowItWorks() {
         Simple. Fast. Mind blowingly accurate.
       </h2>
       <p style={{ textAlign: 'center', color: '#555555', marginBottom: 28, fontSize: '1rem' }}>Built to feel personal — not generic.</p>
-      <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(3, 1fr)' }}>
+      <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
         {[
           { step: '1', title: 'Answer honest questions', body: "Not what you wish were true — what's actually true. The quiz surfaces your real patterns, not your aspirations." },
           { step: '2', title: 'Live AI analyzes your answers', body: 'Our AI reads your full response set and writes a result just for you. No template. No copy-paste. Yours alone.' },
