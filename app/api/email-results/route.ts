@@ -171,7 +171,7 @@ async function sendEmail(to: string, firstName: string, html: string): Promise<b
   try {
     const subject = `${firstName ? `${firstName}, your` : 'Your'} Spiritual Gifts Report`;
     const rawEmail = [
-      `From: 3Nails.ai <im@3nails.ai>`,
+      `From: 3Nails.ai <support@3nails.ai>`,
       `To: ${to}`,
       `Subject: ${subject}`,
       `MIME-Version: 1.0`,
