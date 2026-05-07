@@ -16,7 +16,7 @@ export default function Hero() {
       <a style={{ display: 'inline-block', padding: '18px 44px', backgroundColor: '#22C55E', color: '#FFFFFF', borderRadius: 12, fontSize: '1.15rem', textDecoration: 'none' }} href="/start">
         Find My Gifts → Free
       </a>
-      <p style={{ color: '#777777', fontSize: '0.8rem', marginTop: '1rem' }}>
+      <p style={{ color: '#555555', fontSize: '1rem', fontWeight: 600, marginTop: '1rem' }}>
         ✓ Free  ✓ Takes 10 minutes  ✓ No sign-up required
       </p>
     </section>
