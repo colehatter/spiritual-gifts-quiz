@@ -1,48 +1,16 @@
-import Link from 'next/link';
-
-// V3 Section 2 — black background, white text
 export default function VideoPlaceholder() {
   return (
-    <section style={{ backgroundColor: '#111111', padding: '64px 20px' }}>
-      <div style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
-        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: '#FFFFFF', marginBottom: 32, lineHeight: 1.2 }}>
-          This WILL explain a lot…
-        </h2>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 32, textAlign: 'left', maxWidth: 520, margin: '0 auto 32px' }}>
-          {[
-            'Why some things feel effortless to you',
-            'Why other roles leave you drained',
-            'Why you might have never quite felt like you fit in',
-          ].map(line => (
-            <p key={line} style={{ margin: 0, color: '#CCCCCC', fontSize: '1.2rem', lineHeight: 1.6 }}>
-              {line}
-            </p>
-          ))}
+    <section style={{ backgroundColor: '#111111', padding: '40px 20px' }}>
+      <div style={{ maxWidth: 800, margin: '0 auto' }}>
+        <div style={{ position: 'relative', paddingBottom: '56.25%', border: '2px solid #22C55E', borderRadius: 16, overflow: 'hidden', backgroundColor: '#1a1a1a' }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ fontSize: '4rem', color: '#22C55E', lineHeight: 1, marginBottom: 12 }}>▶</div>
+            <p style={{ color: '#aaaaaa', fontSize: '1rem', margin: 0 }}>Watch: How to find your calling</p>
+          </div>
         </div>
-
-        <p style={{ color: '#FFFFFF', fontSize: '1.2rem', fontWeight: 700, marginBottom: 8 }}>
-          That feeling isn&apos;t random. It&apos;s a signal.
+        <p style={{ textAlign: 'center', color: '#aaaaaa', marginTop: 16, fontSize: '0.95rem' }}>
+          See how thousands are discovering their God-given purpose
         </p>
-        <p style={{ color: '#AAAAAA', fontSize: '1.05rem', lineHeight: 1.75, marginBottom: 36 }}>
-          You&apos;re not broken. And you&apos;re not behind. You were created a specific way — on purpose. You just haven&apos;t seen it clearly yet.
-        </p>
-
-        <Link
-          href="/start"
-          style={{
-            display: 'inline-block',
-            backgroundColor: '#22C55E',
-            color: '#FFFFFF',
-            fontWeight: 700,
-            fontSize: '1.125rem',
-            padding: '16px 44px',
-            borderRadius: 999,
-            textDecoration: 'none',
-          }}
-        >
-          Find My Gifts Now →
-        </Link>
       </div>
     </section>
   );
