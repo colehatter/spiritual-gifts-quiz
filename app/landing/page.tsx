@@ -53,7 +53,7 @@ export default function LandingPage() {
       <HR />
       <FinalCTA />
       <footer style={{ borderTop: '1px solid #E5E7EB', padding: '28px 20px', textAlign: 'center' }}>
-        <img src="/logo-dark-slogan.png" alt="3Nails.ai" style={{ height: 120, marginBottom: 12, display: 'inline-block' }} />
+        <img src="/logo-transparent.png" alt="3Nails.ai" style={{ height: 80, marginBottom: 12, display: 'inline-block' }} />
         <p style={{ color: '#555555', fontSize: '0.875rem', margin: 0 }}>© 2026 3Nails.ai · Make Heaven Crowded</p>
       </footer>
     </div>
