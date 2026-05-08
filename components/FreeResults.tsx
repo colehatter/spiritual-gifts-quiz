@@ -99,7 +99,7 @@ export default function FreeResults({ scores, firstName, onUnlock }: Props) {
         </div>
 
         <button
-          onClick={() => setShowModal(true)}
+          onClick={onUnlock}
           className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 animate-pulse-glow"
         >
           Get My Full Results — $9.99 →

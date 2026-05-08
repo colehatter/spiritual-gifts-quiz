@@ -119,7 +119,7 @@ function QuizApp() {
     } finally {
       setIsLoadingPaidQuestions(false);
     }
-    setPhase('free-results');
+    setPhase('payment');
   };
 
   const handlePaymentSuccess = () => {
