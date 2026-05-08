@@ -17,10 +17,10 @@ export default function SocialProof() {
   return (
     <section style={{ backgroundColor: '#F9FAFB', padding: 'clamp(2.5rem, 5vw, 4rem) 1.25rem' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <p style={{ fontSize: '1.1rem', color: '#888888', marginBottom: 32, fontStyle: 'italic', textAlign: 'center' }}>
+        <p style={{ fontSize: '1.1rem', color: '#111111', marginBottom: 32, fontStyle: 'italic', textAlign: 'center' }}>
           Thousands are beginning to discover where they truly belong. You might be closer than you think.
         </p>
-        <div style={{ display: 'grid', gap: 20, gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 680, margin: '0 auto' }}>
           {testimonials.map(({ quote, name }) => (
             <div key={name} style={{ backgroundColor: '#FFFFFF', borderRadius: 16, padding: '28px 24px', boxShadow: '0 2px 12px rgba(0,0,0,0.07)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#333333', fontStyle: 'italic', marginBottom: 16 }}>
