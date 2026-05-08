@@ -12,10 +12,13 @@ export default function LandingV3() {
         <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, color: '#111111', margin: '0 0 1rem' }}>
           You&apos;re not lost — you just haven&apos;t seen how you&apos;re wired yet.
         </h1>
-        <p style={{ fontSize: '1.2rem', color: '#111111', fontWeight: 'bold', margin: '0 0 1rem' }}>
+        <p style={{ fontSize: '1.2rem', color: '#111111', fontWeight: 'bold', margin: '0 0 0.5rem' }}>
           In minutes, discover your God-given gifts — and why some things feel natural while others don&apos;t.
         </p>
-        <p style={{ fontSize: '1rem', color: '#333333', fontStyle: 'italic', margin: '0 0 2rem' }}>
+        <p style={{ fontSize: '1.2rem', color: '#111111', fontWeight: 'bold', margin: '0 0 1rem' }}>
+          This quiz will show you where you belong.
+        </p>
+        <p style={{ fontSize: '1.4rem', color: '#333333', fontStyle: 'italic', fontWeight: 600, margin: '0 0 2rem' }}>
           Designed to feel surprisingly personal.
         </p>
         <Link href="/" style={{ display: 'inline-block', padding: '18px 44px', backgroundColor: '#22C55E', color: '#FFFFFF', borderRadius: '12px', fontSize: '1.15rem', textDecoration: 'none' }}>
@@ -29,7 +32,7 @@ export default function LandingV3() {
       {/* SECTION 2 — "FINALLY UNDERSTOOD" */}
       <section style={{ background: '#111111', color: '#FFFFFF', padding: '4rem 2rem', textAlign: 'center' }}>
         <h2 style={{ fontSize: '2.5rem', fontWeight: 900, margin: '0 0 1rem' }}>
-          This might explain a lot…
+          This WILL explain a lot…
         </h2>
         <p style={{ fontSize: '1.2rem', color: '#E5E7EB', margin: '0 0 0.5rem' }}>
           Why some things feel effortless to you
@@ -38,7 +41,7 @@ export default function LandingV3() {
           Why other roles leave you drained
         </p>
         <p style={{ fontSize: '1.2rem', color: '#E5E7EB', margin: '0 0 1rem' }}>
-          Why you&apos;ve never quite felt like you fit
+          Why you might have never quite felt like you fit in
         </p>
         <p style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: '0 0 1rem' }}>
           That feeling isn&apos;t random. It&apos;s a signal.
@@ -59,7 +62,7 @@ export default function LandingV3() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem', margin: '0 auto', maxWidth: '1200px' }}>
           <div style={{ backgroundColor: '#F9FAFB', borderLeft: '4px solid #22C55E', borderRadius: '8px', padding: '20px', textAlign: 'left' }}>
             <p style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: '0 0 0.5rem' }}>
-              🎯 Your top God-given spiritual gifts
+              🎯 Discover the gifts God wired into you — and how these impact your life
             </p>
             <p style={{ fontSize: '1rem', color: '#777777', margin: '0' }}>
               Wired by God, not chosen by you. Finally understand how you&apos;re built.
