@@ -93,7 +93,7 @@ export default function EmailCapture({ onSubmit }: Props) {
       </form>
 
       <div className="mt-8 grid grid-cols-3 gap-4 text-center">
-        {['11 spiritual gifts assessed', '5 min to complete', 'Personalized results'].map(
+        {['11 spiritual gifts assessed', '10 min to complete', 'Personalized results'].map(
           (item) => (
             <div key={item} className="bg-[#1a2035] rounded-xl p-4">
               <p className="text-white/60 text-xs">{item}</p>
