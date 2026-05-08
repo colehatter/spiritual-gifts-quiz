@@ -9,7 +9,7 @@ export default function PrivacyPage() {
       <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>Privacy Policy</h1>
       <p style={{ color: '#666', marginBottom: 32 }}>Last updated: May 8, 2026</p>
 
-      <p>This Privacy Policy describes how 3Nails.ai ("we," "us," or "our") collects, uses, and protects your information when you use findyourgifts.ai (the "Service").</p>
+      <p>This Privacy Policy describes how 3Nails.ai (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) collects, uses, and protects your information when you use findyourgifts.ai (the &quot;Service&quot;).</p>
 
       <h2 style={{ fontSize: 20, fontWeight: 600, marginTop: 32, marginBottom: 8 }}>1. Information We Collect</h2>
       <p>We collect the following information when you use the Service:</p>
@@ -48,7 +48,8 @@ export default function PrivacyPage() {
       <h2 style={{ fontSize: 20, fontWeight: 600, marginTop: 32, marginBottom: 8 }}>7. Your Rights</h2>
       <p>Depending on your location, you may have the right to access, correct, or delete your personal information. To exercise these rights, contact us at support@3nails.ai.</p>
 
-      <h2 style={{ fontSize: 20, fontWeight: 600, marginTop: 32, marginBottom: 8 }}>8. Children's Privacy</h2>
+
+      <h2 style={{ fontSize: 20, fontWeight: 600, marginTop: 32, marginBottom: 8 }}>8. Children&apos;s Privacy</h2>
       <p>The Service is not directed to children under 13. We do not knowingly collect personal information from children under 13.</p>
 
       <h2 style={{ fontSize: 20, fontWeight: 600, marginTop: 32, marginBottom: 8 }}>9. Changes to This Policy</h2>

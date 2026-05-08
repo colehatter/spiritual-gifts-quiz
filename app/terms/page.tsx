@@ -9,7 +9,7 @@ export default function TermsPage() {
       <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>Terms of Service</h1>
       <p style={{ color: '#666', marginBottom: 32 }}>Last updated: May 8, 2026</p>
 
-      <p>By accessing or using findyourgifts.ai (the "Service"), operated by 3Nails.ai ("we," "us," or "our"), you agree to these Terms of Service. If you do not agree, please do not use the Service.</p>
+      <p>By accessing or using findyourgifts.ai (the &quot;Service&quot;), operated by 3Nails.ai (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), you agree to these Terms of Service. If you do not agree, please do not use the Service.</p>
 
       <h2 style={{ fontSize: 20, fontWeight: 600, marginTop: 32, marginBottom: 8 }}>1. The Service</h2>
       <p>findyourgifts.ai provides an AI-powered spiritual gifts assessment. Results are for personal reflection and spiritual growth purposes only. They are not a substitute for pastoral counseling, psychological assessment, or professional advice.</p>
@@ -24,7 +24,7 @@ export default function TermsPage() {
       <p>All content, design, and AI-generated results on the Service are the property of 3Nails.ai. Your personal results are provided for your own use. You may not reproduce, sell, or redistribute assessment results or Service content without our written permission.</p>
 
       <h2 style={{ fontSize: 20, fontWeight: 600, marginTop: 32, marginBottom: 8 }}>5. Disclaimer of Warranties</h2>
-      <p>The Service is provided "as is" without warranties of any kind. We do not guarantee the accuracy, completeness, or suitability of assessment results for any particular purpose.</p>
+      <p>The Service is provided &quot;as is&quot; without warranties of any kind. We do not guarantee the accuracy, completeness, or suitability of assessment results for any particular purpose.</p>
 
       <h2 style={{ fontSize: 20, fontWeight: 600, marginTop: 32, marginBottom: 8 }}>6. Limitation of Liability</h2>
       <p>To the maximum extent permitted by law, 3Nails.ai shall not be liable for any indirect, incidental, or consequential damages arising from your use of the Service.</p>
