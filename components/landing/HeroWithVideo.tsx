@@ -1,6 +1,11 @@
-const VIMEO_EMBED_URL = 'https://player.vimeo.com/video/1190527204?h=029b082dc8&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1';
+'use client';
+import { useState } from 'react';
+
+const VIMEO_EMBED_URL_MUTED = 'https://player.vimeo.com/video/1190527204?h=029b082dc8&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1';
+const VIMEO_EMBED_URL_UNMUTED = 'https://player.vimeo.com/video/1190527204?h=029b082dc8&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=0';
 
 export default function HeroWithVideo() {
+  const [muted, setMuted] = useState(true);
   return (
     <section style={{ background: '#FFFFFF', textAlign: 'center' }}>
       {/* Green badge */}
@@ -14,7 +19,7 @@ export default function HeroWithVideo() {
       <div style={{ width: '100%', maxWidth: 900, margin: '0 auto', padding: '0 1.25rem 1.5rem', boxSizing: 'border-box' }}>
         <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, borderRadius: 16, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.12)' }}>
           <iframe
-            src={VIMEO_EMBED_URL}
+            src={muted ? VIMEO_EMBED_URL_MUTED : VIMEO_EMBED_URL_UNMUTED}
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
@@ -22,6 +27,21 @@ export default function HeroWithVideo() {
             title="Spiritual Gifts Video"
             style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
           />
+          {/* Unmute overlay */}
+          {muted && (
+            <button
+              onClick={() => setMuted(false)}
+              style={{
+                position: 'absolute', bottom: 16, left: '50%', transform: 'translateX(-50%)',
+                background: 'rgba(0,0,0,0.75)', color: '#fff', border: '2px solid rgba(255,255,255,0.6)',
+                borderRadius: 50, padding: '10px 20px', fontSize: '0.95rem', fontWeight: 700,
+                cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, backdropFilter: 'blur(4px)',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <span style={{ fontSize: '1.2rem' }}>🔇</span> Tap to unmute
+            </button>
+          )}
         </div>
       </div>
 

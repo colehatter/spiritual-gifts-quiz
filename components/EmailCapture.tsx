@@ -39,7 +39,7 @@ export default function EmailCapture({ onSubmit }: Props) {
           <span className="text-[#34C6F4]">Spiritual Gifts</span>
         </h1>
         <p className="text-white/60 text-lg">
-          Takes about 5 minutes. Your results are personal to you.
+          Takes about 10 minutes. Your results are personal to you.
         </p>
       </div>
 
