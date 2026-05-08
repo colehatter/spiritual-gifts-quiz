@@ -79,6 +79,19 @@ function QuizApp() {
       setPhase('pre-paid');
     } else {
       setPhase('free-results');
+      // Fire free results email immediately if we already have their email
+      const emailToSend = userInfo?.email;
+      if (emailToSend) {
+        fetch('/api/send-free-results', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: emailToSend,
+            firstName: userInfo?.firstName,
+            scores,
+          }),
+        }).catch(console.error);
+      }
     }
   };
 
