@@ -123,7 +123,7 @@ function QuizApp() {
   };
 
   const handlePaymentSuccess = () => {
-    setPhase('paid-questions');
+    setPhase('pre-paid');
   };
 
   const handleUnlockFromModal = async () => {
