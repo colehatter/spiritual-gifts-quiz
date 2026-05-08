@@ -1,0 +1,49 @@
+// VIMEO_URL: swap the src below when Cole provides the Vimeo embed URL
+const VIMEO_EMBED_URL = 'https://player.vimeo.com/video/REPLACE_ME?autoplay=1&muted=1&loop=1&background=1';
+
+export default function HeroWithVideo() {
+  return (
+    <section style={{ background: '#FFFFFF', textAlign: 'center' }}>
+      {/* Green badge */}
+      <div style={{ padding: 'clamp(2rem, 5vw, 3rem) 1.25rem 1rem' }}>
+        <div style={{ display: 'inline-block', padding: '8px 20px', border: '2px solid #22C55E', backgroundColor: '#F0FDF4', color: '#22C55E', borderRadius: 20, marginBottom: '1rem', fontSize: 'clamp(0.85rem, 2vw, 1rem)' }}>
+          Free Assessment · Takes 10 Minutes
+        </div>
+      </div>
+
+      {/* Video — full width, above the fold */}
+      <div style={{ width: '100%', maxWidth: 900, margin: '0 auto', padding: '0 1.25rem 1.5rem', boxSizing: 'border-box' }}>
+        <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, borderRadius: 16, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.12)' }}>
+          <iframe
+            src={VIMEO_EMBED_URL}
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+          />
+        </div>
+      </div>
+
+      {/* Headline + copy */}
+      <div style={{ padding: '0 1.25rem clamp(2rem, 5vw, 3rem)' }}>
+        <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 3rem)', fontWeight: 900, color: '#111111', margin: '0 0 1rem', lineHeight: 1.15 }}>
+          You&apos;re not lost — you just haven&apos;t seen how you&apos;re wired yet.
+        </h1>
+        <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', color: '#111111', fontWeight: 'bold', margin: '0 0 0.75rem', lineHeight: 1.6 }}>
+          In minutes, discover your God-given gifts — and why some things feel natural while others don&apos;t.
+        </p>
+        <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', color: '#111111', fontWeight: 'bold', margin: '0 0 1rem', lineHeight: 1.6 }}>
+          This quiz will show you where you belong.
+        </p>
+        <p style={{ fontSize: 'clamp(1.05rem, 2.5vw, 1.25rem)', color: '#333333', fontStyle: 'italic', margin: '0 0 2rem', fontWeight: 600 }}>
+          Designed to feel surprisingly personal.
+        </p>
+        <a style={{ display: 'block', padding: '18px 44px', backgroundColor: '#22C55E', color: '#FFFFFF', borderRadius: 12, fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', textDecoration: 'none', fontWeight: 700, maxWidth: 360, margin: '0 auto' }} href="/start">
+          Find My Gifts → Free
+        </a>
+        <p style={{ color: '#555555', fontSize: 'clamp(0.9rem, 2vw, 1rem)', fontWeight: 600, marginTop: '1rem' }}>
+          ✓ Free  ✓ Takes 10 minutes  ✓ No sign-up required
+        </p>
+      </div>
+    </section>
+  );
+}
