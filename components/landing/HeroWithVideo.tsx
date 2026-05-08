@@ -1,5 +1,4 @@
-// VIMEO_URL: swap the src below when Cole provides the Vimeo embed URL
-const VIMEO_EMBED_URL = 'https://player.vimeo.com/video/REPLACE_ME?autoplay=1&muted=1&loop=1&background=1';
+const VIMEO_EMBED_URL = 'https://player.vimeo.com/video/1190527204?h=029b082dc8&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1';
 
 export default function HeroWithVideo() {
   return (
@@ -16,8 +15,11 @@ export default function HeroWithVideo() {
         <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, borderRadius: 16, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.12)' }}>
           <iframe
             src={VIMEO_EMBED_URL}
-            allow="autoplay; fullscreen; picture-in-picture"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
+            title="Spiritual Gifts Video"
             style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
           />
         </div>

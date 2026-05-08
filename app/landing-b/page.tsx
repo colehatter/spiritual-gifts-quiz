@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import HeroWithVideo from '@/components/landing/HeroWithVideo';
 import MidCTA from '@/components/landing/MidCTA';
 import VideoPlaceholder from '@/components/landing/VideoPlaceholder';
@@ -32,6 +33,7 @@ const HR = () => <hr style={{ border: 'none', borderTop: '1px solid #E5E7EB', ma
 export default function LandingBPage() {
   return (
     <div>
+      <Script src="https://player.vimeo.com/api/player.js" strategy="afterInteractive" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div style={{ backgroundColor: '#FFFFFF', color: '#111111', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif', minHeight: '100vh' }}>
         <HeroWithVideo />
