@@ -88,7 +88,10 @@ export default function EmailCapture({ onSubmit }: Props) {
         </button>
 
         <p className="text-white/30 text-xs text-center">
-          We respect your privacy. No spam, ever.
+          By continuing you agree to our{' '}
+          <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/50">Privacy Policy</a>{' '}and{' '}
+          <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/50">Terms of Service</a>.
+          You consent to receive your results and occasional updates from 3Nails.ai. Unsubscribe anytime.
         </p>
       </form>
 

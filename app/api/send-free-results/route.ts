@@ -85,7 +85,9 @@ function buildFreeResultsEmail(firstName: string, topGift: GiftName): string {
 
   <hr style="border:none;border-top:1px solid #eee;margin:28px 0 16px;">
   <p style="font-size:11px;color:#aaa;text-align:center;margin:0;">
-    3Nails.ai &mdash; <a href="https://findyourgifts.ai" style="color:#34C6F4;">findyourgifts.ai</a> &mdash; Make Heaven Crowded
+    3Nails.ai &mdash; <a href="https://findyourgifts.ai" style="color:#34C6F4;">findyourgifts.ai</a> &mdash; Make Heaven Crowded<br>
+    30 North Gould Street, Suite R, Sheridan, WY 82801<br>
+    <a href="https://findyourgifts.ai/privacy" style="color:#aaa;">Privacy Policy</a> &middot; <a href="https://findyourgifts.ai/terms" style="color:#aaa;">Terms of Service</a> &middot; <a href="mailto:support@3nails.ai?subject=Unsubscribe" style="color:#aaa;">Unsubscribe</a>
   </p>
 
 </body></html>`;

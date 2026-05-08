@@ -115,7 +115,11 @@ function buildEmailHtml(firstName: string, results: AIResults, topGifts: GiftNam
   <h2 style="font-size:13px;color:#1a6fa8;letter-spacing:1px;text-transform:uppercase;margin:24px 0 12px;">Your 30-Day Action Plan</h2>
   ${actionPlanHtml}
   <hr style="border:none;border-top:1px solid #eee;margin:32px 0 16px;">
-  <p style="font-size:11px;color:#aaa;text-align:center;">3Nails.ai &mdash; findyourgifts.ai &mdash; Make Heaven Crowded</p>
+  <p style="font-size:11px;color:#aaa;text-align:center;">
+    3Nails.ai &mdash; findyourgifts.ai &mdash; Make Heaven Crowded<br>
+    30 North Gould Street, Suite R, Sheridan, WY 82801<br>
+    <a href="https://findyourgifts.ai/privacy" style="color:#aaa;">Privacy Policy</a> &middot; <a href="https://findyourgifts.ai/terms" style="color:#aaa;">Terms of Service</a> &middot; <a href="mailto:support@3nails.ai?subject=Unsubscribe" style="color:#aaa;">Unsubscribe</a>
+  </p>
 </body></html>`;
 }
 

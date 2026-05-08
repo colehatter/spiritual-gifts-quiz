@@ -39,6 +39,12 @@ function QuizApp() {
   useEffect(() => {
     const payment = searchParams.get('payment');
     if (payment === 'success') {
+      // Fire Purchase pixel event
+      try {
+        if (typeof window !== 'undefined' && (window as { fbq?: (...args: unknown[]) => void }).fbq) {
+          (window as { fbq?: (...args: unknown[]) => void }).fbq?.('track', 'Purchase', { value: 9.99, currency: 'USD' });
+        }
+      } catch { /* silent */ }
       // Restore state from sessionStorage if available
       try {
         const saved = sessionStorage.getItem('quiz_state');

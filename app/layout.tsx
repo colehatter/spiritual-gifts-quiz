@@ -5,10 +5,10 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Spiritual Gifts Assessment | 3Nails.ai',
   description:
-    'Discover your spiritual gifts with a personalized AI-powered assessment. Takes about 5 minutes.',
+    'Discover your spiritual gifts with a personalized AI-powered assessment. Takes about 10 minutes.',
   openGraph: {
     title: 'Spiritual Gifts Assessment | 3Nails.ai',
-    description: 'Discover your spiritual gifts with a personalized AI-powered assessment.',
+    description: 'Discover your spiritual gifts with a personalized AI-powered assessment. Free. Takes 10 minutes.',
   },
   other: {
     'facebook-domain-verification': 'wdjwu05d57ju3qmvztm5phk36998q7',
