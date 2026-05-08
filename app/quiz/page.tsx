@@ -22,6 +22,7 @@ function QuizApp() {
   const [paidQuestions, setPaidQuestions] = useState<Question[]>([]);
   const [isLoadingPaidQuestions, setIsLoadingPaidQuestions] = useState(false);
   const [pendingEmail, setPendingEmail] = useState<string | null>(null);
+  const [pendingScores, setPendingScores] = useState<GiftScores | null>(null);
 
   // Handle paid=true param (paid upfront on /start page)
   useEffect(() => {
@@ -73,23 +74,9 @@ function QuizApp() {
   const handleScreeningComplete = async (scores: GiftScores) => {
     setFreeScores(scores);
     if (isPaidUpfront) {
-      // Skip free results and payment — load paid questions directly
-      setIsLoadingPaidQuestions(true);
-      try {
-        const res = await fetch('/api/select-questions', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ scores }),
-        });
-        const data = await res.json();
-        setPaidQuestions(data.questions || []);
-        setPhase('paid-questions');
-      } catch (e) {
-        console.error('Failed to load paid questions', e);
-        setPhase('free-results');
-      } finally {
-        setIsLoadingPaidQuestions(false);
-      }
+      // Skip free results and payment — show magic modal then load paid questions
+      setPendingScores(scores);
+      setPhase('pre-paid');
     } else {
       setPhase('free-results');
     }
@@ -124,6 +111,26 @@ function QuizApp() {
 
   const handlePaymentSuccess = () => {
     setPhase('paid-questions');
+  };
+
+  const handleUnlockFromModal = async () => {
+    const scores = pendingScores || freeScores;
+    setIsLoadingPaidQuestions(true);
+    try {
+      const res = await fetch('/api/select-questions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ scores }),
+      });
+      const data = await res.json();
+      setPaidQuestions(data.questions || []);
+      setPhase('paid-questions');
+    } catch (e) {
+      console.error('Failed to load paid questions', e);
+      setPhase('paid-questions');
+    } finally {
+      setIsLoadingPaidQuestions(false);
+    }
   };
 
   const handlePaidComplete = async (scores: GiftScores) => {
@@ -189,6 +196,26 @@ function QuizApp() {
           <QuizScreen
             onComplete={handleScreeningComplete}
           />
+        )}
+        {phase === 'pre-paid' && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+            <div className="relative bg-[#0d1220] border border-[#34C6F4]/40 rounded-2xl p-8 max-w-sm w-full text-center space-y-6 shadow-2xl">
+              <div className="text-5xl">✨</div>
+              <h2 className="text-2xl font-bold text-white leading-snug">
+                This is where things get exciting.
+              </h2>
+              <p className="text-white/70 text-lg leading-relaxed">
+                The rest of the questions will be personally and uniquely generated for you based on your previous answers.
+              </p>
+              <button
+                onClick={handleUnlockFromModal}
+                className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200"
+              >
+                Let&apos;s Go →
+              </button>
+            </div>
+          </div>
         )}
         {phase === 'free-results' && (
           <FreeResults
