@@ -7,10 +7,13 @@ export default function Hero() {
       <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 3rem)', fontWeight: 900, color: '#111111', margin: '0 0 1rem', lineHeight: 1.15 }}>
         You&apos;re not lost — you just haven&apos;t seen how you&apos;re wired yet.
       </h1>
-      <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', color: '#111111', fontWeight: 'bold', margin: '0 0 1rem', lineHeight: 1.6 }}>
+      <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', color: '#111111', fontWeight: 'bold', margin: '0 0 0.75rem', lineHeight: 1.6 }}>
         In minutes, discover your God-given gifts — and why some things feel natural while others don&apos;t.
       </p>
-      <p style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)', color: '#333333', fontStyle: 'italic', margin: '0 0 2rem' }}>
+      <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', color: '#111111', fontWeight: 'bold', margin: '0 0 1rem', lineHeight: 1.6 }}>
+        This quiz will show you where you belong.
+      </p>
+      <p style={{ fontSize: 'clamp(1.05rem, 2.5vw, 1.25rem)', color: '#333333', fontStyle: 'italic', margin: '0 0 2rem', fontWeight: 600 }}>
         Designed to feel surprisingly personal.
       </p>
       <a style={{ display: 'block', padding: '18px 44px', backgroundColor: '#22C55E', color: '#FFFFFF', borderRadius: 12, fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', textDecoration: 'none', fontWeight: 700, maxWidth: 360, margin: '0 auto' }} href="/start">

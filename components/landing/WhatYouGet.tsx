@@ -8,7 +8,7 @@ export default function WhatYouGet() {
       </h2>
       <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
         {[
-          { title: 'Your top spiritual gifts', body: "Discover the gifts God wired into you — not the ones you wish you had." },
+          { title: 'Your top spiritual gifts', body: "Discover the gifts God wired into you — and how these impact your life." },
           { title: 'Where you actually belong', body: "Find where you fit — and where you don't. That clarity alone changes everything." },
           { title: 'A 30-day activation plan', body: 'Clear next steps to start using your gifts immediately. Week by week.' },
         ].map(({ title, body }) => (
