@@ -212,10 +212,18 @@ export async function POST(req: NextRequest) {
     const topGifts = getTopGifts(combined, 3);
 
     // HubSpot and email — both fully awaited before returning
-    await Promise.all([
+    const [, emailSent] = await Promise.all([
       createHubSpotContact(email, firstName, topGifts, source || 'quiz'),
       sendEmail(email, firstName, buildEmailHtml(firstName, results, topGifts, combined), combined, results),
     ]);
+
+    if (!emailSent) {
+      console.error('email-results delivery failed for recipient:', email);
+      return NextResponse.json(
+        { success: false, error: 'Email delivery failed' },
+        { status: 502 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
