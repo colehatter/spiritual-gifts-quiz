@@ -28,7 +28,7 @@ function CheckoutForm({ onSuccess, firstName, paymentIntentId }: {
   const [promoApplied, setPromoApplied] = useState(false);
   const [discountLabel, setDiscountLabel] = useState<string | null>(null);
   const [isFree, setIsFree] = useState(false);
-  const [total, setTotal] = useState(9.99);
+  const [, setTotal] = useState(9.99);
 
   const applyPromo = async () => {
     if (!promoCode.trim()) return;
