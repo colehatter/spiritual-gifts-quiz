@@ -46,6 +46,7 @@ function QuizApp() {
         }
       } catch { /* silent */ }
       // Restore state from sessionStorage if available
+      let restored = false;
       try {
         const saved = sessionStorage.getItem('quiz_state');
         if (saved) {
@@ -55,10 +56,22 @@ function QuizApp() {
           if (state.paidQuestions?.length > 0) {
             setPaidQuestions(state.paidQuestions);
             setPhase('paid-questions');
+            restored = true;
+          } else if (state.freeScores) {
+            // Have scores but no questions — generate them
+            setIsPaidUpfront(true);
+            setPendingScores(state.freeScores);
+            setPhase('pre-paid');
+            restored = true;
           }
         }
       } catch (e) {
         console.error('State restore failed', e);
+      }
+      // No session storage — send to paid upfront flow (collect email, then skip to paid questions)
+      if (!restored) {
+        setIsPaidUpfront(true);
+        setPhase('email-capture');
       }
     }
   }, [searchParams]);
