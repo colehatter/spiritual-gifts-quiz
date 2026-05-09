@@ -75,6 +75,12 @@ function QuizApp() {
     fireLeadEvent();
     setUserInfo(info);
     setPhase('screening');
+    // Capture to HubSpot immediately on email submit
+    fetch('/api/capture-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: info.email, firstName: info.firstName, source: 'quiz-email-capture' }),
+    }).catch(console.error);
   };
 
   const handleScreeningComplete = async (scores: GiftScores) => {
@@ -85,7 +91,7 @@ function QuizApp() {
       setPhase('pre-paid');
     } else {
       setPhase('free-results');
-      // Fire free results email immediately if we already have their email
+      // Fire free results email + enrich HubSpot with gift data
       const emailToSend = userInfo?.email;
       if (emailToSend) {
         fetch('/api/send-free-results', {
@@ -94,6 +100,16 @@ function QuizApp() {
           body: JSON.stringify({
             email: emailToSend,
             firstName: userInfo?.firstName,
+            scores,
+          }),
+        }).catch(console.error);
+        fetch('/api/capture-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: emailToSend,
+            firstName: userInfo?.firstName,
+            source: 'quiz-free-results',
             scores,
           }),
         }).catch(console.error);
