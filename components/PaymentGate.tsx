@@ -12,10 +12,10 @@ interface Props {
   firstName?: string;
 }
 
-function CheckoutForm({ onSuccess, firstName, clientSecret, paymentIntentId }: {
+function CheckoutForm({ onSuccess, firstName, paymentIntentId }: {
   onSuccess: () => void;
   firstName?: string;
-  clientSecret: string;
+  clientSecret?: string;
   paymentIntentId: string;
 }) {
   const stripe = useStripe();
