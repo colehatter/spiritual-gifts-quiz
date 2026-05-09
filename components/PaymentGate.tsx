@@ -127,7 +127,7 @@ function CheckoutForm({ onSuccess, firstName, paymentIntentId }: {
         disabled={(!isFree && !stripe) || loading}
         className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] disabled:opacity-60 text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200"
       >
-        {loading ? 'Processing...' : isFree ? 'Unlock My Results — Free' : `Unlock My Results — $${total.toFixed(2)}`}
+        {loading ? 'Processing...' : 'Unlock Everything →'}
       </button>
       <p className="text-center text-white/30 text-xs">Secure payment powered by Stripe</p>
     </form>
