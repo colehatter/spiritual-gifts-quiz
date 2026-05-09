@@ -55,6 +55,16 @@ if (result.error) {
       setError(result.error.message || 'Payment failed. Please try again.');
       setLoading(false);
     } else if (result.paymentIntent?.status === 'succeeded') {
+      try {
+        const pm = result.paymentIntent.payment_method as { billing_details?: { name?: string; email?: string } } | null;
+        const name = pm?.billing_details?.name || '';
+        const email = pm?.billing_details?.email || '';
+        if (name || email) {
+          const existing = JSON.parse(sessionStorage.getItem('quiz_state') || '{}');
+          existing.userInfo = { firstName: name.split(' ')[0] || 'Friend', email };
+          sessionStorage.setItem('quiz_state', JSON.stringify(existing));
+        }
+      } catch { /* silent */ }
       onSuccess();
     }
   };

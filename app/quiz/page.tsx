@@ -71,7 +71,18 @@ function QuizApp() {
       // No session storage — paid upfront, skip straight to screening
       if (!restored) {
         setIsPaidUpfront(true);
-        setUserInfo({ firstName: 'Friend', email: '' });
+        try {
+          const saved = sessionStorage.getItem('quiz_state');
+          const state = saved ? JSON.parse(saved) : {};
+          setUserInfo(state.userInfo || { firstName: 'Friend', email: '' });
+          if (state.userInfo?.email) {
+            fetch('/api/capture-lead', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: state.userInfo.email, firstName: state.userInfo.firstName, source: 'quiz-paid-upfront' }),
+            }).catch(console.error);
+          }
+        } catch { /* silent */ }
         setPhase('screening');
       }
     }
