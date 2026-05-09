@@ -12,7 +12,6 @@ interface Props {
 }
 
 export default function FreeResults({ scores, firstName, onUnlock }: Props) {
-  const [showModal, setShowModal] = useState(false);
   const [copied, setCopied] = useState(false);
   const topGift = getTopGifts(scores, 1)[0] as GiftName;
   const { description, scripture } = giftDescriptions[topGift];
@@ -29,6 +28,10 @@ export default function FreeResults({ scores, firstName, onUnlock }: Props) {
     }
   };
 
+  const scrollToUpsell = () => {
+    document.getElementById('upsell')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="animate-slide-up space-y-6">
 
@@ -43,7 +46,16 @@ export default function FreeResults({ scores, firstName, onUnlock }: Props) {
         <h2 className="text-4xl sm:text-5xl font-extrabold text-[#34C6F4] mb-2">
           {topGift}
         </h2>
-        <p className="text-white/40 text-sm">Based on your first 40 answers</p>
+        <p className="text-white/40 text-sm mb-6">Based on your first 40 answers</p>
+
+        {/* Pre-content upsell CTA */}
+        <button
+          onClick={scrollToUpsell}
+          className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200 animate-pulse-glow"
+        >
+          Get My Full Results — $9.99 →
+        </button>
+        <p className="text-white/30 text-xs mt-2">Or scroll down to read your free results first</p>
       </div>
 
       {/* Gift Description Card */}
@@ -66,7 +78,7 @@ export default function FreeResults({ scores, firstName, onUnlock }: Props) {
       </div>
 
       {/* Upsell Section */}
-      <div className="bg-gradient-to-br from-[#0d1f3c] to-[#0d1220] rounded-2xl p-6 sm:p-8 border border-[#34C6F4]/40 space-y-5">
+      <div id="upsell" className="bg-gradient-to-br from-[#0d1f3c] to-[#0d1220] rounded-2xl p-6 sm:p-8 border border-[#34C6F4]/40 space-y-5">
         <div className="text-center">
           <span className="inline-block bg-[#34C6F4]/10 text-[#34C6F4] text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3">
             Unlock Your Full Profile
@@ -123,27 +135,6 @@ export default function FreeResults({ scores, firstName, onUnlock }: Props) {
         </button>
       </div>
 
-      {/* Magic Moment Modal */}
-      {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={() => setShowModal(false)} />
-          <div className="relative bg-[#0d1220] border border-[#34C6F4]/40 rounded-2xl p-8 max-w-sm w-full text-center space-y-6 shadow-2xl">
-            <div className="text-5xl">✨</div>
-            <h2 className="text-2xl font-bold text-white leading-snug">
-              This is where the magic happens.
-            </h2>
-            <p className="text-white/70 text-lg leading-relaxed">
-              The rest of the questions will be personally and uniquely generated for you based on your previous answers.
-            </p>
-            <button
-              onClick={() => { setShowModal(false); onUnlock(); }}
-              className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200"
-            >
-              Let&apos;s Go →
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
