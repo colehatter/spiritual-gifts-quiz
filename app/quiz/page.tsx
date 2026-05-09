@@ -27,8 +27,11 @@ function QuizApp() {
   // Handle paid=true param (paid upfront on /start page)
   useEffect(() => {
     const paid = searchParams.get('paid');
-    if (paid === 'true' || sessionStorage.getItem('quiz_paid') === 'true') {
+    const paidSession = sessionStorage.getItem('quiz_paid');
+    if (paid === 'true' || paidSession === 'true') {
       setIsPaidUpfront(true);
+      // Clear so it doesn't persist to future free quiz sessions
+      sessionStorage.removeItem('quiz_paid');
     }
   }, [searchParams]);
 
