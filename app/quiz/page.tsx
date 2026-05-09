@@ -68,10 +68,11 @@ function QuizApp() {
       } catch (e) {
         console.error('State restore failed', e);
       }
-      // No session storage — send to paid upfront flow (collect email, then skip to paid questions)
+      // No session storage — paid upfront, skip straight to screening
       if (!restored) {
         setIsPaidUpfront(true);
-        setPhase('email-capture');
+        setUserInfo({ firstName: 'Friend', email: '' });
+        setPhase('screening');
       }
     }
   }, [searchParams]);
