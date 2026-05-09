@@ -21,110 +21,85 @@ function QuizApp() {
   const [aiResults, setAiResults] = useState<AIResults | null>(null);
   const [paidQuestions, setPaidQuestions] = useState<Question[]>([]);
   const [isLoadingPaidQuestions, setIsLoadingPaidQuestions] = useState(false);
-  const [isPaidUpfront, setIsPaidUpfront] = useState(false);
-  const [pendingScores, setPendingScores] = useState<GiftScores | null>(null);
   const [pendingEmail, setPendingEmail] = useState<string | null>(null);
+  const [pendingScores, setPendingScores] = useState<GiftScores | null>(null);
 
-  const fireFbq = (event: string, params?: object) => {
+  // Handle paid=true param (paid upfront on /start page)
+  useEffect(() => {
+    const paid = searchParams.get('paid');
+    if (paid === 'true' || sessionStorage.getItem('quiz_paid') === 'true') {
+      setIsPaidUpfront(true);
+    }
+  }, [searchParams]);
+
+  // Track whether user paid upfront
+  const [isPaidUpfront, setIsPaidUpfront] = useState(false);
+
+  // Handle Stripe redirect back
+  useEffect(() => {
+    const payment = searchParams.get('payment');
+    if (payment === 'success') {
+      // Restore state from sessionStorage if available
+      try {
+        const saved = sessionStorage.getItem('quiz_state');
+        if (saved) {
+          const state = JSON.parse(saved);
+          if (state.freeScores) setFreeScores(state.freeScores);
+          if (state.userInfo) setUserInfo(state.userInfo);
+          if (state.paidQuestions?.length > 0) {
+            setPaidQuestions(state.paidQuestions);
+            setPhase('paid-questions');
+          }
+        }
+      } catch (e) {
+        console.error('State restore failed', e);
+      }
+    }
+  }, [searchParams]);
+
+  const fireLeadEvent = () => {
     try {
-      if (typeof window !== 'undefined' && (window as { fbq?: (...a: unknown[]) => void }).fbq) {
-        (window as { fbq?: (...a: unknown[]) => void }).fbq?.('track', event, params);
+      if (typeof window !== 'undefined' && (window as { fbq?: (...args: unknown[]) => void }).fbq) {
+        (window as { fbq?: (...args: unknown[]) => void }).fbq?.('track', 'Lead');
       }
     } catch { /* silent */ }
   };
 
-  // ── FLOW B: paid upfront from /start (paid=true) ──────────────────────────
-  useEffect(() => {
-    const paid = searchParams.get('paid');
-    if (paid !== 'true' && sessionStorage.getItem('quiz_paid') !== 'true') return;
-
-    setIsPaidUpfront(true);
-    fireFbq('Purchase', { value: 9.99, currency: 'USD' });
-
-    try {
-      const state = JSON.parse(sessionStorage.getItem('quiz_state') || '{}');
-      const info = state.userInfo || { firstName: 'Friend', email: '' };
-      setUserInfo(info);
-      if (info.email) {
-        fetch('/api/capture-lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: info.email, firstName: info.firstName, source: 'quiz-paid-upfront' }),
-        }).catch(console.error);
-      }
-    } catch { /* silent */ }
-
-    setPhase('screening');
-  }, [searchParams]);
-
-  // ── FLOW C: returning after Stripe redirect (payment=success) ─────────────
-  useEffect(() => {
-    if (searchParams.get('payment') !== 'success') return;
-
-    fireFbq('Purchase', { value: 9.99, currency: 'USD' });
-
-    try {
-      const state = JSON.parse(sessionStorage.getItem('quiz_state') || '{}');
-      if (state.userInfo) setUserInfo(state.userInfo);
-      if (state.freeScores) setFreeScores(state.freeScores);
-
-      if (state.paidQuestions?.length > 0) {
-        setPaidQuestions(state.paidQuestions);
-        setPhase('paid-questions');
-      } else if (state.freeScores) {
-        setIsPaidUpfront(true);
-        setPendingScores(state.freeScores);
-        setPhase('pre-paid');
-      } else {
-        // No state at all — restart as paid upfront
-        setIsPaidUpfront(true);
-        setUserInfo({ firstName: 'Friend', email: '' });
-        setPhase('screening');
-      }
-    } catch {
-      setIsPaidUpfront(true);
-      setUserInfo({ firstName: 'Friend', email: '' });
-      setPhase('screening');
-    }
-  }, [searchParams]);
-
-  // ── FLOW A: free quiz ──────────────────────────────────────────────────────
-
   const handleEmailSubmit = (info: UserInfo) => {
-    fireFbq('Lead');
+    fireLeadEvent();
     setUserInfo(info);
+    setPhase('screening');
     fetch('/api/capture-lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: info.email, firstName: info.firstName, source: 'quiz-email-capture' }),
     }).catch(console.error);
-    setPhase('screening');
   };
 
   const handleScreeningComplete = async (scores: GiftScores) => {
     setFreeScores(scores);
     if (isPaidUpfront) {
+      // Skip free results and payment — show magic modal then load paid questions
       setPendingScores(scores);
       setPhase('pre-paid');
     } else {
       setPhase('free-results');
-      const email = userInfo?.email;
-      if (email) {
+      // Fire free results email immediately if we already have their email
+      const emailToSend = userInfo?.email;
+      if (emailToSend) {
         fetch('/api/send-free-results', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, firstName: userInfo?.firstName, scores }),
-        }).catch(console.error);
-        fetch('/api/capture-lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, firstName: userInfo?.firstName, source: 'quiz-free-results', scores }),
+          body: JSON.stringify({
+            email: emailToSend,
+            firstName: userInfo?.firstName,
+            scores,
+          }),
         }).catch(console.error);
       }
     }
   };
 
-  // Upgrade at Q40 — load questions and go to payment
   const handleUnlockPaid = async () => {
     setIsLoadingPaidQuestions(true);
     try {
@@ -133,40 +108,45 @@ function QuizApp() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ scores: freeScores }),
       });
-      const questions = (await res.json()).questions || [];
+      const data = await res.json();
+      const questions = data.questions || [];
       setPaidQuestions(questions);
+
+      // Save state for after Stripe redirect
       try {
-        sessionStorage.setItem('quiz_state', JSON.stringify({ freeScores, userInfo, paidQuestions: questions }));
-      } catch { /* silent */ }
-    } catch { /* silent */ } finally {
+        sessionStorage.setItem(
+          'quiz_state',
+          JSON.stringify({ freeScores, userInfo, paidQuestions: questions })
+        );
+      } catch {}
+    } catch (e) {
+      console.error('Failed to load paid questions', e);
+    } finally {
       setIsLoadingPaidQuestions(false);
     }
     setPhase('payment');
   };
 
-  // After payment gate succeeds (mid-quiz upgrade)
   const handlePaymentSuccess = () => {
-    fireFbq('Purchase', { value: 9.99, currency: 'USD' });
     setPhase('pre-paid');
   };
 
-  // Magic modal → load paid questions and go
   const handleUnlockFromModal = async () => {
+    const scores = pendingScores || freeScores;
     setIsLoadingPaidQuestions(true);
     try {
-      const scores = pendingScores || freeScores;
-      let questions = paidQuestions;
-      if (!questions.length) {
-        const res = await fetch('/api/select-questions', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ scores }),
-        });
-        questions = (await res.json()).questions || [];
-        setPaidQuestions(questions);
-      }
+      const res = await fetch('/api/select-questions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ scores }),
+      });
+      const data = await res.json();
+      setPaidQuestions(data.questions || []);
       setPhase('paid-questions');
-    } catch { /* silent */ } finally {
+    } catch (e) {
+      console.error('Failed to load paid questions', e);
+      setPhase('paid-questions');
+    } finally {
       setIsLoadingPaidQuestions(false);
     }
   };
@@ -178,34 +158,83 @@ function QuizApp() {
       const res = await fetch('/api/generate-results', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: userInfo?.firstName, freeScores, paidScores: scores }),
+        body: JSON.stringify({
+          name: userInfo?.firstName,
+          freeScores,
+          paidScores: scores,
+        }),
       });
       const data = await res.json();
       setAiResults(data.results);
-      const email = userInfo?.email || pendingEmail;
-      if (data.results && email) {
+      // Email results — use known email, or pending email from top capture
+      const emailToSend = userInfo?.email || pendingEmail;
+      if (data.results && emailToSend) {
         fetch('/api/email-results', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, firstName: userInfo?.firstName, results: data.results, freeScores, paidScores: scores, source: 'quiz' }),
+          body: JSON.stringify({
+            email: emailToSend,
+            firstName: userInfo?.firstName,
+            results: data.results,
+            freeScores,
+            paidScores: scores,
+            source: 'quiz',
+          }),
         }).catch(console.error);
       }
-    } catch { /* silent */ }
+    } catch (e) {
+      console.error('Failed to generate results', e);
+    }
   };
 
   return (
     <main className="min-h-screen bg-[#0d1220]">
       <div className="max-w-2xl mx-auto px-4 py-2">
         <Logo />
-
+        {phase === 'start' && (
+          <div className="flex flex-col items-center justify-center min-h-[60vh] text-center gap-8">
+            <div>
+              <h1 className="text-3xl font-bold text-white mb-3">Discover Your Spiritual Gifts</h1>
+              <p className="text-white/60 text-lg max-w-md mx-auto">40 questions. 10 minutes. Personalized results based on how you are actually wired.</p>
+            </div>
+            <button
+              onClick={() => { fireLeadEvent(); setUserInfo({ firstName: 'Friend', email: '' }); setPhase('screening'); }}
+              className="px-10 py-4 rounded-xl text-white font-semibold text-lg transition-all hover:scale-105 hover:shadow-lg"
+              style={{ background: 'linear-gradient(135deg, #1a4e8a, #34C6F4)', boxShadow: '0 0 30px rgba(52,198,244,0.3)' }}
+            >
+              Start the Quiz →
+            </button>
+            <p className="text-white/30 text-sm">Preview mode, no email required</p>
+          </div>
+        )}
         {phase === 'email-capture' && (
           <EmailCapture onSubmit={handleEmailSubmit} />
         )}
-
         {phase === 'screening' && (
-          <QuizScreen onComplete={handleScreeningComplete} />
+          <QuizScreen
+            onComplete={handleScreeningComplete}
+          />
         )}
-
+        {phase === 'pre-paid' && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+            <div className="relative bg-[#0d1220] border border-[#34C6F4]/40 rounded-2xl p-8 max-w-sm w-full text-center space-y-6 shadow-2xl">
+              <div className="text-5xl">✨</div>
+              <h2 className="text-2xl font-bold text-white leading-snug">
+                This is where things get exciting.
+              </h2>
+              <p className="text-white/70 text-lg leading-relaxed">
+                The rest of the questions will be personally and uniquely generated for you based on your previous answers.
+              </p>
+              <button
+                onClick={handleUnlockFromModal}
+                className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200"
+              >
+                Let&apos;s Go →
+              </button>
+            </div>
+          </div>
+        )}
         {phase === 'free-results' && (
           <FreeResults
             scores={freeScores}
@@ -213,7 +242,6 @@ function QuizApp() {
             onUnlock={handleUnlockPaid}
           />
         )}
-
         {phase === 'payment' && (
           <PaymentGate
             onSuccess={handlePaymentSuccess}
@@ -221,31 +249,12 @@ function QuizApp() {
             firstName={userInfo?.firstName || ''}
           />
         )}
-
-        {phase === 'pre-paid' && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
-            <div className="relative bg-[#0d1220] border border-[#34C6F4]/40 rounded-2xl p-8 max-w-sm w-full text-center space-y-6 shadow-2xl">
-              <div className="text-5xl">✨</div>
-              <h2 className="text-2xl font-bold text-white leading-snug">This is where the magic happens.</h2>
-              <p className="text-white/70 text-lg leading-relaxed">
-                The rest of the questions will be personally and uniquely generated for you based on your previous answers.
-              </p>
-              <button
-                onClick={handleUnlockFromModal}
-                disabled={isLoadingPaidQuestions}
-                className="w-full bg-[#34C6F4] hover:bg-[#5ed8ff] disabled:opacity-60 text-[#0d1220] font-bold text-lg py-4 px-8 rounded-xl transition-all duration-200"
-              >
-                {isLoadingPaidQuestions ? 'Preparing your questions...' : "Let's Go →"}
-              </button>
-            </div>
-          </div>
-        )}
-
         {phase === 'paid-questions' && paidQuestions.length > 0 && (
-          <PaidQuestions questions={paidQuestions} onComplete={handlePaidComplete} />
+          <PaidQuestions
+            questions={paidQuestions}
+            onComplete={handlePaidComplete}
+          />
         )}
-
         {phase === 'ai-results' && (
           <AiResults
             results={aiResults}
@@ -259,7 +268,14 @@ function QuizApp() {
                 fetch('/api/email-results', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ email, firstName: userInfo?.firstName, results: aiResults, freeScores, paidScores, source: 'quiz' }),
+                  body: JSON.stringify({
+                    email,
+                    firstName: userInfo?.firstName,
+                    results: aiResults,
+                    freeScores,
+                    paidScores,
+                    source: 'quiz',
+                  }),
                 }).catch(console.error);
               } else {
                 setPendingEmail(email);
