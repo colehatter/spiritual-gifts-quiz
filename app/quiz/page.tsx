@@ -24,34 +24,60 @@ function QuizApp() {
   const [pendingEmail, setPendingEmail] = useState<string | null>(null);
   const [pendingScores, setPendingScores] = useState<GiftScores | null>(null);
 
-  // Handle paid=true param (paid upfront on /start page)
+  const [isPaidUpfront, setIsPaidUpfront] = useState(false);
+
+  // Paid upfront (/start): restore Stripe billing userInfo from sessionStorage and skip email form when we already have an email.
   useEffect(() => {
     const paid = searchParams.get('paid');
     const paidSession = sessionStorage.getItem('quiz_paid');
-    if (paid === 'true' || paidSession === 'true') {
-      setIsPaidUpfront(true);
-      // Clear so it doesn't persist to future free quiz sessions
-      sessionStorage.removeItem('quiz_paid');
+    if (paid !== 'true' && paidSession !== 'true') return;
+
+    setIsPaidUpfront(true);
+    sessionStorage.removeItem('quiz_paid');
+
+    try {
+      const saved = sessionStorage.getItem('quiz_state');
+      if (!saved) return;
+      const state = JSON.parse(saved) as { userInfo?: UserInfo };
+      const info = state.userInfo;
+      if (info?.email?.trim()) {
+        setUserInfo(info);
+        setPhase('screening');
+        fetch('/api/capture-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: info.email,
+            firstName: info.firstName,
+            source: 'quiz-paid-upfront',
+          }),
+        }).catch(console.error);
+      }
+    } catch (e) {
+      console.error('Paid upfront state restore failed', e);
     }
   }, [searchParams]);
 
-  // Track whether user paid upfront
-  const [isPaidUpfront, setIsPaidUpfront] = useState(false);
-
-  // Handle Stripe redirect back
+  // Handle Stripe redirect back (e.g. 3DS) after upgrade payment on /quiz
   useEffect(() => {
     const payment = searchParams.get('payment');
     if (payment === 'success') {
-      // Restore state from sessionStorage if available
       try {
         const saved = sessionStorage.getItem('quiz_state');
         if (saved) {
-          const state = JSON.parse(saved);
+          const state = JSON.parse(saved) as {
+            freeScores?: GiftScores;
+            userInfo?: UserInfo;
+            paidQuestions?: Question[];
+          };
           if (state.freeScores) setFreeScores(state.freeScores);
           if (state.userInfo) setUserInfo(state.userInfo);
-          if (state.paidQuestions?.length > 0) {
+          if (state.paidQuestions && state.paidQuestions.length > 0) {
             setPaidQuestions(state.paidQuestions);
             setPhase('paid-questions');
+          } else if (state.freeScores && state.userInfo) {
+            // Payment succeeded but question list missing from storage — show magic modal and refetch on Continue
+            setPhase('pre-paid');
           }
         }
       } catch (e) {
@@ -66,6 +92,54 @@ function QuizApp() {
         (window as { fbq?: (...args: unknown[]) => void }).fbq?.('track', 'Lead');
       }
     } catch { /* silent */ }
+  };
+
+  const sendFreeResultsEmail = async (email: string, firstName: string, scores: GiftScores) => {
+    // Lightweight retry to reduce silent delivery misses from transient API/network errors.
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const res = await fetch('/api/send-free-results', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, firstName, scores }),
+        });
+        if (res.ok) return;
+      } catch {
+        // Continue retry attempts.
+      }
+      await new Promise((resolve) => setTimeout(resolve, attempt * 750));
+    }
+    console.error('Free results email failed after retries for:', email);
+  };
+
+  const sendFullResultsEmail = async (
+    email: string,
+    firstName: string | undefined,
+    results: AIResults,
+    free: GiftScores,
+    paid: GiftScores
+  ) => {
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const res = await fetch('/api/email-results', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            firstName,
+            results,
+            freeScores: free,
+            paidScores: paid,
+            source: 'quiz',
+          }),
+        });
+        if (res.ok) return;
+      } catch {
+        // Continue retry attempts.
+      }
+      await new Promise((resolve) => setTimeout(resolve, attempt * 750));
+    }
+    console.error('Full results email failed after retries for:', email);
   };
 
   const handleEmailSubmit = (info: UserInfo) => {
@@ -90,15 +164,7 @@ function QuizApp() {
       // Fire free results email immediately if we already have their email
       const emailToSend = userInfo?.email;
       if (emailToSend) {
-        fetch('/api/send-free-results', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: emailToSend,
-            firstName: userInfo?.firstName,
-            scores,
-          }),
-        }).catch(console.error);
+        void sendFreeResultsEmail(emailToSend, userInfo?.firstName || '', scores);
       }
     }
   };
@@ -135,6 +201,12 @@ function QuizApp() {
   };
 
   const handleUnlockFromModal = async () => {
+    // Q40 upgrade path: questions were already loaded before payment; avoid wiping them on a failed refetch.
+    if (paidQuestions.length > 0) {
+      setPhase('paid-questions');
+      return;
+    }
+
     const scores = pendingScores || freeScores;
     setIsLoadingPaidQuestions(true);
     try {
@@ -144,11 +216,23 @@ function QuizApp() {
         body: JSON.stringify({ scores }),
       });
       const data = await res.json();
-      setPaidQuestions(data.questions || []);
+      const questions = (data.questions || []) as Question[];
+      if (questions.length === 0) {
+        console.error('select-questions returned no questions; staying on continue step');
+        return;
+      }
+      setPaidQuestions(questions);
+      try {
+        sessionStorage.setItem(
+          'quiz_state',
+          JSON.stringify({ freeScores, userInfo, paidQuestions: questions })
+        );
+      } catch {
+        /* ignore */
+      }
       setPhase('paid-questions');
     } catch (e) {
       console.error('Failed to load paid questions', e);
-      setPhase('paid-questions');
     } finally {
       setIsLoadingPaidQuestions(false);
     }
@@ -172,18 +256,13 @@ function QuizApp() {
       // Email results — use known email, or pending email from top capture
       const emailToSend = userInfo?.email || pendingEmail;
       if (data.results && emailToSend) {
-        fetch('/api/email-results', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: emailToSend,
-            firstName: userInfo?.firstName,
-            results: data.results,
-            freeScores,
-            paidScores: scores,
-            source: 'quiz',
-          }),
-        }).catch(console.error);
+        void sendFullResultsEmail(
+          emailToSend,
+          userInfo?.firstName,
+          data.results,
+          freeScores,
+          scores
+        );
       }
     } catch (e) {
       console.error('Failed to generate results', e);

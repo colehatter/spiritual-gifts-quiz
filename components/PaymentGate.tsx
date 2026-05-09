@@ -77,6 +77,7 @@ function CheckoutForm({ onSuccess, firstName, paymentIntentId }: {
       elements,
       redirect: 'if_required',
       confirmParams: {
+        return_url: `${window.location.origin}/quiz?payment=success`,
         payment_method_data: { billing_details: { name: firstName || '' } },
       },
     });

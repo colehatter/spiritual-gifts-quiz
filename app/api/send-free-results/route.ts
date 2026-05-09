@@ -95,6 +95,14 @@ function buildFreeResultsEmail(firstName: string, topGift: GiftName): string {
 
 export async function POST(req: NextRequest) {
   try {
+    if (!process.env.GMAIL_CLIENT_ID || !process.env.GMAIL_CLIENT_SECRET || !process.env.GMAIL_REFRESH_TOKEN) {
+      console.error('send-free-results config missing: Gmail OAuth environment variables are not set');
+      return NextResponse.json(
+        { success: false, error: 'Email delivery not configured' },
+        { status: 502 }
+      );
+    }
+
     const { email, firstName, scores } = await req.json();
     if (!email || !scores) {
       return NextResponse.json({ success: false, error: 'Missing email or scores' });
@@ -128,6 +136,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('send-free-results error:', error);
-    return NextResponse.json({ success: false }, { status: 500 });
+    return NextResponse.json({ success: false, error: 'Email delivery failed' }, { status: 502 });
   }
 }
